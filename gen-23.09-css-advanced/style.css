@@ -10,12 +10,12 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 180px 1fr;
   gap: 2em;
   margin: 1em 2em;
 }
 
-.navbar{
+nav {
   display: flex;
   flex-direction: row;
   justify-content:space-between;
@@ -24,23 +24,29 @@ body {
   margin: 2em;
 }
 
-.navbar .search {
+nav .search {
   width: 80%;
   padding: 0.6em 1em;
   border-radius: 5px;
   border: #ccc 1px solid;
 }
 
-.navbar .logo {
-  width: 150px;
+nav .logo {
+  width: 10em;
 }
 
-.navbar img {
+nav img {
   height: 30px;
+  transition: transform 3s;
+}
+
+nav img:hover {
+  cursor: pointer;
+  transform: rotate(360deg);
 }
 
 .product-filter {
-  padding: 1em 0.8em;
+  padding: 1.2em 1em;
   border-radius: 10px;
   height: fit-content;
   border: #ccc 1px solid;
@@ -48,11 +54,23 @@ body {
 }
 
 .product-filter li {
-  margin: 0.5em 0;
+  font-size: 0.8em;
+  margin: 1em 0;
+}
+
+.product-filter li input {
+  margin-right: 0.3em;
+  width: 1em;
+  height: 0.8em;
+}
+
+.product-filter h3 {
+  font-size: 1.25em;
+  margin-bottom: 1em;
 }
 
 .product-filter h4 {
-  font-size: 1em;
+  font-size: 0.9em;
   margin-bottom: 1em;
 }
 
@@ -61,11 +79,10 @@ body {
   gap: 2em;
 }
 
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 40em) {
   .product-list {
     grid-template-columns: 1fr;
-  }  
+  }
 }
 
 @media screen and (min-width: 40em) {
@@ -79,7 +96,6 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 @media screen and (min-width: 80em) {
   .product-list {
     grid-template-columns: repeat(4, 1fr);
