@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css?family=Inter");
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 2em;
+  margin: 1em 2em;
+}
+
+.navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  gap: 2em;
+  margin: 2em;
+}
+
+.navbar .search {
+  width: 80%;
+  padding: 0.6em 1em;
+  border-radius: 5px;
+  border: #ccc 1px solid;
+}
+
+.navbar .logo {
+  width: 150px;
+}
+
+.navbar img {
+  height: 30px;
+}
+
+.product-filter {
+  padding: 1em 0.8em;
+  border-radius: 10px;
+  height: fit-content;
+  border: #ccc 1px solid;
+  font-size: 0.9em;
+}
+
+.product-filter li {
+  margin: 0.5em 0;
+}
+
+.product-filter h4 {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.product-list {
+  display: grid;
+  gap: 2em;
+}
+
+
+@media screen and (max-width: 600px) {
+  .product-list {
+    grid-template-columns: 1fr;
+  }  
+}
+
+@media screen and (min-width: 40em) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .product-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 2em;
+  border-radius: 10px;
+  font-size: 0.8em;
+  background-color: white;
+  transition: background-color 1s, cursor 1s;
+}
+
+.product-card:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.product-card img {
+  width: 150px;
+  height: 150px;
+  align-self: center;
+}
+
+.product-card p {
+  margin: 0.3em 0;
+}
+
+.product-card button {
+  width: 100px;
+  margin: 0.5em auto 0 auto;
+  background-color: green;
+  padding: 0.5em 1em;
+  border-radius: 0.6em;
+  color: white;
+  border: #ccc 1px solid;
+}
+
+.product-card button:hover {
+  background-color: darkgreen;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
