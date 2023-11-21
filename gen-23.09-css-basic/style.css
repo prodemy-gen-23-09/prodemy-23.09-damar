@@ -1,0 +1,45 @@
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1em;
+  margin: 0 3em;
+}
+.navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  gap: 2em;
+  margin: 1.5em 3em 2em 3em;
+}
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); 
+  gap: 2em;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 2em;
+  border-radius: 10px;
+}
+
+button {
+  width: 100px;
+  margin: auto 0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.search {
+  width: 720px;
+  padding: 0.6em 1em;
+  border-radius: 5px;
+  border: #ccc 1px solid;
+}
