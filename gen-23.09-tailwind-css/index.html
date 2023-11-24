@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-sans">
+    <header
+      class="flex flex-row sticky top-0 left-0 z-10 bg-white justify-between md:justify-start items-center md:border md:border-t-transparent py-4 px-3 md:px-5 w-full gap-x-5 md:gap-x-8"
+    >
+      <img
+        src="../assets/back-arrow.png"
+        class="h-8 md:hidden"
+        alt="back-arrow"
+      />
+      <img
+        src="../assets/Tokopedia-logo.svg"
+        class="hidden md:block md:h-10"
+        alt="logo"
+      />
+      <input
+        name="search"
+        class="hidden md:block flex-1 h-fit px-3 px-5 py-2 outline outline-1 outline-gray-300 rounded-lg"
+        placeholder="Cari di tokokami"
+      />
+      <nav class="flex flex-row items-center gap-x-5">
+        <img
+          src="../assets/wishlist.png"
+          alt="wishlist"
+          class="hidden md:block md:h-10"
+        />
+        <img src="../assets/search.png" alt="search" class="h-7 md:hidden" />
+        <img src="../assets/shopping-cart.png" alt="cart" class="h-8 md:h-10" />
+        <img
+          src="../assets/profile.png"
+          alt="profile"
+          class="hidden md:block md:h-10"
+        />
+        <img src="../assets/menu.png" class="h-8 md:hidden" alt="menu" />
+      </nav>
+    </header>
+    <div class="xl:container md:px-3 mx-auto lg:mx-6 xl:mx-auto mt-0 md:mt-10">
+      <main
+        class="flex flex-col justify-center gap-y-5 md:flex-row md:items-start md:gap-x-2 lg:gap-x-6"
+      >
+        <img
+          src="../assets/product-pc.jpg"
+          alt="PC EK Gaming"
+          class="w-full md:w-3/12 md:rounded-lg"
+        />
+        <article class="flex flex-col w-full px-3 md:w-5/12 lg:w-6/12">
+          <div class="border border-transparent border-b-gray-300 mb-5">
+            <h3 class="text-xl mb-2 md:font-bold">
+              PC Rakitan EK Gaming BattleStar TG WHITE - i5 RTX 3060 Enter
+              Komputer - TG White V2, PC + Pack Kayu
+            </h3>
+            <div class="flex flex-row items-center gap-x-2 mb-2">
+              <p class="text-base line-clamp-1">
+                Terjual <span class="text-gray-500">5rb+</span>
+              </p>
+              <span>&#8226;</span>
+              <p clas="text-base">
+                <span>&#9733;</span> 4.9
+                <span class="text-gray-500">(3.011 rating)</span>
+              </p>
+              <span>&#8226;</span>
+              <p class="md:hidden lg:block text-base">
+                Diskusi <span class="text-gray-500">106</span>
+              </p>
+            </div>
+            <p class="text-2xl md:text-3xl font-bold mb-5">Rp 11.500.000</p>
+          </div>
+          <h4 class="text-lg font-bold mb-2">Deskripsi Produk</h4>
+          <div>
+            PC EK Gaming EK Gaming BattleStar TG WHITE
+            <br />
+            <br />
+            Spesifikasi : <br />
+            EK Gaming BattleStar TG WHITE V2
+            <br />
+            <br />
+            Procesor : Intel Core i5-12400F [Tray] Socket LGA 1700<br />
+            Motherboard : Asus PRIME B660M-A WIFI D4 (LGA1700)<br />
+            SSD : ADATA LEGEND 710 1TB M.2 NVME R 2400MB/S W 1800MB/S<br />
+            Memory RAM : ADATA DDR4 XPG SPECTRIX D50 WHITE PC25600 3200MHz 16GB
+            (2X8GB) RGB<br />
+            VGA : GALAX GeForce RTX 3060 12GB GDDR6 (1-Click OC) - DUAL FAN<br />
+            Casing : CUBE GAMING LEORIC GLASS WHITE - mATX<br />
+            PSU : Super Flower Mega Series 600W - SF-600R12ST<br />
+            Air Cooler : CUBE GAMING STORM V2 WHITE<br />
+            Fan : CUBE GAMING FIX White 3Pcs<br />
+            <br />
+
+            <div class="flex flex-row w-full gap-x-3 items-center border border-transparent py-4 border-y-gray-300 mb-5">
+              <img src="../assets/tokopedia-little-logo.png" alt="tokopedia" class="h-10" />
+              <div class="flex flex-col grow">
+                <h4 class="text-lg font-bold line-clamp-1">Tokopedia Official</h4>
+                <p class="text-gray-500 mt-0">Sedang online</p>
+              </div>
+              <button class="outline outline-1 outline-green-500 rounded-lg px-6 py-1 h-fit">Follow</button>
+          </div>
+        </article>
+        <div
+          class="hidden md:flex md:flex-col md:gap-y-5 md:w-4/12 lg:w-3/12 p-4 border border-gray-300 rounded-lg"
+        >
+          <h4 class="text-md font-bold">Atur jumlah dan catatan</h4>
+          <div class="flex flex-row gap-x-3">
+            <img
+              src="../assets/product-pc.jpg"
+              alt="PC Thumbnail"
+              class="w-10 min-w-10 rounded-lg"
+            />
+            <p>TG White V2, PC + Pack Kayu</p>
+          </div>
+          <div class="flex flex-row gap-x-3 justify-center">
+            <span>&#45;</span>
+            <input
+              class="h-fit w-20 px-3 self-center py-0.5 outline-none border rounded-lg"
+            />
+            <span>&#43;</span>
+            <p>Stok: <span class="font-bold">12</span></p>
+          </div>
+          <div class="flex flex-row justify-between items-start">
+            <p class="text-gray-500">Subtotal</p>
+            <p class="text-lg font-bold">Rp. 11.500.000</p>
+          </div>
+          <div class="flex flex-col gap-y-3">
+            <button
+              class="bg-green-500 hover:bg-green-700 text-white p-2 rounded-lg font-bold"
+            >
+              <span>&#43;</span> Keranjang
+            </button>
+            <button
+              class="outline outline-1 outline-green-500 text-green-500 p-2 rounded-lg font-bold"
+            >
+              Beli Langsung
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex flex-row justify-between gap-x-4 p-3 sticky w-full bottom-0 left-0 z-10 bg-white border border-t-green-500 md:hidden"
+        >
+          <button
+            class="flex-1 outline outline-1 outline-green-500 text-green-500 p-2 rounded-lg font-bold"
+          >
+            Beli Langsung
+          </button>
+          <button
+            class="flex-1 bg-green-500 hover:bg-green-700 text-white p-2 rounded-lg font-bold"
+          >
+            <span>&#43;</span> Keranjang
+          </button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
