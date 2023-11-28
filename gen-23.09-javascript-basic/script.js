@@ -1,4 +1,4 @@
-let productList = [
+const productList = [
   {
     id: 1,
     name: "Ardiles Black Sneakers Casual",
@@ -59,7 +59,7 @@ let productList = [
     id: 5,
     name: "Aerostreet Black Sneakers Casual",
     price: 990000,
-    image: "../assets/Sepatu-1.png",
+    image: "../assets/Sepatu-5.png",
     description:
       "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 10,
@@ -71,7 +71,11 @@ let productList = [
   },
 ];
 
-document.getElementById("navbar").innerHTML = `
+const navbarElement = document.getElementById("navbar");
+
+navbarElement.className = "flex flex-row sticky top-0 left-0 z-10 w-full bg-white justify-between md:justify-start items-center border border-x-transparent border-t-transparent py-4 md:py-6 px-3 md:px-4 lg:px-10 xl:px-12 gap-x-5 md:gap-x-8";
+
+navbarElement.innerHTML = `
   <img src="../assets/back-arrow.png" class="h-8 md:hidden" alt="back-arrow" />
   <img
     src="../assets/Tokopedia-logo.svg"
@@ -109,25 +113,59 @@ document.getElementById("footer").innerHTML = `
   </div>
 `
 
-const productDetailsElement = document.getElementById("product-details");
-const productListElement = document.getElementById("product-list");
+const mainElement = document.getElementById("main");
+
+mainElement.className =
+  "min-h-screen flex flex-col lg:container gap-y-5 md:px-5 m-5 md:mx-auto md:mt-8"
+
+const banner = document.createElement("img");
+banner.src = "../assets/banner-1.png";
+banner.className = "hidden md:block w-full rounded-lg mb-5";
+banner.alt = "banner";
+
+const sectionContent = document.createElement("section");
+sectionContent.className = "lg:container grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid gap-5 ";
+
+const sectionTitle = document.createElement("h2");
+sectionTitle.innerHTML = "Produk Terbaru";
+sectionTitle.className = "text-2xl font-bold";
+
+productList.forEach((product) => {
+    const productCard = document.createElement("div");
+  
+    productCard.className =
+      "product-card h-fit flex flex-col border border-gray-300 p-4 pb-6 gap-1 rounded-lg hover:shadow-md cursor-pointer";
+  
+    productCard.addEventListener("click", () => {
+      fetchProductDetails(product.id);
+    });
+  
+    productCard.innerHTML = `
+        <img class="self-center w-40 h-40" src="${product.image}" alt="${product.name}" />
+        <h3 class="line-clamp-1 font-semibold">${product.name}</h3>
+        <p class="text-gray-400 text-sm">${product.toko.name}</p>
+        <p class="font-bold text-lg mt-2">${"Rp. " + product.price.toLocaleString("id-ID")}</p>
+    `;
+    sectionContent.appendChild(productCard);
+});
+
+mainElement.appendChild(banner);
+mainElement.appendChild(sectionTitle);
+mainElement.appendChild(sectionContent);
 
 const fetchProductDetails = (id) => {
-  let productDetail = productList.find((sepatu) => sepatu.id === id);
+  const productDetail = productList.find((sepatu) => sepatu.id === id);
 
-  productListElement.className = "hidden";
-
-  productDetailsElement.className =
-    "block h-screen xl:container md:px-3 mx-auto lg:mx-6 xl:mx-auto mt-0 md:mt-10";
+  mainElement.className =
+    "min-h-screen flex flex-col md:flex-row justify-center gap-y-5 md:items-start md:gap-x-2 lg:gap-x-6 xl:container md:px-3 mx-auto lg:mx-6 xl:mx-auto mt-0 md:mt-10";
   
-  productDetailsElement.innerHTML = `
-  <main class="flex flex-col justify-center gap-y-5 md:flex-row md:items-start md:gap-x-2 lg:gap-x-6">
+  mainElement.innerHTML = `
     <img
       src=${productDetail.image}
       alt="PC EK Gaming"
       class="w-full md:w-3/12 md:rounded-lg"
     />
-    <article class="flex flex-col w-full px-3 md:w-6/12">
+    <div class="flex flex-col w-full px-3 md:w-6/12">
       <div class="border border-transparent border-b-gray-200 mb-5">
         <h3 class="text-xl mb-2 font-semibold md:font-bold">
           ${productDetail.name}
@@ -170,7 +208,7 @@ const fetchProductDetails = (id) => {
           Follow
         </button>
       </div>
-    </article>
+    </div>
 
     <div class="hidden md:flex flex-col gap-y-5 w-3/12 p-4 border border-gray-300 rounded-lg">
       <h4 class="text-lg font-bold">Atur jumlah dan catatan</h4>
@@ -215,33 +253,5 @@ const fetchProductDetails = (id) => {
       <button class="flex-1 bg-green-500 hover:bg-green-700 text-white p-2 rounded-lg font-bold">
         <span>&#43;</span> Keranjang
       </button>
-    </div>
-  </main>`;
+    </div>`;
 };
-
-productDetailsElement.className = "hidden";
-
-productListElement.className =
-  "product-list md:h-screen lg:container md:px-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 h-fit grid gap-5 mx-5 md:mx-auto my-5 md:mt-10";
-
-let i = 0;
-productList.forEach((product) => {
-
-  const productCard = document.createElement("div");
-
-  productCard.className =
-    "product-card h-fit flex flex-col border border-gray-300 p-4 pb-6 gap-1 rounded-lg hover:shadow-md cursor-pointer";
-
-  productCard.addEventListener("click", () => {
-    fetchProductDetails(product.id);
-  });
-
-  productCard.innerHTML = `
-      <img class="self-center w-40 h-40" src="${product.image}" alt="${product.name}" />
-      <h3 class="line-clamp-1 font-semibold">${product.name}</h3>
-      <p class="text-gray-400 text-sm">${product.toko.name}</p>
-      <p class="font-bold text-lg mt-2">${"Rp. " + product.price.toLocaleString("id-ID")}</p>
-  `;
-  productListElement.appendChild(productCard);
-  i++;
-});
