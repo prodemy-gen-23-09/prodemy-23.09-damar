@@ -1,18 +1,8 @@
-type Student = {
-  name: string;
-  dormitory: string;
-  age: number;
-};
-
 const hogwartStudents = [
   {
     name: "Harry Potter",
     dormitory: "Gryffindor",
     age: 17,
-    equipment: {
-      wand: "Phoenix Feather",
-      broomstick: "Firebolt",
-    },
   },
   {
     name: "Ronald Weasley",
@@ -95,10 +85,10 @@ const slytherinStudents = hogwartStudents.filter(
 const gryffindorStudentsName = gryffindorStudents.map(
   (student) => student.name
 );
-console.log(gryffindorStudentsName);
+// console.log(gryffindorStudentsName);
 
 // update student dormitory
-const updateDormitory = (name: string, dormitory: string) => {
+const updateDormitory = (name, dormitory) => {
   const student = hogwartStudents.find((student) => student.name === name);
   if (student) {
     student.dormitory = dormitory;
@@ -106,10 +96,10 @@ const updateDormitory = (name: string, dormitory: string) => {
 
   return { name, dormitory };
 };
-console.log(updateDormitory("Harry Potter", "Slytherin"));
+// console.log(updateDormitory("Harry Potter", "Slytherin"));
 
 // update student age
-const updateAge = (name: string, age: number) => {
+const updateAge = (name, age) => {
   const student = hogwartStudents.find((student) => student.name === name);
   if (student) {
     student.age = age;
@@ -117,10 +107,10 @@ const updateAge = (name: string, age: number) => {
 
   return { name, age };
 };
-console.log(updateAge("Harry Potter", 18));
+// console.log(updateAge("Harry Potter", 18));
 
 // update student with full data
-const updateStudent = (updatedStudent: Student) => {
+const updateStudent = (updatedStudent) => {
   const { name, age, dormitory } = updatedStudent;
 
   const student = hogwartStudents.find((student) => student.name === name);
@@ -133,31 +123,63 @@ const updateStudent = (updatedStudent: Student) => {
 
   return hogwartStudents;
 };
-console.log(
-  updateStudent({ name: "Harry Potter", dormitory: "Ravenclaw", age: 19 })
-);
+// console.log(
+//   updateStudent({ name: "Harry Potter", dormitory: "Ravenclaw", age: 19 })
+// );
 
 // add new student
-const addStudent = (newStudent: Student) => {
+const addStudent = (newStudent) => {
   hogwartStudents.push(newStudent);
 
   return hogwartStudents;
 };
-console.log(
-  addStudent({ name: "Damar Anshary", dormitory: "Slytherin", age: 22 })
-);
+// console.log(
+//   addStudent({ name: "Damar Anshary", dormitory: "Slytherin", age: 22 })
+// );
 
-const deleteStudent = (name: string) => {
-}
+// delete student
+const deleteStudent = (name) => {
+  const studentIndex = hogwartStudents.findIndex(student => student.name === name);
+
+  if (studentIndex !== -1) {
+    hogwartStudents.splice(studentIndex, 1);
+  }
+
+  return hogwartStudents;
+};
+// console.log(deleteStudent("Damar Anshary"));
 
 const hogwartStudentsAge20 = hogwartStudents
   .filter((student) => student.age > 20)
   .map((student) => student.name);
-console.log(hogwartStudentsAge20);
+// console.log(hogwartStudentsAge20);
 
-const searchStudentByName = (name: string) => {
-  const student = hogwartStudents.find((student) => student.name.toLowerCase().includes(name.toLowerCase()));
+// search student by matches name
+const searchStudentByName = (name) => {
+  const student = hogwartStudents.filter((student) =>
+    student.name.toLowerCase().includes(name.toLowerCase())
+  );
 
-  console.log(student);
-}
-searchStudentByName("an");
+  return student;
+};
+console.log(searchStudentByName("an"));
+
+// add equipment to student (equipment is object)
+const addEquipment = (name, equipment) => {
+  const student = hogwartStudents.find((student) => student.name === name);
+
+  if (student) {
+    if (!student.equipment) {
+      student.equipment = {};
+    }
+
+    student.equipment = equipment;
+  }
+
+  return student;
+};
+
+// console.log(addEquipment("Harry Potter", {
+//   wand: "Phoenix Feather",
+//   broomstick: "Firebolt",
+// }));
