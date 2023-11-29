@@ -162,7 +162,7 @@ const fetchProductDetails = (id) => {
   mainElement.innerHTML = `
     <img
       src=${productDetail.image}
-      alt="PC EK Gaming"
+      alt=${productDetail.name}
       class="w-full md:w-3/12 md:rounded-lg"
     />
     <div class="flex flex-col w-full px-3 md:w-6/12">
