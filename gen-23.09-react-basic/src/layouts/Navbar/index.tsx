@@ -29,7 +29,7 @@ const Navbar = () => {
           alt="profile"
           className="hidden md:block md:h-10"
         />
-        <img src="/menu.png" className="h-8 md:hidden" alt="menu" />
+        <img src="/assets/menu.png" className="h-8 md:hidden" alt="menu" />
       </nav>
     </header>
   );

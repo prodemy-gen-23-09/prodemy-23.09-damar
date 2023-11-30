@@ -1,4 +1,4 @@
-export const productList = [
+export const productsData = [
     {
       id: 1,
       name: "Ardiles Black Sneakers Casual",

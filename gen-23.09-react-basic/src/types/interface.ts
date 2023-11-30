@@ -1,4 +1,9 @@
-export interface Product {
+export interface ProductCardProps {
+  product: Product;
+  onClick: (productId: number) => void;
+}
+
+interface Product {
   id: number;
   name: string;
   price: number;
@@ -14,3 +19,6 @@ interface Toko {
   location: string;
 }
 
+export interface LayoutProps {
+  children: React.ReactNode;
+}
