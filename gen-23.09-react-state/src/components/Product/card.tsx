@@ -9,7 +9,7 @@ const ProductCard = ({ product, onClick }: ProductCardProps) => {
       key={id}
       onClick={() => onClick(id)}
     >
-      <img className="self-center w-40 h-40" src={image} alt={name} />
+      <img className="self-center w-40 h-40" src={image[0]} alt={name} />
       <h3 className="line-clamp-1 font-sm md:font-md lg:font-lg font-semibold">{name}</h3>
       <p className="text-gray-400 font-sm md:font-md lg:font-lg ">{toko.name}</p>
       <p className="font-bold text-md md:text-lg mt-2">

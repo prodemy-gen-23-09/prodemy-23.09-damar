@@ -4,7 +4,7 @@ const ProductDetailDescription = ({ productDetail }: ProductDetailProps) => {
   return (
     <div className="flex flex-col w-full px-3 md:w-6/12">
       <div className="border border-transparent border-b-gray-200 mb-5">
-        <h3 className="text-xl mb-2 font-semibold md:font-bold">
+        <h3 className="text-xl lg:text-2xl mb-2 font-semibold md:font-bold">
           {productDetail.name}
         </h3>
         <div className="flex flex-row items-center gap-x-2">

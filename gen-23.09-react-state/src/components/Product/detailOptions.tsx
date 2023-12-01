@@ -5,13 +5,13 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
     <>
       <div className="hidden md:flex flex-col gap-y-5 w-3/12 p-4 border border-gray-300 rounded-lg">
         <h4 className="text-lg font-bold">Atur jumlah dan catatan</h4>
-        <div className="flex flex-row gap-x-3 border border-transparent pb-3 border-b-gray-100">
+        <div className="flex flex-row gap-x-3 border border-transparent pb-3 items-center border-b-gray-100">
           <img
-            src={productDetail.image}
+            src={productDetail.image[0]}
             alt="PC Thumbnail"
-            className="w-10 min-w-10 rounded-lg"
+            className="w-16 rounded-lg"
           />
-          <p className="lg:text-base xl:text-lg">{productDetail.name}</p>
+          <p className="line-clamp-2 h-fit lg:text-base xl:text-lg">{productDetail.name}</p>
         </div>
         <div className="flex flex-row gap-x-3 justify-start items-center">
           <span>&#45;</span>

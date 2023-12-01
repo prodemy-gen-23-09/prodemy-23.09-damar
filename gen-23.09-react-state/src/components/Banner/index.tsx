@@ -7,7 +7,7 @@ const Banner = ({ imageUrl }: BannerProps) => {
     <img
       src={imageUrl}
       alt="banner"
-      className="hidden md:block w-full rounded-lg mb-5"
+      className="w-full rounded-lg mb-5"
     />
   );
 };
