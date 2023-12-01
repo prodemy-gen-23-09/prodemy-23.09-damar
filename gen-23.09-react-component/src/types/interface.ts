@@ -3,7 +3,11 @@ export interface ProductCardProps {
   onClick: (productId: number) => void;
 }
 
-interface Product {
+export interface ProductDetailProps {
+  productDetail: Product;
+}
+
+export interface Product {
   id: number;
   name: string;
   price: number;

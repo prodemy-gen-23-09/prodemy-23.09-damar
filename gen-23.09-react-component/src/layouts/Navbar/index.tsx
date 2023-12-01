@@ -8,7 +8,7 @@ const Navbar = () => {
       />
       <img
         src="/assets/Tokopedia-logo.svg"
-        className="hidden md:block md:h-10"
+        className="hidden md:block md:h-10 hover:cursor-pointer"
         alt="logo"
       />
       <input
@@ -20,14 +20,14 @@ const Navbar = () => {
         <img
           src="/assets/wishlist.png"
           alt="wishlist"
-          className="hidden md:block md:h-10"
+          className="hidden md:block md:h-10 hover:cursor-pointer"
         />
         <img src="/assets/search.png" alt="search" className="h-7 md:hidden" />
-        <img src="/assets/shopping-cart.png" alt="cart" className="h-8 md:h-10" />
+        <img src="/assets/shopping-cart.png" alt="cart" className="h-8 md:h-10 md:hover:cursor-pointer" />
         <img
           src="/assets/profile.png"
           alt="profile"
-          className="hidden md:block md:h-10"
+          className="hidden md:block md:h-10 hover:cursor-pointer"
         />
         <img src="/assets/menu.png" className="h-8 md:hidden" alt="menu" />
       </nav>

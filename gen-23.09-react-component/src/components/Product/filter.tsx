@@ -20,7 +20,7 @@ const ProductFilter = ({ filters }: ProductFilterProps) => {
             <ul className="flex flex-col gap-y-2">
               {filter.name.map((filterName) => (
                 <li key={filterName} className="text-sm flex gap-x-2 items-center">
-                  <input type="checkbox" id={filterName} name={filterName} />
+                  <input type="checkbox" id={filterName} name={filterName} className="hover:cursor-pointer"/>
                   <label htmlFor={filterName}>{filterName}</label>
                 </li>
               ))}

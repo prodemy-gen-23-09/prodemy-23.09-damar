@@ -1,3 +1,4 @@
+import Banner from "../../components/Banner";
 import { ProductCard } from "../../components/Product";
 import { productsData } from "../../data/data";
 
@@ -14,11 +15,7 @@ const Home = () => {
 
   return (
     <main className="min-h-screen flex flex-col xl:container gap-y-4 md:px-5 m-5 md:mx-auto md:mt-8">
-      <img
-        src="/assets/banner-1.png"
-        alt="banner-1"
-        className="hidden md:block w-full rounded-lg mb-5"
-      />
+      <Banner imageUrl="/assets/banner-1.png" />
       {categories.map((category) => (
         <section
           key={category}
