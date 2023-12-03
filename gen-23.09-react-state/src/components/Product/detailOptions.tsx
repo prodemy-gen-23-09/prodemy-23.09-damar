@@ -1,17 +1,14 @@
 import { ProductDetailProps } from "../../types/interface";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
+  const { name, image, stock, price } = productDetail;
   return (
     <>
       <div className="hidden md:flex flex-col gap-y-5 w-3/12 p-4 border border-gray-300 rounded-lg">
         <h4 className="text-lg font-bold">Atur jumlah dan catatan</h4>
         <div className="flex flex-row gap-x-3 border border-transparent pb-3 items-center border-b-gray-100">
-          <img
-            src={productDetail.image[0]}
-            alt="PC Thumbnail"
-            className="w-16 rounded-lg"
-          />
-          <p className="line-clamp-2 h-fit lg:text-base xl:text-lg">{productDetail.name}</p>
+          <img src={image[0]} alt="PC Thumbnail" className="w-16 rounded-lg" />
+          <p className="line-clamp-2 h-fit lg:text-base xl:text-lg">{name}</p>
         </div>
         <div className="flex flex-row gap-x-3 justify-start items-center">
           <span>&#45;</span>
@@ -21,13 +18,13 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
           />
           <span>&#43;</span>
           <p className="text-sm lg:text-base">
-            Stok: <span className="font-bold">{productDetail.stock}</span>
+            Stok: <span className="font-bold">{stock}</span>
           </p>
         </div>
         <div className="flex flex-row justify-between items-center">
           <p className="text-sm lg:text-md text-gray-500">Subtotal</p>
           <p className="text-md lg:text-lg font-bold">
-            {"Rp. " + productDetail.price.toLocaleString("id-ID")}
+            {"Rp. " + price.toLocaleString("id-ID")}
           </p>
         </div>
         <div className="flex flex-col gap-y-3">

@@ -8,6 +8,10 @@ export const productsData = [
       "/assets/Sepatu-2.png",
       "/assets/Sepatu-3.png",
       "/assets/Sepatu-4.png",
+      "/assets/Sepatu-5.png",
+      "/assets/Sepatu-1.png",
+      "/assets/Sepatu-2.png",
+      "/assets/Sepatu-3.png",
     ],
     description:
       "Ardiles Black Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
