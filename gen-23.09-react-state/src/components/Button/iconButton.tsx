@@ -6,10 +6,20 @@ interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-const IconButton = ({ icon, className, ...otherProps }: IconButtonProps) => {
+const IconButton = ({
+  icon,
+  children,
+  className,
+  type,
+  ...otherProps
+}: IconButtonProps) => {
   return (
-    <button className={`self-center ${className}`} {...otherProps}>
-      {icon}
+    <button
+      className={`self-center md:hover:cursor-pointer ${className}`}
+      type={type ? type : `button`}
+      {...otherProps}
+    >
+      {icon ? icon : children}
     </button>
   );
 };

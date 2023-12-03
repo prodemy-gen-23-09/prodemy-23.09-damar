@@ -1,7 +1,7 @@
-import { FaMinus, FaPlus } from "react-icons/fa";
 import { ProductDetailProps } from "../../types/interface";
 import { IconButton } from "../Button";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   const [quantityValue, setQuantityValue] = useState(1);
@@ -35,6 +35,14 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
     }
   };
 
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (Number(e.target.value) <= stock) {
+      setQuantityValue(Number(e.target.value));
+    } else {
+      setQuantityValue(stock);
+    }
+  };
+
   return (
     <>
       <div className="hidden md:flex flex-col gap-y-5 w-3/12 p-4 border border-gray-300 rounded-lg">
@@ -45,16 +53,18 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
         </div>
         <div className="flex flex-row gap-x-3 justify-start items-center">
           <IconButton
-            icon={<FaMinus />}
+            icon={<AiOutlineMinus />}
             onClick={handleDecrement}
             disabled={isDecrementButtonDisabled}
           />
           <input
             className="h-fit w-20 px-3 self-center py-0.5 outline-none border rounded-lg text-center"
             value={quantityValue}
+            type="number"
+            onChange={(e) => handleOnChange(e)}
           />
           <IconButton
-            icon={<FaPlus />}
+            icon={<AiOutlinePlus />}
             onClick={handleIncrement}
             disabled={isIncrementButtonDisabled}
           />
