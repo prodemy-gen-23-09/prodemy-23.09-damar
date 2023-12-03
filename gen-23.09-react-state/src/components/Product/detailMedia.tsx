@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { ImageSliderButton } from "../Button";
 
 interface ProductMediaProps {
   productName: string;
@@ -8,7 +9,7 @@ interface ProductMediaProps {
 
 const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
   const elementRef = useRef<HTMLDivElement>(null);
-  
+
   const [leftArrowDisable, setLeftArrowDisable] = useState(true);
   const [rightArrowDisable, setRightArrowDisable] = useState(false);
   const [selectedImage, setSelectedImage] = useState(imageUrls[0]);
@@ -55,23 +56,23 @@ const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
         alt={productName}
         className="md:rounded-lg p-3 hover:scale-125 transition-all duration-300 cursor-zoom-in"
       />
-      <div className="px-3 overflow-hidden relative">
-        <button
-          className="p-1 top-1/3 left-0 absolute bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+      <div className=" overflow-hidden relative">
+        <ImageSliderButton
+          className="left-0"
           onClick={() =>
             handleHorizontalScroll(elementRef.current, 10, 100, -10)
           }
           hidden={leftArrowDisable}
           disabled={leftArrowDisable}
-        >
-          <FaAngleLeft />
-        </button>
+          icon={<FaAngleLeft />}
+        />
         <div
           className="flex flex-nowrap overflow-hidden gap-x-1"
           ref={elementRef}
         >
           {imageUrls?.map((imageUrl, index) => (
             <img
+              key={index}
               src={imageUrl}
               alt={productName + index}
               className="w-1/4 inline-block rounded-lg border border-gray-200 px-2 md:p-2 hover:bg-gray-200 hover:cursor-pointer"
@@ -79,16 +80,15 @@ const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
             />
           ))}
         </div>
-        <button
-          className="p-1 top-1/3 right-0 absolute bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+        <ImageSliderButton
+          className="right-0"
           onClick={() =>
             handleHorizontalScroll(elementRef.current, 10, 100, 10)
           }
           hidden={rightArrowDisable}
           disabled={rightArrowDisable}
-        >
-          <FaAngleRight />
-        </button>
+          icon={<FaAngleRight />}
+        />
       </div>
     </div>
   );

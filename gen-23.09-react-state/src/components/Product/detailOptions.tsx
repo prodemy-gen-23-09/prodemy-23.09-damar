@@ -1,7 +1,40 @@
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { ProductDetailProps } from "../../types/interface";
+import { IconButton } from "../Button";
+import { useEffect, useState } from "react";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
+  const [quantityValue, setQuantityValue] = useState(1);
   const { name, image, stock, price } = productDetail;
+
+  const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] =
+    useState(false);
+  const [isIncrementButtonDisabled, setIsIncrementButtonDisabled] =
+    useState(false);
+
+  useEffect(() => {
+    if (quantityValue <= 1) {
+      setIsDecrementButtonDisabled(true);
+    } else if (quantityValue >= stock) {
+      setIsIncrementButtonDisabled(true);
+    } else {
+      setIsDecrementButtonDisabled(false);
+      setIsIncrementButtonDisabled(false);
+    }
+  }, [quantityValue]);
+
+  const handleIncrement = () => {
+    if (quantityValue < stock) {
+      setQuantityValue(quantityValue + 1);
+    }
+  };
+
+  const handleDecrement = () => {
+    if (quantityValue > 1) {
+      setQuantityValue(quantityValue - 1);
+    }
+  };
+
   return (
     <>
       <div className="hidden md:flex flex-col gap-y-5 w-3/12 p-4 border border-gray-300 rounded-lg">
@@ -11,12 +44,20 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
           <p className="line-clamp-2 h-fit lg:text-base xl:text-lg">{name}</p>
         </div>
         <div className="flex flex-row gap-x-3 justify-start items-center">
-          <span>&#45;</span>
+          <IconButton
+            icon={<FaMinus />}
+            onClick={handleDecrement}
+            disabled={isDecrementButtonDisabled}
+          />
           <input
             className="h-fit w-20 px-3 self-center py-0.5 outline-none border rounded-lg text-center"
-            value="1"
+            value={quantityValue}
           />
-          <span>&#43;</span>
+          <IconButton
+            icon={<FaPlus />}
+            onClick={handleIncrement}
+            disabled={isIncrementButtonDisabled}
+          />
           <p className="text-sm lg:text-base">
             Stok: <span className="font-bold">{stock}</span>
           </p>
