@@ -1,14 +1,14 @@
-import { ProductDetailProps } from "../../types/interface";
+import { ProductDetailProps } from "../../interfaces/interface";
 
 const ProductDetailDescription = ({ productDetail }: ProductDetailProps) => {
   return (
-    <div className="flex flex-col w-full px-3 md:w-6/12">
-      <div className="border border-transparent border-b-gray-200 mb-5">
-        <h3 className="text-xl lg:text-2xl mb-2 font-semibold md:font-bold">
+    <div className="flex w-full flex-col px-3 md:w-6/12">
+      <div className="mb-5 border border-transparent border-b-gray-200">
+        <h3 className="mb-2 text-xl font-semibold md:font-bold lg:text-2xl">
           {productDetail.name}
         </h3>
         <div className="flex flex-row items-center gap-x-2">
-          <p className="text-base line-clamp-1">
+          <p className="line-clamp-1 text-base">
             Terjual <span className="text-gray-500">5rb+</span>
           </p>
           <span>&#8226;</span>
@@ -17,29 +17,29 @@ const ProductDetailDescription = ({ productDetail }: ProductDetailProps) => {
             <span className="text-gray-500">(3.011 rating)</span>
           </p>
           <span>&#8226;</span>
-          <p className="md:hidden lg:block text-base">
+          <p className="text-base md:hidden lg:block">
             Diskusi <span className="text-gray-500">106</span>
           </p>
         </div>
-        <p className="text-2xl md:text-3xl font-bold my-5">
+        <p className="my-5 text-2xl font-bold md:text-3xl">
           {"Rp. " + productDetail.price.toLocaleString("id-ID")}
         </p>
       </div>
-      <h4 className="text-lg font-bold mb-2">Deskripsi Produk</h4>
+      <h4 className="mb-2 text-lg font-bold">Deskripsi Produk</h4>
       {productDetail.description}
-      <div className="flex flex-row w-full gap-x-3 items-center border border-transparent py-4 border-y-gray-100 my-5">
+      <div className="my-5 flex w-full flex-row items-center gap-x-3 border border-transparent border-y-gray-100 py-4">
         <img
           src="/assets/tokopedia-little-logo.png"
           alt="tokopedia"
           className="h-12"
         />
-        <div className="flex flex-col grow ms-5">
-          <h4 className="text-lg font-bold line-clamp-1">
+        <div className="ms-5 flex grow flex-col">
+          <h4 className="line-clamp-1 text-lg font-bold">
             {productDetail.toko.name}
           </h4>
-          <p className="text-gray-500 mt-0">{productDetail.toko.location}</p>
+          <p className="mt-0 text-gray-500">{productDetail.toko.location}</p>
         </div>
-        <button className="outline outline-1 outline-green-500 rounded-lg px-6 py-1 h-fit font-bold text-green-500">
+        <button className="h-fit rounded-lg px-6 py-1 font-bold text-primary outline outline-1 outline-secondary hover:bg-accent hover:text-white">
           Follow
         </button>
       </div>

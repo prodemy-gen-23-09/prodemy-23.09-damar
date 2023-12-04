@@ -1,11 +1,7 @@
 import { useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { ImageSliderButton } from "../Button";
-
-interface ProductMediaProps {
-  productName: string;
-  imageUrls: string[];
-}
+import { ProductMediaProps } from "../../interfaces/interface";
 
 const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -22,7 +18,7 @@ const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
     elementRef: HTMLDivElement | null,
     speed: number,
     distance: number,
-    step: number
+    step: number,
   ) => {
     let scrollAmount = 0;
     if (elementRef != null) {
@@ -50,13 +46,13 @@ const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
   };
 
   return (
-    <div className="flex flex-col w-full md:w-3/12 gap-y-5">
+    <div className="flex w-full flex-col gap-y-5 md:w-3/12">
       <img
         src={selectedImage}
         alt={productName}
-        className="md:rounded-lg p-3 hover:scale-125 transition-all duration-300 cursor-zoom-in"
+        className="cursor-zoom-in p-3 transition-all duration-300 hover:scale-125 md:rounded-lg"
       />
-      <div className=" overflow-hidden relative">
+      <div className=" relative overflow-hidden">
         <ImageSliderButton
           className="left-0"
           onClick={() =>
@@ -67,7 +63,7 @@ const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
           icon={<FaAngleLeft />}
         />
         <div
-          className="flex flex-nowrap overflow-hidden gap-x-1"
+          className="flex flex-nowrap gap-x-1 overflow-hidden"
           ref={elementRef}
         >
           {imageUrls?.map((imageUrl, index) => (
@@ -75,7 +71,7 @@ const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
               key={index}
               src={imageUrl}
               alt={productName + index}
-              className="w-1/4 inline-block rounded-lg border border-gray-200 px-2 md:p-2 hover:bg-gray-200 hover:cursor-pointer"
+              className="inline-block w-1/4 rounded-lg border border-gray-200 px-2 hover:cursor-pointer hover:bg-gray-200 md:p-2"
               onClick={() => handleClickThumbnail(imageUrl)}
             />
           ))}
