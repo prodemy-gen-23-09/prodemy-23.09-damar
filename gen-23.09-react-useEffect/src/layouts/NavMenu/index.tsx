@@ -7,7 +7,6 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { IconButton, LinkButton } from "../../components/Button";
-import { Link } from "react-router-dom";
 
 interface NavMenuProps {
   isLoggedIn: boolean;
