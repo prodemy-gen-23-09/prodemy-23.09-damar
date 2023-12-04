@@ -13,13 +13,15 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
     useState(false);
 
   useEffect(() => {
+    if (quantityValue >= 1 && quantityValue <= stock) {
+      setIsDecrementButtonDisabled(false);
+      setIsIncrementButtonDisabled(false);
+    }
+
     if (quantityValue <= 1) {
       setIsDecrementButtonDisabled(true);
     } else if (quantityValue >= stock) {
       setIsIncrementButtonDisabled(true);
-    } else {
-      setIsDecrementButtonDisabled(false);
-      setIsIncrementButtonDisabled(false);
     }
   }, [quantityValue]);
 
@@ -36,8 +38,10 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   };
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) <= stock) {
-      setQuantityValue(Number(e.target.value));
+    const value = Number(e.target.value);
+
+    if (value <= stock) {
+      setQuantityValue(value);
     } else {
       setQuantityValue(stock);
     }
@@ -75,7 +79,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
         <div className="flex flex-row justify-between items-center">
           <p className="text-sm lg:text-md text-gray-500">Subtotal</p>
           <p className="text-md lg:text-lg font-bold">
-            {"Rp. " + price.toLocaleString("id-ID")}
+            {"Rp. " + (quantityValue * price).toLocaleString("id-ID")}
           </p>
         </div>
         <div className="flex flex-col gap-y-3">

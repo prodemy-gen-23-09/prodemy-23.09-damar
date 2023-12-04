@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { IconButton } from "../../components/Button";
 import { IconContext } from "react-icons";
 import {
@@ -12,9 +12,19 @@ import {
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleLogin = () => {
     setIsLoggedIn(true);
+  };
+
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleOnSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(searchValue);
   };
 
   return (
@@ -31,11 +41,15 @@ const Navbar = () => {
         className="hidden md:block md:h-10 hover:cursor-pointer"
         alt="logo"
       />
-      <input
-        name="search"
-        className="hidden md:block flex-1 h-fit px-5 py-2 outline outline-1 outline-gray-300 rounded-lg"
-        placeholder="Cari di tokokami"
-      />
+      <form onSubmit={handleOnSubmit} className="hidden md:block flex-1">
+        <input
+          name="search"
+          className="w-full h-fit px-5 py-2 outline outline-1 outline-gray-300 rounded-lg"
+          placeholder="Cari di tokokami"
+          value={searchValue}
+          onChange={handleOnChange}
+        />
+      </form>
       <IconContext.Provider value={{ size: "100%" }}>
         <nav className="flex flex-row items-center gap-x-5">
           {isLoggedIn ? (
