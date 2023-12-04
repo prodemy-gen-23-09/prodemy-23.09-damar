@@ -15,7 +15,7 @@ const IconButton = ({
 }: IconButtonProps) => {
   return (
     <button
-      className={`self-center md:hover:cursor-pointer disabled:opacity-25 md:hover:disabled:cursor-not-allowed ${className}`}
+      className={`self-center disabled:opacity-25 md:hover:cursor-pointer md:hover:disabled:cursor-not-allowed ${className}`}
       type={type ? type : `button`}
       {...otherProps}
     >
