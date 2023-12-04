@@ -7,6 +7,18 @@ export interface ProductDetailProps {
   productDetail: Product;
 }
 
+export interface ProductFilterProps {
+  filters: {
+    category: string;
+    name: string[];
+  }[];
+}
+
+export interface ProductMediaProps {
+  productName: string;
+  imageUrls: string[];
+}
+
 export interface Product {
   id: number;
   name: string;
@@ -15,6 +27,7 @@ export interface Product {
   description: string;
   stock: number;
   toko: Toko;
+  createdAt: Date;
 }
 
 interface Toko {

@@ -21,6 +21,7 @@ export const productsData = [
       rating: 4.5,
       location: "Jakarta",
     },
+    createdAt: new Date("2021-01-01"),
   },
   {
     id: 2,
@@ -40,6 +41,7 @@ export const productsData = [
       rating: 4.5,
       location: "Jakarta",
     },
+    createdAt: new Date("2023-11-10"),
   },
   {
     id: 3,
@@ -59,6 +61,7 @@ export const productsData = [
       rating: 4.5,
       location: "Jakarta",
     },
+    createdAt: new Date("2023-11-11"),
   },
   {
     id: 4,
@@ -78,6 +81,7 @@ export const productsData = [
       rating: 4.5,
       location: "Jakarta",
     },
+    createdAt: new Date("2023-11-12"),
   },
   {
     id: 5,
@@ -97,5 +101,6 @@ export const productsData = [
       rating: 4.5,
       location: "Jakarta",
     },
+    createdAt: new Date("2023-11-13"),
   },
 ];
