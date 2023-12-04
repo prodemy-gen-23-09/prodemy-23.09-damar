@@ -1,11 +1,11 @@
-import Navbar from "../Navbar";
+import Header from "../Header";
 import Footer from "../Footer";
-import { LayoutProps } from "../../types/interface";
+import { LayoutProps } from "../../interfaces/interface";
 
 const Layout = ({children} : LayoutProps) => {
   return (
     <>
-      <Navbar />
+      <Header />
       {children}
       <Footer />
     </>

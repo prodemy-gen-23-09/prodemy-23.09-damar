@@ -6,7 +6,8 @@ import {
   AiOutlineUser,
   AiOutlineMenu,
 } from "react-icons/ai";
-import { IconButton } from "../../components/Button";
+import { IconButton, LinkButton } from "../../components/Button";
+import { Link } from "react-router-dom";
 
 interface NavMenuProps {
   isLoggedIn: boolean;
@@ -19,50 +20,50 @@ const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
     return (
       <IconContext.Provider value={{ size: "100%" }}>
         <nav className="flex flex-row items-center gap-x-5">
-          <>
-            <IconButton
-              icon={<AiOutlineHeart />}
-              title="wishlist"
-              className="hidden md:block md:h-10"
-            />
-            <IconButton
-              icon={<AiOutlineSearch />}
-              title="search"
-              className="h-8 md:hidden"
-            />
-            <IconButton
-              icon={<AiOutlineShoppingCart />}
-              title="cart"
-              className="h-8 md:h-10"
-            />
-            <IconButton
-              icon={<AiOutlineUser />}
-              title="profile"
-              className="hidden md:block md:h-10"
-            />
-            <IconButton
-              icon={<AiOutlineMenu />}
-              title="menu"
-              className="h-8 md:hidden"
-            />
-          </>
+          <LinkButton
+            icon={<AiOutlineHeart />}
+            to={`/wishlist`}
+            title="wishlist"
+            className="hidden md:block md:h-10"
+          />
+          <IconButton
+            icon={<AiOutlineSearch />}
+            title="search"
+            className="h-8 md:hidden"
+          />
+          <LinkButton
+            icon={<AiOutlineShoppingCart />}
+            to={`/cart`}
+            title="cart"
+            className="h-8 md:h-10 self-center"
+          />
+          <LinkButton
+            icon={<AiOutlineUser />}
+            to="/profile"
+            title="profile"
+            className="hidden md:block md:h-10"
+          />
+          <IconButton
+            icon={<AiOutlineMenu />}
+            title="menu"
+            className="h-8 md:hidden"
+          />
         </nav>
       </IconContext.Provider>
     );
   else
     return (
-      <>
-        {" "}
+      <nav className="flex flex-row items-center gap-x-3">
         <button
-          className="self-center md:hover:cursor-pointer outline outline-1 outline-green-500 rounded-lg px-6 py-1 h-fit font-bold text-green-500 hover:bg-green-500 hover:text-white"
+          className="h-full w-24 self-center rounded-xl p-2 font-semibold text-primary outline outline-1 outline-secondary hover:bg-accent hover:text-white md:hover:cursor-pointer"
           onClick={handleLogin}
         >
           Masuk
         </button>
-        <button className="self-center md:hover:cursor-pointer hover:outline hover:outline-1 hover:outline-green-500 rounded-lg px-6 py-1 h-fit font-bold hover:bg-white hover:text-green-500 bg-green-500 text-white">
+        <button className="h-full w-24 self-center rounded-xl bg-primary p-2 font-semibold text-white hover:bg-accent md:hover:cursor-pointer">
           Daftar
         </button>
-      </>
+      </nav>
     );
 };
 
