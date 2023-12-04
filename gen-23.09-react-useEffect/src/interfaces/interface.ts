@@ -1,6 +1,6 @@
 export interface ProductCardProps {
   product: Product;
-  onClick: (productId: number) => void;
+  onClick?: (productId: number) => void;
 }
 
 export interface ProductDetailProps {

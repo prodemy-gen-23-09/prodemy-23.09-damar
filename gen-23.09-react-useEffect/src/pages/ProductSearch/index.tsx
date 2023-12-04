@@ -12,19 +12,15 @@ const ProductSearch = () => {
       name: ["JNE", "Si Cepat", "Ninja Express"],
     },
   ];
-  const handleOnClick = (productId: number) => {
-    console.log(productId);
-  };
 
   return (
-    <main className="min-h-screen flex flex-col md:flex-row xl:container gap-y-4 gap-x-8 md:px-5 m-5 md:mx-auto md:mt-8">
+    <main className="m-5 flex min-h-screen flex-col gap-x-8 gap-y-4 xl:container md:mx-auto md:mt-8 md:flex-row md:px-5">
       <ProductFilter filters={filtersData} />
-      <div className="md:flex-1 h-fit grid gird-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="gird-cols-1 grid h-fit gap-5 sm:grid-cols-2 md:flex-1 lg:grid-cols-3 xl:grid-cols-4">
         {productsData.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
-            onClick={handleOnClick}
           />
         ))}
       </div>

@@ -1,13 +1,14 @@
+import { Link } from "react-router-dom";
 import { ProductCardProps } from "../../interfaces/interface";
 
-const ProductCard = ({ product, onClick }: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
   const { id, name, price, image, toko, createdAt: createdAt } = product;
 
   return (
-    <div
+    <Link
       className="product-card flex h-fit cursor-pointer flex-col gap-1 rounded-lg border border-gray-300 p-4 pb-6 hover:shadow-md"
       key={id}
-      onClick={() => onClick(id)}
+      to={"/products/" + id}
     >
       <p className="self-end text-sm text-gray-500">
         {createdAt?.toLocaleDateString("id-ID", {
@@ -24,7 +25,7 @@ const ProductCard = ({ product, onClick }: ProductCardProps) => {
       <p className="text-md mt-2 font-bold md:text-lg">
         {"Rp. " + price.toLocaleString("id-ID")}
       </p>
-    </div>
+    </Link>
   );
 };
 
