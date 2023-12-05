@@ -1,6 +1,6 @@
 import Banner from "../../components/Banner";
 import { ProductCard } from "../../components/Product";
-import { productsData as productList } from "../../data/data";
+import { productsData as productList } from "../../data/product";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const Home = () => {
@@ -50,10 +50,10 @@ const Home = () => {
               name={`urutkan`}
               onChange={(e) => handleOnChange(e)}
             >
-              <option className="m-1" value="Terbaru">
+              <option className="my-2" value="Terbaru">
                 Terbaru
               </option>
-              <option value="Harga tertinggi">Harga tertinggi</option>
+              <option className="border border-gray-300" value="Harga tertinggi">Harga tertinggi</option>
               <option value="Harga terendah">Harga terendah</option>
             </select>
           </form>
@@ -61,7 +61,10 @@ const Home = () => {
 
         <div className="grid h-fit grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {productsData.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
           ))}
         </div>
       </section>

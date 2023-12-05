@@ -1,4 +1,4 @@
-import { productsData } from "../../data/data";
+import { productsData } from "../../data/product";
 import { ProductCard, ProductFilter } from "../../components/Product";
 
 const ProductSearch = () => {

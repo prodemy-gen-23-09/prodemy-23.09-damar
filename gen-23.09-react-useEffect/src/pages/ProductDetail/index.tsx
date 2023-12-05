@@ -4,7 +4,7 @@ import {
   ProductDetailMedia,
   ProductDetailOptions,
 } from "../../components/Product";
-import { productsData } from "../../data/data";
+import { productsData } from "../../data/product";
 import { useEffect, useState } from "react";
 import { Product } from "../../interfaces/interface";
 

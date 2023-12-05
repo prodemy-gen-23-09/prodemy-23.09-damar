@@ -10,13 +10,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
       key={id}
       to={"/products/" + id}
     >
-      <p className="self-end text-sm text-gray-500">
+      <span className="self-end text-sm text-gray-500">
         {createdAt?.toLocaleDateString("id-ID", {
           day: "numeric",
           month: "numeric",
           year: "numeric",
         })}
-      </p>
+      </span>
       <img className="h-40 w-40 self-center" src={image[0]} alt={name} />
       <h3 className="line-clamp-1 text-sm font-semibold md:text-base">
         {name}
