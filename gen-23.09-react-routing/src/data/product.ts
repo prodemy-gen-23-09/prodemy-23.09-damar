@@ -16,6 +16,7 @@ export const productsData = [
     description:
       "Ardiles Black Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 10,
+    category: ["Waktu Indonesia Belanja", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
@@ -36,6 +37,7 @@ export const productsData = [
     description:
       "Adidas Dark Blue Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 15,
+    category: ["Diskon Spesial", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
@@ -56,6 +58,7 @@ export const productsData = [
     description:
       "Nike White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 25,
+    category: ["Waktu Indonesia Belanja", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
@@ -76,6 +79,7 @@ export const productsData = [
     description:
       "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 10,
+    category: ["Khusus Pelanggan Baru", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
@@ -96,6 +100,7 @@ export const productsData = [
     description:
       "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 10,
+    category: ["Diskon Spesial", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
@@ -116,6 +121,7 @@ export const productsData = [
     description:
       "Adidas Dark Blue Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 15,
+    category: ["Khusus Pelanggan Baru", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
@@ -136,6 +142,7 @@ export const productsData = [
     description:
       "Nike White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 25,
+    category: ["Waktu Indonesia Belanja", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
@@ -156,6 +163,7 @@ export const productsData = [
     description:
       "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 10,
+    category: ["Waktu Indonesia Belanja", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
@@ -176,6 +184,7 @@ export const productsData = [
     description:
       "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
     stock: 10,
+    category: ["Khusus Pelanggan Baru", "Sepatu Pria", "Sepatu Casual"],
     toko: {
       name: "Tokopedia Official",
       rating: 4.5,
