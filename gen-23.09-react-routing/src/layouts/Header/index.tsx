@@ -1,9 +1,14 @@
 import { ChangeEvent, useState } from "react";
-import { IconButton } from "../../components/Button";
+import { Link, createSearchParams, useNavigate } from "react-router-dom";
+
 import { IconContext } from "react-icons";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+
 import NavMenu from "../NavMenu";
-import { Link, useNavigate } from "react-router-dom";
+import { IconButton } from "../../components/Button";
+
+
+
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,7 +28,12 @@ const Header = () => {
 
   const handleOnSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate(`/search?q=${searchValue}`);
+    navigate({
+      pathname: `/search`,
+      search: createSearchParams({
+        q: searchValue,
+      }).toString(),
+    });
   };
 
   return (

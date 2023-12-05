@@ -50,20 +50,20 @@ const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
         </nav>
       </IconContext.Provider>
     );
-  else
-    return (
-      <nav className="flex flex-row items-center gap-x-3">
-        <button
-          className="h-full w-24 self-center rounded-xl p-2 font-semibold text-primary outline outline-1 outline-secondary hover:bg-accent hover:text-white md:hover:cursor-pointer"
-          onClick={handleLogin}
-        >
-          Masuk
-        </button>
-        <button className="h-full w-24 self-center rounded-xl bg-primary p-2 font-semibold text-white hover:bg-accent md:hover:cursor-pointer">
-          Daftar
-        </button>
-      </nav>
-    );
+
+  return (
+    <nav className="flex flex-row items-center gap-x-3">
+      <button
+        className="h-full w-24 self-center rounded-xl p-2 font-semibold text-primary outline outline-1 outline-secondary hover:bg-accent hover:text-white md:hover:cursor-pointer"
+        onClick={handleLogin}
+      >
+        Masuk
+      </button>
+      <button className="h-full w-24 self-center rounded-xl bg-primary p-2 font-semibold text-white hover:bg-accent md:hover:cursor-pointer">
+        Daftar
+      </button>
+    </nav>
+  );
 };
 
 export default NavMenu;
