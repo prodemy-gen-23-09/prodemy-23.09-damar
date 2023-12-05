@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { ImageSliderButton } from "../Button";
+import { ImageSliderButton } from "../../components/Button";
 import { ProductMediaProps } from "../../interfaces/interface";
 
 const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {

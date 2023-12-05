@@ -1,12 +1,12 @@
-import { useParams } from "react-router-dom";
-import {
-  ProductDetailDescription,
-  ProductDetailMedia,
-  ProductDetailOptions,
-} from "../../components/Product";
-import { productsData } from "../../data/product";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { productsData } from "../../data/product";
 import { Product } from "../../interfaces/interface";
+
+import ProductDetailDescription from "./ProductDescription";
+import ProductDetailMedia from "./ProductMedia";
+import ProductDetailOptions from "./ProductOptions";
 
 const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();
