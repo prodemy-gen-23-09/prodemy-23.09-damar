@@ -1,12 +1,5 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
 import { Link } from "react-router-dom";
-
-interface LinkButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: ReactNode;
-  className?: string | undefined;
-  to: string;
-  onClick?: () => void;
-}
+import { LinkButtonProps } from "../../interfaces/interface";
 
 const LinkButton = ({
   icon,
@@ -19,7 +12,7 @@ const LinkButton = ({
   return (
     <Link to={to} className={className}>
       <button
-        className={`self-center disabled:opacity-25 md:hover:cursor-pointer md:hover:disabled:cursor-not-allowed ${className}`}
+        className={`self-center rounded-full p-1 disabled:opacity-25 md:hover:cursor-pointer md:hover:bg-gray-200 ${className}`}
         type={type ? type : `button`}
         {...otherProps}
       >

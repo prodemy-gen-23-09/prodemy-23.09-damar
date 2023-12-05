@@ -1,6 +1,7 @@
+import { ButtonHTMLAttributes, ReactNode } from "react";
+
 export interface ProductCardProps {
   product: Product;
-  onClick?: (productId: number) => void;
 }
 
 export interface ProductDetailProps {
@@ -37,5 +38,15 @@ interface Toko {
 }
 
 export interface LayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
+}
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  icon?: ReactNode;
+  className?: string;
+  onClick?: () => void;
+}
+
+export interface LinkButtonProps extends ButtonProps {
+  to: string;
 }

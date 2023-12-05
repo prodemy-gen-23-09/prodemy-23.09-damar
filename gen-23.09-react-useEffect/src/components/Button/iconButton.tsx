@@ -1,10 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
-
-interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: ReactNode;
-  className?: string | undefined;
-  onClick?: () => void;
-}
+import { ButtonProps } from "../../interfaces/interface";
 
 const IconButton = ({
   icon,
@@ -12,7 +6,7 @@ const IconButton = ({
   className,
   type,
   ...otherProps
-}: IconButtonProps) => {
+}: ButtonProps) => {
   return (
     <button
       className={`self-center disabled:opacity-25 md:hover:cursor-pointer md:hover:disabled:cursor-not-allowed ${className}`}

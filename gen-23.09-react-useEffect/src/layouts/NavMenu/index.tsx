@@ -18,7 +18,7 @@ const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
   if (isLoggedIn)
     return (
       <IconContext.Provider value={{ size: "100%" }}>
-        <nav className="flex flex-row items-center gap-x-5">
+        <nav className="flex flex-row items-center gap-x-3">
           <LinkButton
             icon={<AiOutlineHeart />}
             to={`/wishlist`}
@@ -34,7 +34,7 @@ const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
             icon={<AiOutlineShoppingCart />}
             to={`/cart`}
             title="cart"
-            className="h-8 md:h-10 self-center"
+            className="h-8 self-center md:h-10"
           />
           <LinkButton
             icon={<AiOutlineUser />}

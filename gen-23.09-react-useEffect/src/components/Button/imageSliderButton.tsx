@@ -1,16 +1,6 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonProps } from "../../interfaces/interface";
 
-interface ImageSliderProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: ReactNode;
-  className?: string | undefined;
-  onClick?: () => void;
-}
-
-const ImageSliderButton = ({
-  icon,
-  className,
-  ...otherProps
-}: ImageSliderProps) => {
+const ImageSliderButton = ({ icon, className, ...otherProps }: ButtonProps) => {
   return (
     <button
       className={`absolute top-1/3 rounded-full bg-white p-1 shadow-md transition-all duration-300 hover:shadow-lg disabled:opacity-50 ${className}`}
