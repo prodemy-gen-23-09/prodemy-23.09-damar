@@ -7,9 +7,6 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import NavMenu from "../NavMenu";
 import { IconButton } from "../../components/Button";
 
-
-
-
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchValue, setSearchValue] = useState("");

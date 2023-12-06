@@ -7,7 +7,7 @@ import { Product } from "../../interfaces/interface";
 const ProductSearch = () => {
   const [productsSortedBy, setProductSortedBy] = useState("Terbaru");
   const [productsData, setProductsData] = useState<Product[]>(productList);
-  const [productsSorted, setProductsSorted] = useState<Product[]>();
+  const [productsDataSorted, setProductsDataSorted] = useState<Product[]>();
 
   const [queryParams] = useSearchParams();
 
@@ -32,15 +32,15 @@ const ProductSearch = () => {
   }, [queryParams]);
 
   const handleSortByHighestPrice = async () => {
-    setProductsSorted([...productsData].sort((a, b) => b.price - a.price));
+    setProductsDataSorted([...productsData].sort((a, b) => b.price - a.price));
   };
 
   const handleSortByLowestPrice = async () => {
-    setProductsSorted([...productsData].sort((a, b) => a.price - b.price));
+    setProductsDataSorted([...productsData].sort((a, b) => a.price - b.price));
   };
 
   const handleSortByNewest = async () => {
-    setProductsSorted(
+    setProductsDataSorted(
       [...productsData].sort(
         (a, b) => b.createdAt.getTime() - a.createdAt.getTime(),
       ),
@@ -68,7 +68,7 @@ const ProductSearch = () => {
       <div className="flex h-fit w-full flex-col gap-y-5">
         <div className="flex flex-row items-center justify-between">
           <p>
-            Menampilkan {productList.length} barang untuk pencarian{" "}
+            Menampilkan {productsDataSorted?.length} barang untuk pencarian{" "}
             {`"${queryParams.get("q")}"`}
           </p>
           <form className="flex flex-row items-center gap-x-2 text-sm">
@@ -92,8 +92,8 @@ const ProductSearch = () => {
           </form>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:flex-1 lg:grid-cols-3 xl:grid-cols-4">
-          {productsSorted && productsSorted.length > 0 ? (
-            productsSorted.map((product) => (
+          {productsDataSorted && productsDataSorted.length > 0 ? (
+            productsDataSorted.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))
           ) : (

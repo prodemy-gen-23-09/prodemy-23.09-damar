@@ -55,14 +55,14 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
           <img src={image[0]} alt="PC Thumbnail" className="w-16 rounded-lg" />
           <p className="line-clamp-2 h-fit lg:text-base xl:text-lg">{name}</p>
         </div>
-        <div className="flex flex-row items-center justify-start gap-x-3">
+        <div className="flex flex-row items-center justify-start md:gap-x-2 lg:gap-x-3">
           <IconButton
             icon={<AiOutlineMinus />}
             onClick={handleDecrement}
             disabled={isDecrementButtonDisabled}
           />
           <input
-            className="h-fit w-20 self-center rounded-lg border px-3 py-0.5 text-center outline-none"
+            className="h-fit md:w-12 lg:w-20 self-center rounded-lg border md:px-2 lg:px-3 py-0.5 text-center outline-none"
             value={quantityValue}
             type="number"
             onChange={(e) => handleOnChange(e)}

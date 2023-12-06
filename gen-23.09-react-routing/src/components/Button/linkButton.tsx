@@ -12,7 +12,7 @@ const LinkButton = ({
   return (
     <Link to={to}>
       <button
-        className={`self-center rounded-full p-1 disabled:opacity-25 md:hover:cursor-pointer md:hover:bg-gray-200 ${className}`}
+        className={`self-center rounded-full p-1 md:hover:cursor-pointer md:hover:bg-gray-200 ${className}`}
         type={type ? type : `button`}
         {...otherProps}
       >

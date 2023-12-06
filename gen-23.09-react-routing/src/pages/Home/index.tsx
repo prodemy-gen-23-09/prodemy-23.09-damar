@@ -14,6 +14,7 @@ const Home = () => {
       <Banner imageUrl="/assets/banner-1.png" />
       {categories.map((category) => (
         <SectionContainer
+          key={category}
           category={category}
           productsData={[...productList]
             .filter((product) => product.category?.includes(category))
