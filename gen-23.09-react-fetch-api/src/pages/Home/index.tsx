@@ -1,26 +1,23 @@
+import { getAllProducts } from "../../lib/swr/product";
 import Banner from "../../components/Banner";
-import { productsData as productList } from "../../data/product";
 import SectionContainer from "./SectionContainer";
 
 const Home = () => {
-  const categories = [
-    "Khusus Pelanggan Baru",
-    "Waktu Indonesia Belanja",
-    "Diskon Spesial",
-  ];
+  const { products: productsData, isLoading, isError } = getAllProducts();
+
+  if (isError) return <div>Something went wrong...</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <main className="m-5 flex min-h-screen flex-col gap-y-4 xl:container md:mx-auto md:mt-8 md:px-5">
       <Banner imageUrl="/assets/banner-1.png" />
-      {categories.map((category) => (
+
+      {productsData && (
         <SectionContainer
-          key={category}
-          category={category}
-          productsData={[...productList]
-            .filter((product) => product.category?.includes(category))
-            .splice(0, 5)}
+          category="Diskon Spesial"
+          productsData={productsData}
         />
-      ))}
+      )}
     </main>
   );
 };

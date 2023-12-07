@@ -1,15 +1,21 @@
-import { productsData as productList } from "../../data/product";
 import { ProductCard, ProductFilter } from "../../components/Product";
 import { useState, useEffect, ChangeEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Product } from "../../interfaces/interface";
+import { searchProductsByQuery } from "../../lib/swr/product";
 
 const ProductSearch = () => {
   const [productsSortedBy, setProductSortedBy] = useState("Terbaru");
-  const [productsData, setProductsData] = useState<Product[]>(productList);
+  // const [productsData, setProductsData] = useState<Product[]>(productList);
   const [productsDataSorted, setProductsDataSorted] = useState<Product[]>();
 
   const [queryParams] = useSearchParams();
+
+  const {
+    products: productsData,
+    isLoading,
+    isError,
+  } = searchProductsByQuery(queryParams.get("q") || "");
 
   useEffect(() => {
     if (productsSortedBy === "Harga tertinggi") {
@@ -21,30 +27,28 @@ const ProductSearch = () => {
     }
   }, [productsSortedBy, productsData]);
 
-  useEffect(() => {
-    if (queryParams.get("q")) {
-      setProductsData(
-        [...productList].filter((product) =>
-          product.name.toLowerCase().includes(queryParams.get("q")!),
+  const handleSortByHighestPrice = () => {
+    productsData &&
+      setProductsDataSorted(
+        [...productsData].sort((a, b) => b.price - a.price),
+      );
+  };
+
+  const handleSortByLowestPrice = () => {
+    productsData &&
+      setProductsDataSorted(
+        [...productsData].sort((a, b) => a.price - b.price),
+      );
+  };
+
+  const handleSortByNewest = () => {
+    productsData &&
+      setProductsDataSorted(
+        [...productsData].sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
         ),
       );
-    }
-  }, [queryParams]);
-
-  const handleSortByHighestPrice = async () => {
-    setProductsDataSorted([...productsData].sort((a, b) => b.price - a.price));
-  };
-
-  const handleSortByLowestPrice = async () => {
-    setProductsDataSorted([...productsData].sort((a, b) => a.price - b.price));
-  };
-
-  const handleSortByNewest = async () => {
-    setProductsDataSorted(
-      [...productsData].sort(
-        (a, b) => b.createdAt.getTime() - a.createdAt.getTime(),
-      ),
-    );
   };
 
   const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -61,6 +65,9 @@ const ProductSearch = () => {
       name: ["JNE", "Si Cepat", "Ninja Express"],
     },
   ];
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Something went wrong...</div>;
 
   return (
     <main className="m-5 flex min-h-screen flex-col gap-x-8 gap-y-4 xl:container md:mx-auto md:mt-8 md:flex-row md:px-5">

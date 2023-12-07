@@ -11,7 +11,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       to={"/products/" + id}
     >
       <span className="self-end text-sm text-gray-500">
-        {createdAt?.toLocaleDateString("id-ID", {
+        {new Date(createdAt).toLocaleDateString("id-ID", {
           day: "numeric",
           month: "numeric",
           year: "numeric",

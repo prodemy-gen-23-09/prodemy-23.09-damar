@@ -27,8 +27,9 @@ export interface Product {
   image: string[];
   description: string;
   stock: number;
+  category: string[];
   toko: Toko;
-  createdAt: Date;
+  createdAt: string;
 }
 
 interface Toko {
