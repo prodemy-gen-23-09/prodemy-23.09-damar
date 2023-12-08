@@ -5,7 +5,7 @@ import { Product } from "../../interfaces/interface";
 import { searchProductsByQuery } from "../../lib/swr/product";
 
 const ProductSearch = () => {
-  const [productsSortedBy, setProductSortedBy] = useState("Terbaru");
+  const [productsSortedBy, setProductsSortedBy] = useState("Terbaru");
   // const [productsData, setProductsData] = useState<Product[]>(productList);
   const [productsDataSorted, setProductsDataSorted] = useState<Product[]>();
 
@@ -52,7 +52,7 @@ const ProductSearch = () => {
   };
 
   const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setProductSortedBy(e.target.value);
+    setProductsSortedBy(e.target.value);
   };
 
   const filtersData = [
@@ -73,27 +73,20 @@ const ProductSearch = () => {
     <main className="m-5 flex min-h-screen flex-col gap-x-8 gap-y-4 xl:container md:mx-auto md:mt-8 md:flex-row md:px-5">
       <ProductFilter filters={filtersData} />
       <div className="flex h-fit w-full flex-col gap-y-5">
-        <div className="flex flex-row items-center justify-between">
+        <div className="flex flex-col items-start gap-y-2 md:flex-row md:items-center justify-between">
           <p>
             Menampilkan {productsDataSorted?.length} barang untuk pencarian{" "}
             {`"${queryParams.get("q")}"`}
           </p>
-          <form className="flex flex-row items-center gap-x-2 text-sm">
+          <form className="flex flex-row items-center gap-x-2 text-base md:text-sm">
             <label htmlFor={`urutkan`}>Urutkan : </label>
             <select
-              className="rounded-lg border-r-8 border-transparent px-3 py-2 ring-1 ring-gray-200"
+              className="w-48 rounded-lg border border-gray-200 px-4"
               name={`urutkan`}
               onChange={(e) => handleOnChange(e)}
             >
-              <option className="my-2" value="Terbaru">
-                Terbaru
-              </option>
-              <option
-                className="border border-gray-300"
-                value="Harga tertinggi"
-              >
-                Harga tertinggi
-              </option>
+              <option value="Terbaru">Terbaru</option>
+              <option value="Harga tertinggi">Harga tertinggi</option>
               <option value="Harga terendah">Harga terendah</option>
             </select>
           </form>

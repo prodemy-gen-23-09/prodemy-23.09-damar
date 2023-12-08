@@ -49,7 +49,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
 
   return (
     <>
-      <div className="hidden w-3/12 flex-col gap-y-5 rounded-lg border border-gray-300 p-4 md:flex">
+      <div className="hidden w-3/12 flex-col gap-y-5 rounded-lg border border-gray-300 p-4 md:flex sticky top-32">
         <h4 className="text-lg font-bold">Atur jumlah dan catatan</h4>
         <div className="flex flex-row items-center gap-x-3 border border-transparent border-b-gray-100 pb-3">
           <img src={image[0]} alt="PC Thumbnail" className="w-16 rounded-lg" />
@@ -62,7 +62,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
             disabled={isDecrementButtonDisabled}
           />
           <input
-            className="h-fit md:w-12 lg:w-20 self-center rounded-lg border md:px-2 lg:px-3 py-0.5 text-center outline-none"
+            className="h-fit md:w-12 lg:w-20 xl:w-24 self-center rounded-lg border border-gray-200 md:px-2 lg:px-3 py-0.5 text-center outline-none"
             value={quantityValue}
             type="number"
             onChange={(e) => handleOnChange(e)}

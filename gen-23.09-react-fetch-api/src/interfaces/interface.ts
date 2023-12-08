@@ -45,6 +45,9 @@ export interface LayoutProps {
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode;
   className?: string;
+  variant?: "primary" | "secondary" | "outline" | "link";
+  h?: string;
+  w?: string;
   onClick?: () => void;
 }
 

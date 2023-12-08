@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductDetailDescription from "./ProductDescription";
 import ProductDetailMedia from "./ProductMedia";
 import ProductDetailOptions from "./ProductOptions";
@@ -9,20 +9,37 @@ const ProductDetail = () => {
   const { product, isLoading, isError } = getProductById(Number(productId));
 
   if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Something went wrong...</div>;
+  if (isError)
+    return <div className="my-20 text-center">Product not found</div>;
 
-  if (product !== undefined) {
+  if (product)
     return (
-      <main className="mx-auto mt-0 flex min-h-screen flex-col justify-center gap-y-5 xl:container md:mt-10 md:flex-row md:items-start md:gap-x-2 md:px-3 lg:mx-6 lg:gap-x-6 xl:mx-auto">
-        <ProductDetailMedia
-          productName={product.name}
-          imageUrls={product.image}
-        />
-        <ProductDetailDescription productDetail={product} />
-        <ProductDetailOptions productDetail={product} />
-      </main>
+      <div className="mb-5 mt-6 flex min-h-screen flex-col xl:container lg:mx-6  xl:mx-auto">
+        <div className="hidden flex-row items-center gap-x-2 text-sm text-gray-500 md:flex">
+          <Link to="/" className="text-primary hover:text-accent">
+            Home
+          </Link>
+          <span>/</span>
+          <Link
+            to={`/search?q=${product.category[0]}`}
+            className="text-primary hover:text-accent"
+          >
+            {product.category[0]}
+          </Link>
+          <span>/</span>
+          <p>{product.name}</p>
+        </div>
+
+        <main className="mx-auto mt-0 flex flex-col justify-center gap-y-5 md:mt-8 md:flex-row md:items-start md:gap-x-2 md:px-3 lg:gap-x-6">
+          <ProductDetailMedia
+            productName={product.name}
+            imageUrls={product.image}
+          />
+          <ProductDetailDescription productDetail={product} />
+          <ProductDetailOptions productDetail={product} />
+        </main>
+      </div>
     );
-  } else return <div className="my-20 text-center">Product not found</div>;
 };
 
 export default ProductDetail;

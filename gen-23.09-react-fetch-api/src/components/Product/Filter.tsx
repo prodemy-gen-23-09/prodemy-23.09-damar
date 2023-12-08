@@ -22,7 +22,7 @@ const ProductFilter = ({ filters }: ProductFilterProps) => {
                     type="checkbox"
                     id={filterName}
                     name={filterName}
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer rounded-lg"
                   />
                   <label htmlFor={filterName}>{filterName}</label>
                 </li>

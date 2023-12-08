@@ -6,7 +6,7 @@ import {
   AiOutlineUser,
   AiOutlineMenu,
 } from "react-icons/ai";
-import { IconButton, LinkButton } from "../../components/Button";
+import { Button, IconButton, LinkButton } from "../../components/Button";
 
 interface NavMenuProps {
   isLoggedIn: boolean;
@@ -53,15 +53,16 @@ const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
 
   return (
     <nav className="flex flex-row items-center gap-x-3">
-      <button
-        className="h-full w-24 self-center rounded-xl p-2 font-semibold text-primary outline outline-1 outline-secondary hover:bg-accent hover:text-white md:hover:cursor-pointer"
+      <Button
+        variant="primary"
+        w="24"
         onClick={handleLogin}
       >
-        Masuk
-      </button>
-      <button className="h-full w-24 self-center rounded-xl bg-primary p-2 font-semibold text-white hover:bg-accent md:hover:cursor-pointer">
+        Masuk{" "}
+      </Button>
+      <Button variant="outline" w="24">
         Daftar
-      </button>
+      </Button>
     </nav>
   );
 };

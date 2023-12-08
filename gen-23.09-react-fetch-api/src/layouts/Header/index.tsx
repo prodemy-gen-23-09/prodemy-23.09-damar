@@ -48,7 +48,7 @@ const Header = () => {
       <form onSubmit={handleOnSubmit} className="hidden flex-1 md:block">
         <input
           name="search"
-          className="h-fit w-full rounded-lg px-5 py-2 outline outline-1 outline-gray-300"
+          className="h-fit w-full rounded-lg px-5 py-2 border border-gray-300"
           placeholder="Cari di tokokami"
           value={searchValue}
           onChange={handleOnChange}

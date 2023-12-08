@@ -46,12 +46,14 @@ const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
   };
 
   return (
-    <div className="flex w-full flex-col gap-y-5 md:w-3/12">
-      <img
-        src={selectedImage}
-        alt={productName}
-        className="cursor-zoom-in p-3 transition-all duration-300 hover:scale-125 md:rounded-lg"
-      />
+    <div className="flex w-full flex-col gap-y-5 md:sticky md:top-32 md:w-3/12">
+      <div className="md:h-96 flex items-center">
+        <img
+          src={selectedImage}
+          alt={productName}
+          className="cursor-zoom-in p-3 transition-all duration-300 hover:scale-125 md:rounded-lg"
+        />
+      </div>
       <div className=" relative overflow-hidden">
         <ImageSliderButton
           className="left-0"
