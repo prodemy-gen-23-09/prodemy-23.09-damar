@@ -32,6 +32,14 @@ export interface Product {
   createdAt: string;
 }
 
+export interface ProductSchema {
+  name: string;
+  price: number;
+  description: string;
+  stock: number;
+  category: string;
+}
+
 interface Toko {
   name: string;
   rating: number;

@@ -1,50 +1,66 @@
 import { ChangeEvent } from "react";
 import { Button } from "../Button";
-import { ProductDataProps } from "../../interfaces/interface";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ProductSchema } from "../../interfaces/interface";
 
 interface ProductFormProps {
   title?: string;
-  productData: ProductDataProps;
-  handleOnChange: (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ) => void;
   handleImageOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleOnSubmit: (e: ChangeEvent<HTMLFormElement>) => void;
+  handleOnSubmit: (data: ProductSchema) => void;
 }
 
 const ProductForm = ({
   title,
-  productData,
-  handleOnChange,
   handleImageOnChange,
   handleOnSubmit,
 }: ProductFormProps) => {
-  const { name, price, description, stock, category } = productData;
+  const productSchema: yup.ObjectSchema<ProductSchema> = yup.object().shape({
+    name: yup.string().required("nama produk harus diisi"),
+    price: yup
+      .number()
+      .positive()
+      .required("harga produk harus diisi dan bernilai positif"),
+    description: yup.string().required("deskripsi produk harus diisi"),
+    stock: yup
+      .number()
+      .positive()
+      .required("stok harus diisi dan bernilai positif"),
+    category: yup.string().required("pilih salah satu kategori produk"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(productSchema),
+  });
+
   return (
     <form
-      onSubmit={handleOnSubmit}
+      onSubmit={handleSubmit(handleOnSubmit)}
       className="mb-10 mt-5 flex w-full flex-col self-center rounded-2xl border-gray-200 px-4 pb-10 pt-5 sm:mt-10 sm:w-[600px] sm:px-10 sm:pt-10 "
     >
       <h2 className="self-center text-2xl font-semibold">{title!}</h2>
       <div className="mt-4 flex flex-col gap-y-2">
-        <label htmlFor="name">Nama Produk</label>
+        <label htmlFor="name">Nama</label>
         <input
           className="rounded-xl border border-gray-300 px-4 py-2"
-          onChange={handleOnChange}
           type="text"
-          name="name"
-          value={name}
+          {...register("name")}
         />
+        <p className="text-sm text-red-500">{errors.name?.message}</p>
       </div>
       <div className="mt-4 flex flex-col gap-y-2">
         <label htmlFor="price">Harga</label>
         <input
           className="rounded-xl border border-gray-300 px-4 py-2"
-          onChange={handleOnChange}
           type="number"
-          name="price"
-          value={price}
+          {...register("price")}
         />
+        <p className="text-sm text-red-500">{errors.price?.message}</p>
       </div>
       <div className="mt-4 flex flex-col gap-y-2">
         <label htmlFor="image">Gambar</label>
@@ -52,41 +68,41 @@ const ProductForm = ({
           className="rounded-xl border border-gray-300 px-4 py-2"
           onChange={handleImageOnChange}
           type="file"
+          accept="image/jpeg, image/png"
           name="images"
           multiple
+          required
         />
       </div>
       <div className="mt-4 flex flex-col gap-y-2">
         <label htmlFor="description">Deskripsi</label>
         <textarea
           className="rounded-xl border border-gray-300 px-4 py-2"
-          onChange={handleOnChange}
-          name="description"
-          value={description}
+          {...register("description")}
         />
+        <p className="text-sm text-red-500">{errors.description?.message}</p>
       </div>
       <div className="mt-4 flex flex-col gap-y-2">
         <label htmlFor="stock">Stok</label>
         <input
           className="rounded-xl border border-gray-300 px-4 py-2"
-          onChange={handleOnChange}
           type="number"
-          name="stock"
-          value={stock}
+          {...register("stock")}
         />
+        <p className="text-sm text-red-500">{errors.stock?.message}</p>
       </div>
       <div className="mt-4 flex flex-col gap-y-2">
         <label htmlFor="category">Kategori</label>
         <select
           className="rounded-xl border border-gray-300 px-4 py-2"
-          onChange={handleOnChange}
-          name="category"
-          value={category}
+          {...register("category")}
         >
+          <option value="">Pilih Kategori</option>
           <option value="Sneakers">Sneakers</option>
           <option value="Running">Running</option>
           <option value="Casual">Casual</option>
         </select>
+        <p className="text-sm text-red-500">{errors.category?.message}</p>
       </div>
       <div className="flex w-full">
         <Button
