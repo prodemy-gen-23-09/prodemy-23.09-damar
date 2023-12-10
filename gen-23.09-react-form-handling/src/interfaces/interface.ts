@@ -24,7 +24,7 @@ export interface Product {
   id: number;
   name: string;
   price: number;
-  image: string[];
+  images: string[];
   description: string;
   stock: number;
   category: string;
@@ -38,6 +38,17 @@ export interface ProductSchema {
   description: string;
   stock: number;
   category: string;
+}
+
+export interface ProductRequest {
+  name: string;
+  price: number;
+  description: string;
+  images: String[];
+  toko: Toko;
+  stock: number;
+  category: string;
+  createdAt: string;
 }
 
 interface Toko {
