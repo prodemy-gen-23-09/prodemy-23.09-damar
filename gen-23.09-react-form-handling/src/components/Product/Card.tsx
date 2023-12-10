@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ProductCardProps } from "../../interfaces/interface";
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const { id, name, price, image, toko, createdAt } = product;
+  const { id, name, price, images, toko, createdAt } = product;
 
   return (
     <Link
@@ -17,7 +17,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           year: "numeric",
         })}
       </span>
-      <img className="h-40 w-40 self-center" src={image[0]} alt={name} />
+      <img className="h-40 w-40 self-center" src={images[0]} alt={name} />
       <h3 className="line-clamp-1 text-sm font-semibold md:text-base">
         {name}
       </h3>

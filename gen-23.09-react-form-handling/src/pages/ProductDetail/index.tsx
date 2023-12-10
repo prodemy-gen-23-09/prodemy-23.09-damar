@@ -21,10 +21,10 @@ const ProductDetail = () => {
           </Link>
           <span>/</span>
           <Link
-            to={`/search?q=${product.category[0]}`}
+            to={`/search?q=${product.category}`}
             className="text-primary hover:text-accent"
           >
-            {product.category[0]}
+            {product.category}
           </Link>
           <span>/</span>
           <p>{product.name}</p>
@@ -33,7 +33,7 @@ const ProductDetail = () => {
         <main className="mx-auto mt-0 flex flex-col justify-center gap-y-5 md:mt-8 md:flex-row md:items-start md:gap-x-2 md:px-3 lg:gap-x-6">
           <ProductDetailMedia
             productName={product.name}
-            imageUrls={product.image}
+            imageUrls={product.images}
           />
           <ProductDetailDescription productDetail={product} />
           <ProductDetailOptions productDetail={product} />

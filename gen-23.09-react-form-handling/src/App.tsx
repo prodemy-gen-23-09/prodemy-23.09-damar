@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import ProductSearch from "./pages/ProductSearch";
 import AddProduct from "./pages/admin/AddProduct";
+import Dashboard from "./pages/admin/Dashboard";
+import EditProduct from "./pages/admin/EditProduct";
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
 
           <Route path="admin">
             <Route index element={<div>admin</div>} />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="add-product" element={<AddProduct />} />
+            <Route path="edit/:productId" element={<EditProduct />} />
           </Route>
           <Route path="*" element={<div>404</div>} />
         </Route>

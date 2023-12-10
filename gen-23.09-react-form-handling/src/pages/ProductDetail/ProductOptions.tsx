@@ -5,7 +5,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   const [quantityValue, setQuantityValue] = useState(1);
-  const { name, image, stock, price } = productDetail;
+  const { name, images, stock, price } = productDetail;
 
   const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] =
     useState(false);
@@ -52,7 +52,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
       <div className="hidden w-3/12 flex-col gap-y-5 rounded-lg border border-gray-300 p-4 md:flex sticky top-32">
         <h4 className="text-lg font-bold">Atur jumlah dan catatan</h4>
         <div className="flex flex-row items-center gap-x-3 border border-transparent border-b-gray-100 pb-3">
-          <img src={image[0]} alt="PC Thumbnail" className="w-16 rounded-lg" />
+          <img src={images[0]} alt="PC Thumbnail" className="w-16 rounded-lg" />
           <p className="line-clamp-2 h-fit lg:text-base xl:text-lg">{name}</p>
         </div>
         <div className="flex flex-row items-center justify-start md:gap-x-2 lg:gap-x-3">

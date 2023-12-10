@@ -6,7 +6,7 @@ import {
   AiOutlineUser,
   AiOutlineMenu,
 } from "react-icons/ai";
-import { Button, IconButton, LinkButton } from "../../components/Button";
+import { Button, IconButton, IconLinkButton } from "../../components/Button";
 
 interface NavMenuProps {
   isLoggedIn: boolean;
@@ -19,7 +19,7 @@ const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
     return (
       <IconContext.Provider value={{ size: "100%" }}>
         <nav className="flex flex-row items-center gap-x-3">
-          <LinkButton
+          <IconLinkButton
             icon={<AiOutlineHeart />}
             to={`/wishlist`}
             title="wishlist"
@@ -30,13 +30,13 @@ const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
             title="search"
             className="h-8 md:hidden"
           />
-          <LinkButton
+          <IconLinkButton
             icon={<AiOutlineShoppingCart />}
             to={`/cart`}
             title="cart"
             className="h-8 self-center md:h-10"
           />
-          <LinkButton
+          <IconLinkButton
             icon={<AiOutlineUser />}
             to="/profile"
             title="profile"
