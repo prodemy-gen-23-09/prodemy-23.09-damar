@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, RefObject } from "react";
 import { Button } from "../Button";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -8,11 +8,15 @@ import { ProductSchema } from "../../interfaces/interface";
 interface ProductFormProps {
   title?: string;
   handleImageOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  initialValues?: ProductSchema;
+  formRef?: RefObject<HTMLFormElement>;
   handleOnSubmit: (data: ProductSchema) => void;
 }
 
 const ProductForm = ({
   title,
+  initialValues,
+  formRef,
   handleImageOnChange,
   handleOnSubmit,
 }: ProductFormProps) => {
@@ -36,12 +40,14 @@ const ProductForm = ({
     formState: { errors },
   } = useForm({
     resolver: yupResolver(productSchema),
+    defaultValues: initialValues !== undefined ? initialValues : {},
   });
 
   return (
     <form
       onSubmit={handleSubmit(handleOnSubmit)}
-      className="mb-10 mt-5 flex w-full flex-col self-center rounded-2xl border-gray-200 px-4 pb-10 pt-5 sm:mt-10 sm:w-[600px] sm:px-10 sm:pt-10 "
+      ref={formRef}
+      className="mb-10 mt-5 flex w-full flex-col self-center rounded-2xl shadow-md bg-white border border-gray-200 px-4 pb-10 pt-5 sm:w-[600px] sm:px-10 sm:pt-10 "
     >
       <h2 className="self-center text-2xl font-semibold">{title!}</h2>
       <div className="mt-4 flex flex-col gap-y-2">
@@ -77,7 +83,7 @@ const ProductForm = ({
       <div className="mt-4 flex flex-col gap-y-2">
         <label htmlFor="description">Deskripsi</label>
         <textarea
-          className="rounded-xl border border-gray-300 px-4 py-2"
+          className="rounded-xl border border-gray-300 px-4 py-2 h-48"
           {...register("description")}
         />
         <p className="text-sm text-red-500">{errors.description?.message}</p>
@@ -108,9 +114,9 @@ const ProductForm = ({
         <Button
           variant="primary"
           type="submit"
-          className="mx-auto mt-4 w-96 self-center"
+          className="mx-auto mt-4 self-center w-48"
         >
-          Submit
+          Simpan
         </Button>
       </div>
     </form>
