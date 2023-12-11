@@ -56,7 +56,7 @@ const Header = () => {
       </form>
       <NavMenu
         handleRegister={handleRegister}
-        isLoggedIn={false}
+        isLoggedIn={true}
       />
     </header>
   );

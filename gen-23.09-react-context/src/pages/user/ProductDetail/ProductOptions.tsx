@@ -1,11 +1,14 @@
 import { ProductDetailProps } from "../../../interfaces/productInterface";
-import { IconButton } from "../../../components/Button";
+import { Button, IconButton } from "../../../components/Button";
 import { ChangeEvent, useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useCartContext } from "../../../context/CartContext";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   const [quantityValue, setQuantityValue] = useState(1);
   const { name, images, stock, price } = productDetail;
+
+  const { addToCart } = useCartContext();
 
   const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] =
     useState(false);
@@ -49,7 +52,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
 
   return (
     <>
-      <div className="hidden w-3/12 flex-col gap-y-5 rounded-lg border border-gray-300 p-4 md:flex sticky top-32">
+      <div className="sticky top-32 hidden w-3/12 flex-col gap-y-5 rounded-lg border border-gray-200 p-4 md:flex">
         <h4 className="text-lg font-bold">Atur jumlah dan catatan</h4>
         <div className="flex flex-row items-center gap-x-3 border border-transparent border-b-gray-100 pb-3">
           <img src={images[0]} alt="PC Thumbnail" className="w-16 rounded-lg" />
@@ -62,7 +65,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
             disabled={isDecrementButtonDisabled}
           />
           <input
-            className="h-fit md:w-12 lg:w-20 xl:w-24 self-center rounded-lg border border-gray-200 md:px-2 lg:px-3 py-0.5 text-center outline-none"
+            className="h-fit self-center rounded-lg border border-gray-200 py-0.5 text-center outline-none md:w-12 md:px-2 lg:w-20 lg:px-3 xl:w-24"
             value={quantityValue}
             type="number"
             onChange={(e) => handleOnChange(e)}
@@ -83,21 +86,27 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
           </p>
         </div>
         <div className="flex flex-col gap-y-3">
-          <button className="rounded-lg bg-primary p-2 font-bold text-white hover:bg-accent">
+          <Button
+            variant="primary"
+            className="w-full"
+            onClick={() =>
+              addToCart({ product: productDetail, quantity: quantityValue })
+            }
+          >
             <span>&#43;</span> Keranjang
-          </button>
-          <button className="rounded-lg p-2 font-bold text-primary outline outline-1 outline-secondary hover:bg-accent hover:text-white">
+          </Button>
+          <Button variant="outline" className="w-full">
             Beli Langsung
-          </button>
+          </Button>
         </div>
       </div>
       <div className="sticky bottom-0 left-0 z-10 flex w-full flex-row justify-between gap-x-4 border border-t-green-500 bg-white p-3 md:hidden">
-        <button className="flex-1 rounded-lg p-2 font-bold text-primary outline outline-1 outline-secondary hover:bg-accent hover:text-white">
-          Beli Langsung
-        </button>
-        <button className="flex-1 rounded-lg bg-primary p-2 font-bold text-white hover:bg-accent">
+        <Button className="flex-1" variant="outline">
+          <span>&#43;</span> Beli Langsung
+        </Button>
+        <Button className="flex-1" variant="primary">
           <span>&#43;</span> Keranjang
-        </button>
+        </Button>
       </div>
     </>
   );
