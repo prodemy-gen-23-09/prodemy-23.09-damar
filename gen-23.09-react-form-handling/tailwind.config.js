@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: '"Inter var", sans-serif',
+      sans: '"Rethink Sans", sans-serif',
     },
     extend: {
       colors: {
