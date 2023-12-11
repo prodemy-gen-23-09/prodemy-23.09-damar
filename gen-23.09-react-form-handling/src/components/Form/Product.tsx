@@ -3,7 +3,7 @@ import { Button } from "../Button";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ProductSchema } from "../../interfaces/interface";
+import { ProductSchema } from "../../interfaces/product";
 
 interface ProductFormProps {
   title?: string;

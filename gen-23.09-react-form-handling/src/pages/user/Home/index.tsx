@@ -1,5 +1,5 @@
-import { getAllProducts } from "../../lib/swr/product";
-import Banner from "../../components/Banner";
+import { getAllProducts } from "../../../lib/swr/product";
+import Banner from "../../../components/Banner";
 import SectionContainer from "./SectionContainer";
 
 const Home = () => {

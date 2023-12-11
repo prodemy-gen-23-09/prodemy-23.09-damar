@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../interfaces/interface";
-import { ProductCard } from "../../components/Product";
+import { Product } from "../../../interfaces/product";
+import { ProductCard } from "../../../components/Product";
 
 interface SectionContainerProps {
   category: string;

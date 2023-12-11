@@ -1,4 +1,4 @@
-import { ProductFilterProps } from "../../interfaces/interface";
+import { ProductFilterProps } from "../../interfaces/product";
 
 const ProductFilter = ({ filters }: ProductFilterProps) => {
   return (

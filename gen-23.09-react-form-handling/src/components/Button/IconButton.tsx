@@ -1,4 +1,4 @@
-import { ButtonProps } from "../../interfaces/interface";
+import { ButtonProps } from "../../interfaces/component";
 
 const IconButton = ({
   icon,

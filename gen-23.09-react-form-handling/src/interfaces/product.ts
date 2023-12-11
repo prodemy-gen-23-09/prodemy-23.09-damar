@@ -1,4 +1,3 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
 
 export interface ProductCardProps {
   product: Product;
@@ -57,28 +56,4 @@ interface Toko {
   location: string;
 }
 
-export interface LayoutProps {
-  children: ReactNode;
-}
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: ReactNode;
-  className?: string;
-  variant?: "primary" | "secondary" | "outline" | "link";
-  h?: string;
-  w?: string;
-  onClick?: () => void;
-}
-
-export interface LinkButtonProps extends ButtonProps {
-  to: string;
-}
-
-export interface ProductDataProps {
-  name: string;
-  price: number;
-  images: string[];
-  description: string;
-  stock: number;
-  category: string;
-}

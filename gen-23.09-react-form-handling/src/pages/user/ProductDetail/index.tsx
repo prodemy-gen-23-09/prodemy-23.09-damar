@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import ProductDetailDescription from "./ProductDescription";
 import ProductDetailMedia from "./ProductMedia";
 import ProductDetailOptions from "./ProductOptions";
-import { getProductById } from "../../lib/swr/product";
+import { getProductById } from "../../../lib/swr/product";
 
 const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();
