@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Home from "./pages/user/Home";
 import ProductDetail from "./pages/user/ProductDetail";
@@ -30,11 +30,16 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="admin">
-            <Route index element={<div>admin</div>} />
+            <Route index element={<Navigate to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="add-product" element={<AddProduct />} />
-            <Route path="edit/:productId" element={<EditProduct />} />
+            <Route path="edit">
+              <Route path="product/:productId" element={<EditProduct />} />
+            </Route>
+            <Route path="add">
+              <Route path="product" element={<AddProduct />} />
+            </Route>
           </Route>
+
           <Route path="*" element={<div>404</div>} />
         </Route>
       </Routes>

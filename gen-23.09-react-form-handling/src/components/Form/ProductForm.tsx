@@ -47,7 +47,7 @@ const ProductForm = ({
     <form
       onSubmit={handleSubmit(handleOnSubmit)}
       ref={formRef}
-      className="mb-10 mt-5 flex w-full flex-col self-center rounded-2xl shadow-md bg-white border border-gray-200 px-4 pb-10 pt-5 sm:w-[600px] sm:px-10 sm:pt-10 "
+      className="mb-10 mt-5 flex w-full flex-col self-center rounded-2xl border border-gray-200 bg-white px-4 pb-10 pt-5 shadow-md sm:w-[600px] sm:px-10 sm:pt-10 "
     >
       <h2 className="self-center text-2xl font-semibold">{title!}</h2>
       <div className="mt-4 flex flex-col gap-y-2">
@@ -83,7 +83,7 @@ const ProductForm = ({
       <div className="mt-4 flex flex-col gap-y-2">
         <label htmlFor="description">Deskripsi</label>
         <textarea
-          className="rounded-xl border border-gray-300 px-4 py-2 h-48"
+          className="h-48 rounded-xl border border-gray-300 px-4 py-2"
           {...register("description")}
         />
         <p className="text-sm text-red-500">{errors.description?.message}</p>
@@ -104,9 +104,10 @@ const ProductForm = ({
           {...register("category")}
         >
           <option value="">Pilih Kategori</option>
-          <option value="Sneakers">Sneakers</option>
-          <option value="Running">Running</option>
           <option value="Casual">Casual</option>
+          <option value="Running">Running</option>
+          <option value="Sneakers">Sneakers</option>
+          <option value="Sports">Sports</option>
         </select>
         <p className="text-sm text-red-500">{errors.category?.message}</p>
       </div>
@@ -114,7 +115,7 @@ const ProductForm = ({
         <Button
           variant="primary"
           type="submit"
-          className="mx-auto mt-4 self-center w-48"
+          className="mx-auto mt-4 w-48 self-center"
         >
           Simpan
         </Button>

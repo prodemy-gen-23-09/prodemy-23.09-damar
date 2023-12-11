@@ -58,7 +58,7 @@ const Dashboard = () => {
             className="w-96 rounded-full border border-gray-300 px-5 py-2"
             placeholder="Cari produk"
           />
-          <Link to="/admin/add-product">
+          <Link to="/admin/add/product">
             <Button
               variant="primary"
               className="flex flex-row items-center gap-x-2 px-5 py-2 text-sm"
@@ -71,7 +71,7 @@ const Dashboard = () => {
           <thead className="mb-5 rounded-xl">
             <tr>
               {tableHeader.map((header) => (
-                <th key={header} className="px-3 py-4 text-sm text-start">
+                <th key={header} className="px-3 py-4 text-start text-sm">
                   {header}
                 </th>
               ))}
@@ -82,26 +82,26 @@ const Dashboard = () => {
               ({ id, name, images, price, stock, category }) => (
                 <tr
                   key={id}
-                  className="hover:cursor-pointer hover:bg-gray-200"
-                  onClick={() => navigate(`/admin/edit/${id}`)}
+                  className="hover:cursor-pointer hover:bg-gray-100"
+                  onClick={() => navigate(`/admin/edit/product/${id}`)}
                 >
                   <td className="px-3">{name}</td>
                   <td className="px-3">
                     <img src={images[0]} className="w-16" alt="thumbnail" />
                   </td>
-                  <td className="px-3">{"Rp. " + price.toLocaleString("id-ID")}</td>
+                  <td className="px-3">
+                    {"Rp. " + price.toLocaleString("id-ID")}
+                  </td>
                   <td className="px-3">{stock}</td>
                   <td className="px-3">{category}</td>
                   <td className="px-3">
-                    <div className="flex flex-col items-center justify-center gap-y-3 md:flex-row md:gap-x-3">
-                      <Button
-                        onClick={() => handleDeleteProduct(id)}
-                        variant="outline"
-                        className="w-12 text-sm md:w-24"
-                      >
-                        Hapus
-                      </Button>
-                    </div>
+                    <Button
+                      onClick={() => handleDeleteProduct(id)}
+                      variant="outline"
+                      className="w-12 text-sm text-red-500 outline outline-red-500 hover:bg-red-500 hover:text-white md:w-24"
+                    >
+                      Hapus
+                    </Button>
                   </td>
                 </tr>
               ),
