@@ -23,14 +23,14 @@ const ProductForm = ({
   const productSchema: yup.ObjectSchema<ProductSchema> = yup.object().shape({
     name: yup.string().required("nama produk harus diisi"),
     price: yup
-      .number()
-      .positive()
-      .required("harga produk harus diisi dan bernilai positif"),
+      .number().typeError("harga produk harus berupa angka")
+      .positive("atus masa harga produk dibawah 0 ;'(")
+      .required("harga produk harus diisi"),
     description: yup.string().required("deskripsi produk harus diisi"),
     stock: yup
-      .number()
-      .positive()
-      .required("stok harus diisi dan bernilai positif"),
+      .number().typeError("stok produk harus berupa angka")
+      .positive("stok produk gabisa dibawah 0, gabisa dijual nanti :)")
+      .required("stok produk harus diisi"),
     category: yup.string().required("pilih salah satu kategori produk"),
   });
 

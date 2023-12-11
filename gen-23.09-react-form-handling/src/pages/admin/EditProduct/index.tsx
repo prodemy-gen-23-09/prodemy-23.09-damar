@@ -1,6 +1,9 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { ProductForm } from "../../../components/Form";
-import { ProductRequest, ProductSchema } from "../../../interfaces/productInterface";
+import {
+  ProductRequest,
+  ProductSchema,
+} from "../../../interfaces/productInterface";
 import { updateProduct } from "../../../lib/axios/productAxios";
 import { getProductById } from "../../../lib/swr/productSWR";
 import { useParams } from "react-router-dom";
@@ -15,7 +18,9 @@ const EditProduct = () => {
 
   const handleImageOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const imageUrls = Array.from(e.target.files).map((image) => image.name);
+      const imageUrls = Array.from(e.target.files).map((image) =>
+        URL.createObjectURL(image),
+      );
       setProductImages(imageUrls);
     }
   };
@@ -35,7 +40,10 @@ const EditProduct = () => {
     };
 
     await updateProduct(Number(productId), payload)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        alert("Produk berhasil diupdate");
+      })
       .finally(() => {
         if (formRef.current) formRef.current.reset();
         setProductImages([]);

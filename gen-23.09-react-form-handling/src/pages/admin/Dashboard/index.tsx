@@ -3,7 +3,7 @@ import { Button } from "../../../components/Button";
 import { getAllProducts } from "../../../lib/swr/productSWR";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteProduct } from "../../../lib/axios/productAxios";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 
 const Dashboard = () => {
   const { products, isLoading, isError } = getAllProducts();
@@ -17,11 +17,17 @@ const Dashboard = () => {
     setSearchValue(e.target.value);
   };
 
-  const handleDeleteProduct = async (id: number) => {
-    await deleteProduct(id)
-      .then((res) => console.log(res))
-      .finally(() => alert("Produk berhasil dihapus"));
-  };
+  const handleDeleteProduct =
+    (id: number) => async (e: MouseEvent<HTMLButtonElement>) => {
+      console.log(id);
+      e.stopPropagation();
+
+      await deleteProduct(id)
+        .then((res) => console.log(res))
+        .finally(() => {
+          alert("Produk berhasil dihapus");
+        });
+    };
 
   useEffect(() => {
     setFilteredProducts(
@@ -48,20 +54,20 @@ const Dashboard = () => {
       <div className="w-full rounded-xl border border-gray-200 px-10 py-5">
         <h1 className="px-1 text-xl font-bold">Daftar Produk</h1>
 
-        <div className="container my-5 flex w-full flex-row items-center justify-between px-1">
+        <div className="container my-5 flex w-full flex-row items-center justify-between gap-x-5 px-1">
           <input
             type="text"
             id="search"
             name="search"
             value={searchValue}
             onChange={handleOnChange}
-            className="w-96 rounded-full border border-gray-300 px-5 py-2"
+            className="flex-1 rounded-full border border-gray-300 px-5 py-2 md:w-96 md:flex-initial"
             placeholder="Cari produk"
           />
           <Link to="/admin/add/product">
             <Button
               variant="primary"
-              className="flex flex-row items-center gap-x-2 px-5 py-2 text-sm"
+              className="flex flex-row items-center gap-x-2 px-5 py-3 text-sm"
             >
               Tambah Produk <AiFillPlusCircle />
             </Button>
@@ -96,7 +102,7 @@ const Dashboard = () => {
                   <td className="px-3">{category}</td>
                   <td className="px-3">
                     <Button
-                      onClick={() => handleDeleteProduct(id)}
+                      onClick={(e) => handleDeleteProduct(id)(e)}
                       variant="outline"
                       className="w-12 text-sm text-red-500 outline outline-red-500 hover:bg-red-500 hover:text-white md:w-24"
                     >

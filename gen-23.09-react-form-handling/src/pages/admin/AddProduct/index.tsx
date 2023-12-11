@@ -1,6 +1,9 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { ProductForm } from "../../../components/Form";
-import { ProductRequest, ProductSchema } from "../../../interfaces/productInterface";
+import {
+  ProductRequest,
+  ProductSchema,
+} from "../../../interfaces/productInterface";
 import { addProduct } from "../../../lib/axios/productAxios";
 
 const AddProduct = () => {
@@ -10,7 +13,9 @@ const AddProduct = () => {
 
   const handleImageOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const imageUrls = Array.from(e.target.files).map((image) => image.name);
+      const imageUrls = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file),
+      );
       setProductImages(imageUrls);
     }
   };
@@ -30,7 +35,10 @@ const AddProduct = () => {
     };
 
     await addProduct(payload)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        alert("Produk berhasil ditambahkan");
+      })
       .finally(() => {
         if (formRef.current) formRef.current.reset();
         setProductImages([]);

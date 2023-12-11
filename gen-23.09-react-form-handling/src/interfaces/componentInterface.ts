@@ -10,7 +10,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "link";
   h?: string;
   w?: string;
-  onClick?: () => void;
 }
 
 export interface LinkButtonProps extends ButtonProps {
