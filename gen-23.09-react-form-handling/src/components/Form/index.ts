@@ -1,1 +1,1 @@
-export { default as ProductForm } from "./Product";
+export { default as ProductForm } from "./ProductForm";

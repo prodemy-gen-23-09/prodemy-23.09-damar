@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ProductCardProps } from "../../interfaces/product";
+import { ProductCardProps } from "../../interfaces/productInterface";
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { id, name, price, images, toko, createdAt } = product;

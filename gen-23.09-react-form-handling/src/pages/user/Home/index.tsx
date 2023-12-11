@@ -1,4 +1,4 @@
-import { getAllProducts } from "../../../lib/swr/product";
+import { getAllProducts } from "../../../lib/swr/productSWR";
 import Banner from "../../../components/Banner";
 import SectionContainer from "./SectionContainer";
 
@@ -17,6 +17,7 @@ const Home = () => {
       {productsData &&
         categories.map((category) => (
           <SectionContainer
+            key={category}
             category={category}
             productsData={[...productsData]
               .filter((product) => product.category === category)

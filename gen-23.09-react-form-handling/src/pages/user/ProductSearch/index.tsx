@@ -1,12 +1,12 @@
-import { ProductCard, ProductFilter } from "../../../components/Product";
+import { ProductCard } from "../../../components/Card";
+import ProductFilter from "./SearchFilter";
 import { useState, useEffect, ChangeEvent } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Product } from "../../../interfaces/product";
-import { searchProductsByQuery } from "../../../lib/swr/product";
+import { Product } from "../../../interfaces/productInterface";
+import { searchProductsByQuery } from "../../../lib/swr/productSWR";
 
 const ProductSearch = () => {
   const [productsSortedBy, setProductsSortedBy] = useState("Terbaru");
-  // const [productsData, setProductsData] = useState<Product[]>(productList);
   const [productsDataSorted, setProductsDataSorted] = useState<Product[]>();
 
   const [queryParams] = useSearchParams();

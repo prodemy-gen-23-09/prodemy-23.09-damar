@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { ImageSliderButton } from "../../../components/Button";
-import { ProductMediaProps } from "../../../interfaces/product";
+import { ProductMediaProps } from "../../../interfaces/productInterface";
 
 const ProductDetailMedia = ({ productName, imageUrls }: ProductMediaProps) => {
   const elementRef = useRef<HTMLDivElement>(null);

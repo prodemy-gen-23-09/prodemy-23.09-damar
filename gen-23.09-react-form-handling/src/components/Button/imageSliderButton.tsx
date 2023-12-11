@@ -1,4 +1,4 @@
-import { ButtonProps } from "../../interfaces/component";
+import { ButtonProps } from "../../interfaces/componentInterface";
 
 const ImageSliderButton = ({ icon, className, ...otherProps }: ButtonProps) => {
   return (

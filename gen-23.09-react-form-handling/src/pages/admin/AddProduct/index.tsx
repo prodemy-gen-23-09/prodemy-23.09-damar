@@ -1,7 +1,7 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { ProductForm } from "../../../components/Form";
-import { ProductRequest, ProductSchema } from "../../../interfaces/product";
-import { addProduct } from "../../../lib/axios/product";
+import { ProductRequest, ProductSchema } from "../../../interfaces/productInterface";
+import { addProduct } from "../../../lib/axios/productAxios";
 
 const AddProduct = () => {
   const [productImages, setProductImages] = useState<String[]>([]);

@@ -1,8 +1,8 @@
 import { AiFillPlusCircle } from "react-icons/ai";
 import { Button } from "../../../components/Button";
-import { getAllProducts } from "../../../lib/swr/product";
+import { getAllProducts } from "../../../lib/swr/productSWR";
 import { Link, useNavigate } from "react-router-dom";
-import { deleteProduct } from "../../../lib/axios/product";
+import { deleteProduct } from "../../../lib/axios/productAxios";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const Dashboard = () => {

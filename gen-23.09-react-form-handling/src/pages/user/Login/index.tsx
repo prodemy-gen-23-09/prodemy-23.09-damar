@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Button } from "../../../components/Button";
-import { loginUser } from "../../../lib/axios/user";
+import { loginUser } from "../../../lib/axios/userAxios";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -53,7 +53,7 @@ const Login = () => {
           <input
             type="text"
             id="email"
-            className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+            className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
             name="email"
             value={email}
             onChange={handleOnChange}
@@ -64,7 +64,7 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+            className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
             name="password"
             value={password}
             onChange={handleOnChange}
@@ -75,7 +75,7 @@ const Login = () => {
           <Button
             variant="primary"
             type="submit"
-            className="mx-auto mt-4 w-48 self-center"
+            className="mx-auto mt-4 w-60 self-center"
           >
             Masuk
           </Button>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LinkButtonProps } from "../../interfaces/component";
+import { LinkButtonProps } from "../../interfaces/componentInterface";
 
 const LinkButton = ({
   icon,

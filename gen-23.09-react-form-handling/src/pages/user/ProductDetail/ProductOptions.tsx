@@ -1,4 +1,4 @@
-import { ProductDetailProps } from "../../../interfaces/product";
+import { ProductDetailProps } from "../../../interfaces/productInterface";
 import { IconButton } from "../../../components/Button";
 import { ChangeEvent, useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";

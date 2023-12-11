@@ -1,6 +1,6 @@
 import Header from "../Header";
 import Footer from "../Footer";
-import { LayoutProps } from "../../interfaces/component";
+import { LayoutProps } from "../../interfaces/componentInterface";
 
 const Layout = ({ children }: LayoutProps) => {
   return (

@@ -1,4 +1,4 @@
-import { ProductDetailProps } from "../../../interfaces/product";
+import { ProductDetailProps } from "../../../interfaces/productInterface";
 
 const ProductDetailDescription = ({ productDetail }: ProductDetailProps) => {
   return (

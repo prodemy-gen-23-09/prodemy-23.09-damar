@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetchProduct, fetchProducts } from "../axios/product";
+import { fetchProduct, fetchProducts } from "../axios/productAxios";
 
 export const getAllProducts = () => {
   const { data, error } = useSWR(

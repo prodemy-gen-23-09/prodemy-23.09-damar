@@ -1,4 +1,4 @@
-import { ButtonProps } from "../../interfaces/component";
+import { ButtonProps } from "../../interfaces/componentInterface";
 
 const Button = ({ children, className, variant, ...props }: ButtonProps) => {
   if (variant === "outline") {

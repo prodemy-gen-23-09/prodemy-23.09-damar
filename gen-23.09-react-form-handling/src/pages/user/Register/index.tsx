@@ -2,9 +2,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Button } from "../../../components/Button";
-import { registerUser } from "../../../lib/axios/user";
-import { RegisterUserSchema } from "../../../interfaces/user";
-
+import { registerUser } from "../../../lib/axios/userAxios";
+import { RegisterUserSchema } from "../../../interfaces/userInterface";
 
 const Register = () => {
   const registerSchema: yup.ObjectSchema<RegisterUserSchema> = yup
@@ -12,12 +11,11 @@ const Register = () => {
     .shape({
       name: yup.string().required("nama harus diisi"),
       email: yup.string().email().required("email harus diisi"),
-      password: yup.string().min(8).required("password harus diisi"),
+      password: yup.string().min(8, "password setidaknya harus terdiri dari 8 karakter").required("password harus diisi"),
       confirmPassword: yup
         .string()
         .oneOf([yup.ref("password")], "password tidak sama")
         .required("konfirmasi password harus diisi"),
-        
     });
 
   const {
@@ -57,7 +55,7 @@ const Register = () => {
           <input
             type="text"
             id="name"
-            className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+            className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
             {...register("name")}
           />
           <p className="text-red-500">{errors.name?.message}</p>
@@ -67,7 +65,7 @@ const Register = () => {
           <input
             type="text"
             id="email"
-            className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+            className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
             {...register("email")}
           />
           <p className="text-red-500">{errors.email?.message}</p>
@@ -77,7 +75,7 @@ const Register = () => {
           <input
             type="password"
             id="password"
-            className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+            className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
             {...register("password")}
           />
           <p className="text-red-500">{errors.password?.message}</p>
@@ -87,7 +85,7 @@ const Register = () => {
           <input
             type="password"
             id="confirmPassword"
-            className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+            className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
             {...register("confirmPassword")}
           />
           <p className="text-red-500">{errors.confirmPassword?.message}</p>
@@ -96,7 +94,7 @@ const Register = () => {
           <Button
             variant="primary"
             type="submit"
-            className="mx-auto mt-4 w-48 self-center"
+            className="mx-auto mt-4 w-60 self-center"
           >
             Daftar
           </Button>

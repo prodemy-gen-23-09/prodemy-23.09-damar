@@ -3,7 +3,7 @@ import {
   LoginUserRequest,
   RegisterUserRequest,
   UserResponse,
-} from "../../interfaces/user";
+} from "../../interfaces/userInterface";
 
 export const registerUser = async (
   body: RegisterUserRequest,

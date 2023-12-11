@@ -7,14 +7,14 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { Button, IconButton, IconLinkButton } from "../../components/Button";
+import { Link } from "react-router-dom";
 
 interface NavMenuProps {
   isLoggedIn: boolean;
-  handleLogin: () => void;
   handleRegister?: () => void;
 }
 
-const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
+const NavMenu = ({ isLoggedIn }: NavMenuProps) => {
   if (isLoggedIn)
     return (
       <IconContext.Provider value={{ size: "100%" }}>
@@ -53,16 +53,16 @@ const NavMenu = ({ isLoggedIn, handleLogin }: NavMenuProps) => {
 
   return (
     <nav className="flex flex-row items-center gap-x-3">
-      <Button
-        variant="primary"
-        w="24"
-        onClick={handleLogin}
-      >
-        Masuk{" "}
-      </Button>
-      <Button variant="outline" w="24">
-        Daftar
-      </Button>
+      <Link to="/login" >
+        <Button variant="primary" className="w-32">
+          Masuk{" "}
+        </Button>
+      </Link>
+      <Link to="/register">
+        <Button variant="outline" className="w-24">
+          Daftar
+        </Button>
+      </Link>
     </nav>
   );
 };

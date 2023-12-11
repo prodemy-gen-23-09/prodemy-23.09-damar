@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   ProductRequest,
   Product as ProductResponse,
-} from "../../interfaces/product";
+} from "../../interfaces/productInterface";
 
 export const fetchProducts = async (url: string): Promise<ProductResponse[]> => {
   const data = await axios.get(url).then((res) => res.data);

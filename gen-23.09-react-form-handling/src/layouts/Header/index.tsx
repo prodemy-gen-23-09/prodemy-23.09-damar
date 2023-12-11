@@ -8,14 +8,14 @@ import NavMenu from "../NavMenu";
 import { IconButton } from "../../components/Button";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+  // const handleLogin = () => {
+  //   setIsLoggedIn(true);
+  // };
 
   const handleRegister = () => {};
 
@@ -55,9 +55,8 @@ const Header = () => {
         />
       </form>
       <NavMenu
-        handleLogin={handleLogin}
         handleRegister={handleRegister}
-        isLoggedIn={isLoggedIn}
+        isLoggedIn={false}
       />
     </header>
   );
