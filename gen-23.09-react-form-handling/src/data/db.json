@@ -288,5 +288,24 @@
       },
       "createdAt": "2023-07-12T00:00:00.000Z"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Damar Anshary",
+      "email": "damar@admin.com",
+      "password": "damar123",
+      "role": "admin",
+      "createdAt": "2023-12-11T00:00:00.000Z"
+    },
+    {
+      "name": "Damar ",
+      "email": "damar@amin.com",
+      "password": "hahaha123",
+      "confirmPassword": "hahaha123",
+      "role": "user",
+      "createdAt": "2023-12-11T01:00:27.861Z",
+      "id": 2
+    }
   ]
 }

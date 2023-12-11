@@ -1,6 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { ProductForm } from "../../../components/Form";
-import { ProductRequest, ProductSchema } from "../../../interfaces/interface";
+import { ProductRequest, ProductSchema } from "../../../interfaces/product";
 import { addProduct } from "../../../lib/axios/product";
 
 const AddProduct = () => {

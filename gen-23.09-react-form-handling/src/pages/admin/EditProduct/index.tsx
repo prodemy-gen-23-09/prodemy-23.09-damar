@@ -1,6 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { ProductForm } from "../../../components/Form";
-import { ProductRequest, ProductSchema } from "../../../interfaces/interface";
+import { ProductRequest, ProductSchema } from "../../../interfaces/product";
 import { updateProduct } from "../../../lib/axios/product";
 import { getProductById } from "../../../lib/swr/product";
 import { useParams } from "react-router-dom";

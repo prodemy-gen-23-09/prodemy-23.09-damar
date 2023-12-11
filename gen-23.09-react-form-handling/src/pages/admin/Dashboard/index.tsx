@@ -46,7 +46,7 @@ const Dashboard = () => {
   return (
     <main className="m-5 flex min-h-screen flex-col gap-y-10 overflow-x-auto lg:container sm:mx-10 lg:mx-auto lg:mb-10">
       <div className="w-full rounded-xl border border-gray-200 px-10 py-5">
-        <h1 className="text-xl font-bold px-1">Daftar Produk</h1>
+        <h1 className="px-1 text-xl font-bold">Daftar Produk</h1>
 
         <div className="container my-5 flex w-full flex-row items-center justify-between px-1">
           <input
@@ -69,9 +69,9 @@ const Dashboard = () => {
         </div>
         <table className="min-w-full table-fixed border-collapse divide-y divide-gray-300 border-gray-300 text-sm lg:table-auto">
           <thead className="mb-5 rounded-xl">
-            <tr className="">
+            <tr>
               {tableHeader.map((header) => (
-                <th key={header} className="py-4 text-sm">
+                <th key={header} className="px-3 py-4 text-sm text-start">
                   {header}
                 </th>
               ))}
@@ -85,14 +85,14 @@ const Dashboard = () => {
                   className="hover:cursor-pointer hover:bg-gray-200"
                   onClick={() => navigate(`/admin/edit/${id}`)}
                 >
-                  <td className="px-3 py-1">{name}</td>
-                  <td className="px-3 py-1">
+                  <td className="px-3">{name}</td>
+                  <td className="px-3">
                     <img src={images[0]} className="w-16" alt="thumbnail" />
                   </td>
-                  <td className="px-3 py-1">{price}</td>
-                  <td className="px-3 py-1">{stock}</td>
-                  <td className="px-3 py-1">{category}</td>
-                  <td className="px-3 py-1">
+                  <td className="px-3">{"Rp. " + price.toLocaleString("id-ID")}</td>
+                  <td className="px-3">{stock}</td>
+                  <td className="px-3">{category}</td>
+                  <td className="px-3">
                     <div className="flex flex-col items-center justify-center gap-y-3 md:flex-row md:gap-x-3">
                       <Button
                         onClick={() => handleDeleteProduct(id)}

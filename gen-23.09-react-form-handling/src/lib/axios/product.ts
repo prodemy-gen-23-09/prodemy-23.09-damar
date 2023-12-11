@@ -2,11 +2,9 @@ import axios from "axios";
 import {
   ProductRequest,
   Product as ProductResponse,
-} from "../../interfaces/interface";
+} from "../../interfaces/product";
 
-type ProductsResponse = ProductResponse[];
-
-export const fetchProducts = async (url: string): Promise<ProductsResponse> => {
+export const fetchProducts = async (url: string): Promise<ProductResponse[]> => {
   const data = await axios.get(url).then((res) => res.data);
 
   return data;
