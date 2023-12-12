@@ -2,9 +2,10 @@ import { ProductDetailProps } from "../../../interfaces/productInterface";
 import { Button, IconButton } from "../../../components/Button";
 import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { useCartContext } from "../../../context/CartContext";
 import { Dialog, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../../../store/actions/cartActions";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   const [quantityValue, setQuantityValue] = useState(1);
@@ -20,7 +21,18 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
     setIsOpen(true);
   };
 
-  const { addToCart } = useCartContext();
+  const dispatch = useDispatch();
+
+  const handleOnSubmit = ({ product, quantity }: any) => {
+    const payload = {
+      product,
+      quantity,
+    };
+
+    console.log(payload);
+
+    dispatch(addProductToCart(payload));
+  };
 
   const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] =
     useState(false);
@@ -102,7 +114,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
             variant="primary"
             className="w-full"
             onClick={() => {
-              addToCart({
+              handleOnSubmit({
                 product: productDetail,
                 quantity: quantityValue,
               });

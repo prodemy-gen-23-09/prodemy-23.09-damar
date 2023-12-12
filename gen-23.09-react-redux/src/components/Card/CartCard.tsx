@@ -2,10 +2,11 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { Product } from "../../interfaces/productInterface";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
-import { useCartContext } from "../../context/CartContext";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Button, IconButton } from "../Button";
+import { useDispatch } from "react-redux";
+import { removeProductFromCart } from "../../store/actions/cartActions";
 
 interface CartItemProps {
   product: Product;
@@ -14,7 +15,12 @@ interface CartItemProps {
 
 const CartCard = ({ product, quantity }: CartItemProps) => {
   const navigate = useNavigate();
-  const { removeFromCart } = useCartContext();
+
+  const dispatch = useDispatch();
+
+  const removeFromCart = (id: number) => {
+    dispatch(removeProductFromCart(id));
+  };
 
   const [isOpen, setIsOpen] = useState(false);
 

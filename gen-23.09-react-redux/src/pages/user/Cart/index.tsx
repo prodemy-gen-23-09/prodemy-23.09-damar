@@ -1,8 +1,10 @@
 import { FormEvent, Fragment, useEffect, useState } from "react";
-import { useCartContext } from "../../../context/CartContext";
 import { CartCard } from "../../../components/Card";
 import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
+import { Product } from "../../../interfaces/productInterface";
 
 interface DeliveryMethod {
   name: string;
@@ -11,8 +13,13 @@ interface DeliveryMethod {
   price: number;
 }
 
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
 const Cart = () => {
-  const { cart } = useCartContext();
+  const cart = useSelector((state: RootState) => state.cart);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [subTotal, setSubTotal] = useState(0);
@@ -71,7 +78,10 @@ const Cart = () => {
 
   useEffect(() => {
     setSubTotal(
-      cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0),
+      cart.reduce(
+        (acc: any, item: any) => acc + item.product.price * item.quantity,
+        0,
+      ),
     );
 
     deliveryMethod
@@ -86,7 +96,7 @@ const Cart = () => {
           <h1 className="px-1 text-2xl font-extrabold">Keranjang</h1>
           <ul className="flex flex-col gap-y-5">
             {cart.length > 0 ? (
-              cart?.map((item) => (
+              cart.map((item: CartItem) => (
                 <li key={item.product.id}>
                   <CartCard product={item.product} quantity={item.quantity} />
                 </li>
@@ -104,7 +114,7 @@ const Cart = () => {
             <h2 className="text-lg font-semibold">Ringkasan Belanja</h2>
             <div>
               <div className="flex flex-row items-center justify-between">
-                <p className="font-medium text-sm">
+                <p className="text-sm font-medium">
                   Total Harga{" "}
                   <span className="ms-1 text-xs font-medium">
                     ({cart.length + " produk"})
