@@ -10,11 +10,12 @@ import EditProduct from "./pages/admin/EditProduct";
 import Register from "./pages/user/Register";
 import Login from "./pages/user/Login";
 import Cart from "./pages/user/Cart";
-import { CartProvider } from "./context/CartContext";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
   return (
-    <CartProvider>
+    <Provider store={store}>
       <Layout>
         <Routes>
           <Route path="/">
@@ -47,7 +48,7 @@ function App() {
           </Route>
         </Routes>
       </Layout>
-    </CartProvider>
+    </Provider>
   );
 }
 
