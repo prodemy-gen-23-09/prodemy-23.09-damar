@@ -1,12 +1,24 @@
 import { ProductDetailProps } from "../../../interfaces/productInterface";
 import { Button, IconButton } from "../../../components/Button";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useCartContext } from "../../../context/CartContext";
+import { Dialog, Transition } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   const [quantityValue, setQuantityValue] = useState(1);
   const { name, images, stock, price } = productDetail;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
 
   const { addToCart } = useCartContext();
 
@@ -89,12 +101,78 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
           <Button
             variant="primary"
             className="w-full"
-            onClick={() =>
-              addToCart({ product: productDetail, quantity: quantityValue })
-            }
+            onClick={() => {
+              addToCart({
+                product: productDetail,
+                quantity: quantityValue,
+              });
+              openModal();
+            }}
           >
             <span>&#43;</span> Keranjang
           </Button>
+          <Transition appear show={isOpen} as={Fragment}>
+            <Dialog as="div" className="relative z-10" onClose={closeModal}>
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <div className="fixed inset-0 bg-black/25" />
+              </Transition.Child>
+
+              <div className="fixed inset-0 overflow-y-auto">
+                <div className="flex min-h-full items-center justify-center p-4 text-center">
+                  <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0 scale-95"
+                    enterTo="opacity-100 scale-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100 scale-100"
+                    leaveTo="opacity-0 scale-95"
+                  >
+                    <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg font-medium leading-6"
+                      >
+                        Berhasil
+                      </Dialog.Title>
+                      <div className="mt-2">
+                        <p className="text-sm text-gray-500">
+                          Produk berhasil ditambahkan ke keranjang
+                        </p>
+                      </div>
+
+                      <div className="mt-4 flex flex-row gap-x-3">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="w-5/12 px-10 font-medium"
+                          onClick={closeModal}
+                        >
+                          OK
+                        </Button>
+                        <Link to="/cart" className="w-7/12">
+                          <Button
+                            variant="primary"
+                            className="w-full font-medium"
+                          >
+                            Lihat Keranjang
+                          </Button>
+                        </Link>
+                      </div>
+                    </Dialog.Panel>
+                  </Transition.Child>
+                </div>
+              </div>
+            </Dialog>
+          </Transition>
           <Button variant="outline" className="w-full">
             Beli Langsung
           </Button>

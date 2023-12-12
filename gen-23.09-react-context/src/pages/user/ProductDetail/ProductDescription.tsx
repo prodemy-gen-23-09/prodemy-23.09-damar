@@ -28,11 +28,7 @@ const ProductDetailDescription = ({ productDetail }: ProductDetailProps) => {
       <h4 className="mb-2 text-lg font-bold">Deskripsi Produk</h4>
       {productDetail.description}
       <div className="my-5 flex w-full flex-row items-center gap-x-3 border border-transparent border-y-gray-100 py-4">
-        <img
-          src="/assets/tokopedia-little-logo.png"
-          alt="tokopedia"
-          className="h-12"
-        />
+        <p className="font-bold text-lg text-primary">tokoungu</p>
         <div className="ms-5 flex grow flex-col">
           <h4 className="line-clamp-1 text-lg font-bold">
             {productDetail.toko.name}

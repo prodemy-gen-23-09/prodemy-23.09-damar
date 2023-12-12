@@ -43,7 +43,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         existingItem.quantity + cartItem.quantity >
         existingItem.product.stock
       ) {
-        alert("Stok tidak mencukupi");
         return;
       }
 
@@ -54,7 +53,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
           quantity: existingItem.quantity + cartItem.quantity,
         },
       ]);
-
       return;
     }
 
