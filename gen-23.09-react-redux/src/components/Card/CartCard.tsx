@@ -18,7 +18,7 @@ const CartCard = ({ product, quantity }: CartItemProps) => {
 
   const dispatch = useDispatch();
 
-  const removeFromCart = (id: number) => {
+  const handleRemoveFromCart = (id: number) => {
     dispatch(removeProductFromCart(id));
   };
 
@@ -105,7 +105,7 @@ const CartCard = ({ product, quantity }: CartItemProps) => {
                           variant="primary"
                           className="me-2 w-1/2"
                           onClick={() => {
-                            removeFromCart(product.id);
+                            handleRemoveFromCart(product.id);
                             closeModal();
                           }}
                         >

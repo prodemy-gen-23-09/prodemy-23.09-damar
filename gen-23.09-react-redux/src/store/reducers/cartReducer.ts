@@ -6,17 +6,20 @@ interface CartItem {
   quantity: number;
 }
 
-const initialState = [] as CartItem[];
+const initialState = { cartData: [] as CartItem[] };
 
-const cartReducer = (state = initialState, action: any) => {
+const cartReducer = (
+  state = initialState,
+  action: any,
+): typeof initialState => {
   switch (action.type) {
     case ADD_ITEM_TO_CART:
-      const cartWithoutTheItem = state.filter(
-        (item: CartItem) => item.product.id !== action.payload.product.id,
+      const cartWithoutTheItem = state.cartData.filter(
+        (item) => item.product.id !== action.payload.product.id,
       );
 
-      const existingItem = state.find(
-        (item: CartItem) => item.product.id === action.payload.product.id,
+      const existingItem = state.cartData.find(
+        (item) => item.product.id === action.payload.product.id,
       );
 
       if (existingItem) {
@@ -27,24 +30,26 @@ const cartReducer = (state = initialState, action: any) => {
           return state;
         }
 
-        return [
-          ...cartWithoutTheItem,
-          {
-            ...existingItem,
-            quantity: existingItem.quantity + action.payload.quantity,
-          },
-        ];
+        return {
+          cartData: [
+            ...cartWithoutTheItem,
+            {
+              ...existingItem,
+              quantity: existingItem.quantity + action.payload.quantity,
+            },
+          ],
+        };
       }
 
-      return [...state, action.payload];
+      return { cartData: [...state.cartData, action.payload] };
 
     case REMOVE_ITEM_FROM_CART:
-      const cartDataAfterItemRemoved = state.filter(
-        (item: CartItem) => item.product.id !== action.payload,
+      const cartDataAfterItemRemoved = state.cartData.filter(
+        (item) => item.product.id !== action.payload,
       );
 
-      return cartDataAfterItemRemoved;
-      
+      return { cartData: cartDataAfterItemRemoved };
+
     default:
       return state;
   }

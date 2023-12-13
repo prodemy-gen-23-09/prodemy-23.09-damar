@@ -23,13 +23,11 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
 
   const dispatch = useDispatch();
 
-  const handleOnSubmit = ({ product, quantity }: any) => {
+  const handleOnSubmit = ({ product, quantity }: any) => {   
     const payload = {
       product,
       quantity,
     };
-
-    console.log(payload);
 
     dispatch(addProductToCart(payload));
   };

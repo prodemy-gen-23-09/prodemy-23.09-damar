@@ -19,7 +19,7 @@ interface CartItem {
 }
 
 const Cart = () => {
-  const cart = useSelector((state: RootState) => state.cart);
+  const { cartData } = useSelector((state: RootState) => state.cart);
   const [paymentMethod, setPaymentMethod] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [subTotal, setSubTotal] = useState(0);
@@ -55,7 +55,7 @@ const Cart = () => {
     e.preventDefault();
 
     const payload = {
-      cart_item: cart,
+      cart_item: cartData,
       total_price: totalPrice,
       delivery_method: {
         name: deliveryMethod?.name,
@@ -69,7 +69,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    if (deliveryMethod && paymentMethod && cart.length > 0) {
+    if (deliveryMethod && paymentMethod && cartData.length > 0) {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
@@ -78,7 +78,7 @@ const Cart = () => {
 
   useEffect(() => {
     setSubTotal(
-      cart.reduce(
+      cartData.reduce(
         (acc: any, item: any) => acc + item.product.price * item.quantity,
         0,
       ),
@@ -87,7 +87,7 @@ const Cart = () => {
     deliveryMethod
       ? setTotalPrice(subTotal + deliveryMethod.price)
       : setTotalPrice(subTotal);
-  }, [cart, deliveryMethod, subTotal]);
+  }, [cartData, deliveryMethod, subTotal]);
 
   return (
     <main className="m-5 flex min-h-screen flex-col gap-y-2 overflow-x-auto xl:container sm:mx-10 lg:mx-auto lg:mb-10">
@@ -95,8 +95,8 @@ const Cart = () => {
         <div className="flex flex-1 flex-col gap-y-3 ">
           <h1 className="px-1 text-2xl font-extrabold">Keranjang</h1>
           <ul className="flex flex-col gap-y-5">
-            {cart.length > 0 ? (
-              cart.map((item: CartItem) => (
+            {cartData.length > 0 ? (
+              cartData.map((item: CartItem) => (
                 <li key={item.product.id}>
                   <CartCard product={item.product} quantity={item.quantity} />
                 </li>
@@ -106,7 +106,7 @@ const Cart = () => {
             )}
           </ul>
         </div>
-        {cart.length > 0 && (
+        {cartData.length > 0 && (
           <form
             className="flex h-fit flex-col gap-y-2 rounded-xl border border-gray-200 p-5 md:w-4/12"
             onSubmit={(e) => handleOnSubmit(e)}
@@ -117,7 +117,7 @@ const Cart = () => {
                 <p className="text-sm font-medium">
                   Total Harga{" "}
                   <span className="ms-1 text-xs font-medium">
-                    ({cart.length + " produk"})
+                    ({cartData.length + " produk"})
                   </span>
                 </p>
                 <p className="font-medium">
