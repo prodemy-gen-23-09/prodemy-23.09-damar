@@ -19,6 +19,12 @@ export interface LoginUserRequest {
   password: string;
 }
 
+export interface UserResponse {
+  name: string;
+  email: string;
+  role: string;
+}
+
 export interface RegisterUserRequest {
   name: string;
   email: string;
@@ -27,8 +33,6 @@ export interface RegisterUserRequest {
   createdAt: string;
 }
 
-export interface UserResponse {
-  name: string;
-  email: string;
-  message: string;
-}
+export interface RegisterUserResponse extends UserResponse {}
+
+export interface LoginUserResponse extends UserResponse {}

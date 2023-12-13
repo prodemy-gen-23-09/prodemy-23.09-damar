@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Button, IconButton } from "../Button";
-import { removeProductFromCart } from "../../store/slices/cartSlices";
+import { removeProductFromCart } from "../../store/slices/cartSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { CartItem } from "../../interfaces/cartInterface";
 

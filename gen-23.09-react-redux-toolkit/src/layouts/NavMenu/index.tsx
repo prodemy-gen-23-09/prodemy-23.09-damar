@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 interface NavMenuProps {
   isLoggedIn: boolean;
-  handleRegister?: () => void;
 }
 
 const NavMenu = ({ isLoggedIn }: NavMenuProps) => {
