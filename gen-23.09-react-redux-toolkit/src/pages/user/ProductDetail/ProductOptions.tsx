@@ -4,13 +4,15 @@ import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { Dialog, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
-import { addProductToCart } from "../../../store/slices/cartSlices";
-import { useAppDispatch } from "../../../store/hooks";
+import { addProductToCart } from "../../../store/slices/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
-  const [quantityValue, setQuantityValue] = useState(1);
+  const { userData } = useAppSelector((state) => state.user);
   const { name, images, stock, price } = productDetail;
 
+  const [quantityValue, setQuantityValue] = useState(1);
+  const [isDisabled, setIsDisabled] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -23,7 +25,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
 
   const dispatch = useAppDispatch();
 
-  const handleOnSubmit = ({ product, quantity }: any) => {   
+  const handleOnSubmit = ({ product, quantity }: any) => {
     const payload = {
       product,
       quantity,
@@ -72,6 +74,14 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
     }
   };
 
+  useEffect(() => {
+    if (userData === null) {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  }, [userData])
+
   return (
     <>
       <div className="sticky top-32 hidden w-3/12 flex-col gap-y-5 rounded-lg border border-gray-200 p-4 md:flex">
@@ -109,8 +119,9 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
         </div>
         <div className="flex flex-col gap-y-3">
           <Button
+            disabled={isDisabled}
             variant="primary"
-            className="w-full"
+            className="w-full disabled:opacity-25 disabled:bg-primary hover:disabled:cursor-not-allowed"
             onClick={() => {
               handleOnSubmit({
                 product: productDetail,

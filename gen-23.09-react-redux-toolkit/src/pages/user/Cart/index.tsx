@@ -3,6 +3,7 @@ import { CartCard } from "../../../components/Card";
 import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
 import { useAppSelector } from "../../../store/hooks";
+import { useNavigate } from "react-router-dom";
 
 interface DeliveryMethod {
   name: string;
@@ -13,11 +14,18 @@ interface DeliveryMethod {
 
 const Cart = () => {
   const { cartData } = useAppSelector((state) => state.cart);
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const { userData } = useAppSelector((state) => state.user);
+
+  const navigate = useNavigate();
+
   const [isDisabled, setIsDisabled] = useState(true);
+
   const [subTotal, setSubTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(subTotal);
 
+  const [deliveryMethod, setDeliveryMethod] = useState<DeliveryMethod | null>(
+    null,
+  );
   const deliveryMethodOptions = [
     { name: "JNT", value: "jnt", estimation: "1-2 hari", price: 11000 },
     {
@@ -34,10 +42,7 @@ const Cart = () => {
     },
   ];
 
-  const [deliveryMethod, setDeliveryMethod] = useState<DeliveryMethod | null>(
-    null,
-  );
-
+  const [paymentMethod, setPaymentMethod] = useState("");
   const paymentMethodOptions = [
     { name: "Gopay", value: "gopay", logo: "/assets/gopay-logo.png" },
     { name: "LinkAja", value: "link-aja", logo: "/assets/linkaja-logo.png" },
@@ -48,6 +53,10 @@ const Cart = () => {
     e.preventDefault();
 
     const payload = {
+      user: {
+        name: userData?.name,
+        email: userData?.email,
+      },
       cart_item: cartData,
       total_price: totalPrice,
       delivery_method: {
@@ -60,6 +69,12 @@ const Cart = () => {
 
     console.log(payload);
   };
+
+  useEffect(() => {
+    if (userData === null) {
+      navigate("/login");
+    }
+  }, [userData]);
 
   useEffect(() => {
     if (deliveryMethod && paymentMethod && cartData.length > 0) {
@@ -101,7 +116,7 @@ const Cart = () => {
         </div>
         {cartData.length > 0 && (
           <form
-            className="flex h-fit flex-col gap-y-2 rounded-xl border border-gray-200 p-5 md:w-4/12"
+            className="sticky top-1 flex h-fit flex-col gap-y-2 rounded-xl border border-gray-200 p-5 md:w-4/12"
             onSubmit={(e) => handleOnSubmit(e)}
           >
             <h2 className="text-lg font-semibold">Ringkasan Belanja</h2>
