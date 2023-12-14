@@ -2,8 +2,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Button } from "../../../components/Button";
-import { registerUser } from "../../../lib/axios/userAxios";
-import { RegisterUserSchema } from "../../../interfaces/userInterface";
+import { registerUser } from "../../../lib/axios/authAxios";
+import {
+  RegisterUserRequest,
+  RegisterUserSchema,
+} from "../../../interfaces/userInterface";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const registerSchema: yup.ObjectSchema<RegisterUserSchema> = yup
@@ -11,7 +15,10 @@ const Register = () => {
     .shape({
       name: yup.string().required("nama harus diisi"),
       email: yup.string().email().required("email harus diisi"),
-      password: yup.string().min(8, "password setidaknya harus terdiri dari 8 karakter").required("password harus diisi"),
+      password: yup
+        .string()
+        .min(8, "password setidaknya harus terdiri dari 8 karakter")
+        .required("password harus diisi"),
       confirmPassword: yup
         .string()
         .oneOf([yup.ref("password")], "password tidak sama")
@@ -27,20 +34,23 @@ const Register = () => {
     resolver: yupResolver(registerSchema),
   });
 
+  const navigate = useNavigate();
+
   const handleOnSubmit = async (data: RegisterUserSchema) => {
-    const payload = {
-      name: data.name,
+    const payload: RegisterUserRequest = {
       email: data.email,
       password: data.password,
+      name: data.name,
       role: "user",
-      createdAt: new Date().toISOString(),
     };
 
     await registerUser(payload)
-      .then((res) => console.log(res))
-      .finally(() => alert("Berhasil mendaftar"));
-
-    reset();
+      .then(() => {
+        alert("Berhasil mendaftar, silahkan login");
+        navigate("/login");
+      })
+      .catch((err) => alert(err.message))
+      .finally(() => reset());
   };
 
   return (

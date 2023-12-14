@@ -8,12 +8,20 @@ import {
 } from "react-icons/ai";
 import { Button, IconButton, IconLinkButton } from "../../components/Button";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
+import { resetAuth } from "../../store/slices/authSlice";
 
 interface NavMenuProps {
   isLoggedIn: boolean;
 }
 
 const NavMenu = ({ isLoggedIn }: NavMenuProps) => {
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(resetAuth());
+  };
+
   if (isLoggedIn)
     return (
       <IconContext.Provider value={{ size: "100%" }}>
@@ -35,14 +43,15 @@ const NavMenu = ({ isLoggedIn }: NavMenuProps) => {
             title="cart"
             className="h-8 self-center md:h-10"
           />
-          <IconLinkButton
+          <IconButton
             icon={<AiOutlineUser />}
-            to="/profile"
+            onClick={handleLogout}
             title="profile"
-            className="hidden md:block md:h-10"
+            className="hidden md:block md:h-10 p-1 hover:bg-gray-200 rounded-full"
           />
           <IconButton
             icon={<AiOutlineMenu />}
+
             title="menu"
             className="h-8 md:hidden"
           />
@@ -52,7 +61,7 @@ const NavMenu = ({ isLoggedIn }: NavMenuProps) => {
 
   return (
     <nav className="flex flex-row items-center gap-x-3">
-      <Link to="/login" >
+      <Link to="/login">
         <Button variant="primary" className="w-32">
           Masuk{" "}
         </Button>

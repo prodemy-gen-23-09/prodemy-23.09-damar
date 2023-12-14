@@ -290,20 +290,25 @@
   ],
   "users": [
     {
-      "id": 1,
-      "name": "Damar Anshary",
-      "email": "damar@admin.com",
-      "password": "damar123",
+      "email": "damar@email.com",
+      "password": "$2a$10$UGXl.QqXhTmnpF1bV9qml.CvrpUdpNPxYAzn5pc2e4PDU/r31pmSu",
+      "name": "damar",
       "role": "admin",
-      "createdAt": "2023-12-11T00:00:00.000Z"
+      "id": 1
     },
     {
-      "name": "Damar ",
-      "email": "damar@email.com",
-      "password": "hahaha123",
+      "email": "damar@user.com",
+      "password": "$2a$10$lMyBu/loFJvUYMBRiXfJhe2dipwAPYFzXL0eZ/doJBsaQU1BrEsAS",
+      "name": "damar",
       "role": "user",
-      "createdAt": "2023-12-11T01:00:27.861Z",
       "id": 2
+    },
+    {
+      "email": "user1@email.com",
+      "password": "$2a$10$GSYgKY2Zdtki4lb9JYwAm./5NcSnokI01Lqm3jgg0Pg31DwjVSsZS",
+      "name": "user 1",
+      "role": "user",
+      "id": 3
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Link, createSearchParams, useNavigate } from "react-router-dom";
 
 import { IconContext } from "react-icons";
@@ -10,9 +10,10 @@ import { useAppSelector } from "../../store/hooks";
 import { RootState } from "../../store";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const { userData } = useAppSelector((state: RootState) => state.user);
+  const isLoggedIn = useAppSelector(
+    (state: RootState) => state.auth.accessToken !== "",
+  );
 
   const navigate = useNavigate();
 
@@ -29,14 +30,6 @@ const Header = () => {
       }).toString(),
     });
   };
-
-  useEffect(() => {
-    if (userData) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, [userData]);
 
   return (
     <header className="sticky left-0 top-0 z-10 flex w-full flex-row items-center justify-between gap-x-5 border border-x-transparent border-t-transparent bg-white px-3 py-4 md:justify-start md:gap-x-8 md:px-4 md:py-6 lg:px-10 xl:px-12">

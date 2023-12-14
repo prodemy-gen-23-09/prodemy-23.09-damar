@@ -1,7 +1,7 @@
 import { Button } from "../../../components/Button";
-import { loginUser } from "../../../lib/axios/userAxios";
+import { loginUser } from "../../../lib/axios/authAxios";
 import { useAppDispatch } from "../../../store/hooks";
-import { setUser } from "../../../store/slices/userSlice";
+import { setAccessToken, setUser } from "../../../store/slices/authSlice";
 import * as yup from "yup";
 import { LoginUserRequest } from "../../../interfaces/userInterface";
 import { useForm } from "react-hook-form";
@@ -29,23 +29,14 @@ const Login = () => {
       email: data.email,
       password: data.password,
     };
-    const existingUser = await loginUser(payload);
-
-    if (existingUser.length < 1) {
-      alert("Login gagal");
-      reset();
-      return;
-    }
-
-    dispatch(
-      setUser({
-        name: existingUser[0].name,
-        email: existingUser[0].email,
-        role: existingUser[0].role,
-      }),
-    );
-
-    navigate("/");
+    await loginUser(payload)
+      .then((res) => {
+        dispatch(setUser(res.user));
+        dispatch(setAccessToken(res.accessToken));
+        navigate("/");
+      })
+      .catch((err) => alert(err.message))
+      .finally(() => reset());
   };
 
   return (
@@ -73,7 +64,9 @@ const Login = () => {
             className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
             {...register("password")}
           />
-          <span className="text-xs text-red-500">{errors.password?.message}</span>
+          <span className="text-xs text-red-500">
+            {errors.password?.message}
+          </span>
         </div>
         <div className="flex w-full">
           <Button

@@ -46,7 +46,7 @@ const AddProduct = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col bg-gray-100">
+    <main className="flex min-h-screen flex-col">
       <ProductForm
         title="Tambah Produk"
         formRef={formRef}

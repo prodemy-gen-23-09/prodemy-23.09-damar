@@ -54,7 +54,7 @@ const EditProduct = () => {
   if (isError) return <div>Error...</div>;
 
   return (
-    <main className="flex min-h-screen flex-col bg-gray-100">
+    <main className="flex min-h-screen flex-col">
       <ProductForm
         title="Edit Produk"
         formRef={formRef}

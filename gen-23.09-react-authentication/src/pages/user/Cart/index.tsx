@@ -3,7 +3,6 @@ import { CartCard } from "../../../components/Card";
 import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
 import { useAppSelector } from "../../../store/hooks";
-import { useNavigate } from "react-router-dom";
 
 interface DeliveryMethod {
   name: string;
@@ -14,9 +13,7 @@ interface DeliveryMethod {
 
 const Cart = () => {
   const { cartData } = useAppSelector((state) => state.cart);
-  const { userData } = useAppSelector((state) => state.user);
-
-  const navigate = useNavigate();
+  const { user: userData } = useAppSelector((state) => state.auth);
 
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -69,12 +66,6 @@ const Cart = () => {
 
     console.log(payload);
   };
-
-  useEffect(() => {
-    if (userData === null) {
-      navigate("/login");
-    }
-  }, [userData]);
 
   useEffect(() => {
     if (deliveryMethod && paymentMethod && cartData.length > 0) {

@@ -20,19 +20,21 @@ export interface LoginUserRequest {
 }
 
 export interface UserResponse {
+  id: number;
   name: string;
   email: string;
   role: string;
 }
 
-export interface RegisterUserRequest {
-  name: string;
-  email: string;
-  password: string;
-  role?: string;
-  createdAt: string;
+export interface AuthResponse {
+  accessToken: string;
+  user: UserResponse;
 }
 
-export interface RegisterUserResponse extends UserResponse {}
-
-export interface LoginUserResponse extends UserResponse {}
+export interface RegisterUserRequest {
+  email: string;
+  password: string;
+  name: string;
+  role: "user" | "admin";
+  createdAt?: string;
+}
