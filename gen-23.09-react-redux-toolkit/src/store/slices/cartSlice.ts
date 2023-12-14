@@ -31,6 +31,8 @@ export const cartSlice = createSlice({
             quantity: existingItem.quantity + action.payload.quantity,
           },
         ];
+        
+        return;
       }
 
       state.cartData = [...state.cartData, action.payload];

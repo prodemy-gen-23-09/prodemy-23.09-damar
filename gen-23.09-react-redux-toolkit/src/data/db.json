@@ -299,9 +299,8 @@
     },
     {
       "name": "Damar ",
-      "email": "damar@amin.com",
+      "email": "damar@email.com",
       "password": "hahaha123",
-      "confirmPassword": "hahaha123",
       "role": "user",
       "createdAt": "2023-12-11T01:00:27.861Z",
       "id": 2
