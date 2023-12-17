@@ -2,7 +2,11 @@ import { FormEvent, Fragment, useEffect, useState } from "react";
 import { CartCard } from "../../../components/Card";
 import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
-import { useAppSelector } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { getCart } from "../../../lib/swr/cartSWR";
+import { getProductById } from "../../../lib/swr/productSWR";
+import { setCart } from "../../../store/slices/cartSlice";
+// import { CartItem } from "../../../interfaces/cartInterface";
 
 interface DeliveryMethod {
   name: string;
@@ -12,10 +16,13 @@ interface DeliveryMethod {
 }
 
 const Cart = () => {
-  const { cartData } = useAppSelector((state) => state.cart);
+  // const { cartData } = useAppSelector((state) => state.cart);
   const { user: userData } = useAppSelector((state) => state.auth);
+  // const dispatch = useAppDispatch();
 
-  const [isDisabled, setIsDisabled] = useState(true);
+  const { data: cartData, isError, isLoading } = getCart(userData?.id);
+
+  const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
 
   const [subTotal, setSubTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(subTotal);
@@ -51,6 +58,7 @@ const Cart = () => {
 
     const payload = {
       user: {
+        id: userData?.id,
         name: userData?.name,
         email: userData?.email,
       },
@@ -68,25 +76,30 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    if (deliveryMethod && paymentMethod && cartData.length > 0) {
-      setIsDisabled(false);
+    if (deliveryMethod && paymentMethod && cartData && cartData.length > 0) {
+      setButtonIsDisabled(false);
     } else {
-      setIsDisabled(true);
+      setButtonIsDisabled(true);
     }
   }, [deliveryMethod, paymentMethod]);
 
   useEffect(() => {
-    setSubTotal(
-      cartData.reduce(
-        (acc, item) => acc + item.product.price * item.quantity,
-        0,
-      ),
-    );
+    cartData &&
+      setSubTotal(
+        10,
+        // cartData.reduce(
+        //   (acc, item) => acc + item.product!.price! * item.quantity,
+        //   0,
+        // ),
+      );
 
     deliveryMethod
       ? setTotalPrice(subTotal + deliveryMethod.price)
       : setTotalPrice(subTotal);
   }, [cartData, deliveryMethod, subTotal]);
+
+  if (isError) return <div>Error</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <main className="m-5 flex min-h-screen flex-col gap-y-2 overflow-x-auto xl:container sm:mx-10 lg:mx-auto lg:mb-10">
@@ -94,10 +107,15 @@ const Cart = () => {
         <div className="flex flex-1 flex-col gap-y-3 ">
           <h1 className="px-1 text-2xl font-extrabold">Keranjang</h1>
           <ul className="flex flex-col gap-y-5">
-            {cartData.length > 0 ? (
+            {cartData && cartData.length > 0 ? (
               cartData.map((item) => (
-                <li key={item.product.id}>
-                  <CartCard product={item.product} quantity={item.quantity} />
+                <li key={item.id}>
+                  <CartCard
+                    userId={item.userId}
+                    productId={item.productId}
+                    quantity={item.quantity}
+                    id={item.id}
+                  />
                 </li>
               ))
             ) : (
@@ -105,7 +123,7 @@ const Cart = () => {
             )}
           </ul>
         </div>
-        {cartData.length > 0 && (
+        {cartData && cartData.length > 0 && (
           <form
             className="sticky top-1 flex h-fit flex-col gap-y-2 rounded-xl border border-gray-200 p-5 md:w-4/12"
             onSubmit={(e) => handleOnSubmit(e)}
@@ -205,7 +223,7 @@ const Cart = () => {
               variant="primary"
               className={`mt-2 w-full disabled:bg-gray-100 disabled:hover:cursor-not-allowed`}
               type="submit"
-              disabled={isDisabled}
+              disabled={buttonIsDisabled}
             >
               Bayar
             </Button>

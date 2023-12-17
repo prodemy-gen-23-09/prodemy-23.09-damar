@@ -4,12 +4,16 @@ import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { Dialog, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
-import { addProductToCart } from "../../../store/slices/cartSlice";
+// import { addProductToCart } from "../../../store/slices/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { RootState } from "../../../store";
+import { addProductToCart } from "../../../lib/axios/cartAxios";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
-  const isLoggedIn = useAppSelector((state: RootState) => state.auth.accessToken !== "");
+  const isLoggedIn = useAppSelector(
+    (state: RootState) => state.auth.accessToken !== "",
+  );
+  const { user: userData } = useAppSelector((state: RootState) => state.auth);
   const { name, images, stock, price } = productDetail;
 
   const [quantityValue, setQuantityValue] = useState(1);
@@ -23,15 +27,17 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
     setIsOpen(true);
   };
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  const handleOnSubmit = ({ product, quantity }: any) => {
+  const handleOnSubmit = ({ productId, quantity }: any) => {
     const payload = {
-      product,
+      userId: userData.id,
+      productId,
       quantity,
     };
 
-    dispatch(addProductToCart(payload));
+    addProductToCart(payload);
+    // dispatch(addProductToCart(payload));
   };
 
   const [isDecrementButtonDisabled, setIsDecrementButtonDisabled] =
@@ -113,10 +119,10 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
           <Button
             disabled={!isLoggedIn}
             variant="primary"
-            className="w-full disabled:opacity-25 disabled:bg-primary hover:disabled:cursor-not-allowed"
+            className="w-full disabled:bg-primary disabled:opacity-25 hover:disabled:cursor-not-allowed"
             onClick={() => {
               handleOnSubmit({
-                product: productDetail,
+                productId: productDetail.id,
                 quantity: quantityValue,
               });
               openModal();
@@ -186,7 +192,11 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
               </div>
             </Dialog>
           </Transition>
-          <Button variant="outline" className="w-full disabled:hidden" disabled={!isLoggedIn}>
+          <Button
+            variant="outline"
+            className="w-full disabled:hidden"
+            disabled={!isLoggedIn}
+          >
             Beli Langsung
           </Button>
         </div>

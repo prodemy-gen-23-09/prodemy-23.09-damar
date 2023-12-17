@@ -4,18 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Button, IconButton } from "../Button";
-import { removeProductFromCart } from "../../store/slices/cartSlice";
+// import { removeProductFromCart } from "../../store/slices/cartSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { CartItem } from "../../interfaces/cartInterface";
+import { getProductById } from "../../lib/swr/productSWR";
+import { deleteProductFromCart } from "../../lib/axios/cartAxios";
 
-const CartCard = ({ product, quantity }: CartItem) => {
+const CartCard = ({ productId, quantity, id }: CartItem) => {
+  const { product } = getProductById(productId);
   const navigate = useNavigate();
-
-  const dispatch = useAppDispatch();
+  
+  // const dispatch = useAppDispatch();
 
   const handleRemoveFromCart = (id: number) => {
-    dispatch(removeProductFromCart(id));
-  };
+    deleteProductFromCart(id);
+  }
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,8 +34,8 @@ const CartCard = ({ product, quantity }: CartItem) => {
     <div className="flex flex-row items-center gap-x-5 rounded-xl border border-gray-200 px-10 py-5">
       <div className="me-5 sm:w-24 md:w-32">
         <img
-          src={product.images[0]}
-          alt={product.name}
+          src={product?.images[0]}
+          alt={product?.name}
           className="h-20 rounded-xl"
         />
       </div>
@@ -40,13 +43,13 @@ const CartCard = ({ product, quantity }: CartItem) => {
         <div className="flex flex-col">
           <h2
             className="line-clamp-1 text-base hover:cursor-pointer"
-            onClick={() => navigate(`/products/${product.id}`)}
+            onClick={() => navigate(`/products/${product?.id}`)}
           >
-            {product.name}
+            {product?.name}
           </h2>
-          <p className="text-xs text-gray-500">{product.toko.name}</p>
+          <p className="text-xs text-gray-500">{product?.toko.name}</p>
           <p className="mt-1 font-semibold">
-            {"Rp. " + product.price.toLocaleString("id-ID")}
+            {"Rp. " + product?.price.toLocaleString("id-ID")}
           </p>
         </div>
         <div className="flex flex-col items-center gap-y-2">
@@ -100,7 +103,7 @@ const CartCard = ({ product, quantity }: CartItem) => {
                           variant="primary"
                           className="me-2 w-1/2"
                           onClick={() => {
-                            handleRemoveFromCart(product.id);
+                            handleRemoveFromCart(id);
                             closeModal();
                           }}
                         >
