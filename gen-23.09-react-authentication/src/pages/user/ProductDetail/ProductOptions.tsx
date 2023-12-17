@@ -186,7 +186,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
               </div>
             </Dialog>
           </Transition>
-          <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full disabled:hidden" disabled={!isLoggedIn}>
             Beli Langsung
           </Button>
         </div>

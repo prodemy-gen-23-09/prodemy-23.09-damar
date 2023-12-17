@@ -14,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
   if (isAdmin) {
     return (
       <div className="flex flex-row gap-x-10 pe-5">
-        <div className="w-fit xl:w-1/12">
+        <div className="w-fit">
           <Sidebar />
         </div>
         <div className="flex-1">{children}</div>
