@@ -4,6 +4,7 @@ import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
 import { useAppSelector } from "../../../store/hooks";
 import { getCart } from "../../../lib/swr/cartSWR";
+import { fetchProduct } from "../../../lib/axios/productAxios";
 
 interface DeliveryMethod {
   name: string;
@@ -16,6 +17,8 @@ const Cart = () => {
   // const { cartData } = useAppSelector((state) => state.cart);
   const { user: userData } = useAppSelector((state) => state.auth);
   // const dispatch = useAppDispatch();
+
+  const [cartItems, setCartItems] = useState<any[]>([]);
 
   const { data: cartData, isError, isLoading } = getCart(userData?.id);
 
@@ -81,18 +84,35 @@ const Cart = () => {
   }, [deliveryMethod, paymentMethod]);
 
   useEffect(() => {
-    cartData &&
-      setSubTotal(10
-        // cartItems.reduce(
-        //   (acc, item) => acc + item.product!.price! * item.quantity,
-        //   0,
-        // ),
+    cartItems &&
+      setSubTotal(
+        cartItems.reduce(
+          (acc, item) => acc + item.price * item.quantity,
+          0,
+        ),
       );
 
     deliveryMethod
       ? setTotalPrice(subTotal + deliveryMethod.price)
       : setTotalPrice(subTotal);
-  }, [cartData, deliveryMethod, subTotal]);
+  }, [cartItems, deliveryMethod, subTotal]);
+
+  useEffect(() => {
+    if (cartData && cartData.length > 0) {
+      Promise.all(
+        cartData.map(async (item) => {
+          return fetchProduct(
+            `http://localhost:8080/products/${item.productId}`,
+          ).then((res) => ({
+            price: res.price,
+            quantity: item.quantity,
+          }));
+        }),
+      ).then((resolvedCartItems) => {
+        setCartItems(resolvedCartItems);
+      });
+    }
+  }, [cartData]);
 
   if (isError) return <div>Error</div>;
   if (isLoading) return <div>Loading...</div>;

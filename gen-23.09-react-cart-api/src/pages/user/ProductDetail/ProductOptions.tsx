@@ -4,8 +4,7 @@ import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { Dialog, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
-// import { addProductToCart } from "../../../store/slices/cartSlice";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { useAppSelector } from "../../../store/hooks";
 import { RootState } from "../../../store";
 import {
   addProductToCart,
@@ -41,18 +40,18 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
       quantity,
     };
 
-    const isProductAlreadyInCart = cartData?.find(
+    const itemExisting = cartData?.find(
       (item) => item.productId === productId,
     );
 
-    if (isProductAlreadyInCart) {
-      if (isProductAlreadyInCart.quantity + quantity > stock) {
+    if (itemExisting) {
+      if (itemExisting.quantity + quantity > stock) {
         return;
       }
 
       updateProductQuantityInCart({
-        cartItemId: isProductAlreadyInCart.id,
-        quantity: isProductAlreadyInCart.quantity + quantity,
+        cartItemId: itemExisting.id,
+        quantity: itemExisting.quantity + quantity,
       });
 
       return;

@@ -30,7 +30,7 @@ export const updateProduct = async (
   body: ProductRequest,
 ): Promise<ProductResponse> => {
   const data = await axios
-    .put(`http://localhost:8080/products/${id}`, body)
+    .patch(`http://localhost:8080/products/${id}`, body)
     .then((res) => res.data);
 
   return data;

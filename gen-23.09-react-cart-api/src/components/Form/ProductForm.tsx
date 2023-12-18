@@ -77,7 +77,6 @@ const ProductForm = ({
           accept="image/jpeg, image/png"
           name="images"
           multiple
-          required
         />
       </div>
       <div className="mt-4 flex flex-col gap-y-2">

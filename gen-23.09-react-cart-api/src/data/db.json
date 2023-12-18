@@ -138,7 +138,7 @@
     {
       "id": 8,
       "name": "Adidas Black Sneakers Casual",
-      "price": 250000,
+      "price": 1250000,
       "images": [
         "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
         "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Adidas_Biru_xvrr5q.png",
@@ -152,9 +152,9 @@
       "toko": {
         "name": "Tokoungu Official",
         "rating": 4.9,
-        "location": "Jakarta Pusat"
+        "location": "Jakarta Barat"
       },
-      "createdAt": "2022-12-12T00:00:00.000Z"
+      "createdAt": "2023-12-18T01:50:42.726Z"
     },
     {
       "id": 9,
@@ -326,18 +326,6 @@
       "id": 1
     },
     {
-      "userId": 4,
-      "productId": 2,
-      "quantity": 13,
-      "id": 2
-    },
-    {
-      "userId": 4,
-      "productId": 4,
-      "quantity": 5,
-      "id": 3
-    },
-    {
       "userId": 2,
       "productId": 5,
       "quantity": 18,
@@ -345,15 +333,27 @@
     },
     {
       "userId": 4,
-      "productId": 6,
+      "productId": 8,
       "quantity": 5,
-      "id": 7
+      "id": 8
     },
     {
       "userId": 4,
-      "productId": 8,
-      "quantity": 3,
-      "id": 8
+      "productId": 6,
+      "quantity": 1,
+      "id": 9
+    },
+    {
+      "userId": 4,
+      "productId": 9,
+      "quantity": 1,
+      "id": 10
+    },
+    {
+      "userId": 4,
+      "productId": 5,
+      "quantity": 1,
+      "id": 11
     }
   ]
 }

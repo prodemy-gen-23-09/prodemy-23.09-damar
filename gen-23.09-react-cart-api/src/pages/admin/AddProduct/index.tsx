@@ -26,6 +26,11 @@ const AddProduct = () => {
       rating: 4.9,
       location: "Jakarta Barat",
     };
+    
+    if (productImages.length === 0) {
+      alert("Gambar produk harus diisi");
+      return;
+    }
 
     const payload: ProductRequest = {
       ...data,

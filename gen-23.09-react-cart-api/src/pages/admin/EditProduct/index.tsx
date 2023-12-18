@@ -32,12 +32,22 @@ const EditProduct = () => {
       location: "Jakarta Barat",
     };
 
-    const payload: ProductRequest = {
-      ...data,
-      toko: toko,
-      images: productImages,
-      createdAt: new Date().toISOString(),
-    };
+    let payload: ProductRequest;
+
+    if (productImages.length > 0) {
+      payload = {
+        ...data,
+        toko: toko,
+        images: productImages,
+        createdAt: new Date().toISOString(),
+      };
+    } else {
+      payload = {
+        ...data,
+        toko: toko,
+        createdAt: new Date().toISOString(),
+      };
+    }
 
     await updateProduct(Number(productId), payload)
       .then((res) => {

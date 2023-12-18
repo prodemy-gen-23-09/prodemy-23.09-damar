@@ -43,7 +43,7 @@ export interface ProductRequest {
   name: string;
   price: number;
   description: string;
-  images: String[];
+  images?: String[];
   toko: Toko;
   stock: number;
   category: string;

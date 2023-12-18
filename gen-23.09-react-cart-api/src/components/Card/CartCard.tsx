@@ -12,12 +12,12 @@ import { deleteProductFromCart } from "../../lib/axios/cartAxios";
 const CartCard = ({ productId, quantity, id }: CartItem) => {
   const { product } = getProductById(productId);
   const navigate = useNavigate();
-  
+
   // const dispatch = useAppDispatch();
 
   const handleRemoveFromCart = (id: number) => {
     deleteProductFromCart(id);
-  }
+  };
 
   const [isOpen, setIsOpen] = useState(false);
 
