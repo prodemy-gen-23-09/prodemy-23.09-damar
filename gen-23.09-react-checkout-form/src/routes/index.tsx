@@ -12,6 +12,7 @@ import AddProduct from "../pages/admin/AddProduct";
 import AdminRoutes from "./PrivateRoutes/AdminRoutes";
 import GuestRoutes from "./PrivateRoutes/GuestRoutes";
 import UserRoutes from "./PrivateRoutes/UserRoutes";
+import Checkout from "../pages/user/Checkout";
 
 const AppRouter = () => {
   return (
@@ -27,7 +28,7 @@ const AppRouter = () => {
           <Route element={<UserRoutes />}>
             <Route path="/profile" element={<div>profile</div>} />
             <Route path="/wishlist" element={<div>wishlist</div>} />
-            <Route path="/checkout" element={<div>checkout</div>} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="/order" element={<div>order</div>} />
             <Route path="/cart" element={<Cart />} />
           </Route>
