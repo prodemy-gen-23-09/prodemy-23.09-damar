@@ -18,7 +18,7 @@ const Cart = () => {
   const { user: userData } = useAppSelector((state) => state.auth);
   // const dispatch = useAppDispatch();
 
-  const [cartItems, setCartItems] = useState<any[]>([]);
+  const [cartItemsPriceAndQuantity, setCartItemsPriceAndQuantity] = useState<any[]>([]);
 
   const { data: cartData, isError, isLoading } = getCart(userData?.id);
 
@@ -84,9 +84,9 @@ const Cart = () => {
   }, [deliveryMethod, paymentMethod]);
 
   useEffect(() => {
-    cartItems &&
+    cartItemsPriceAndQuantity &&
       setSubTotal(
-        cartItems.reduce(
+        cartItemsPriceAndQuantity.reduce(
           (acc, item) => acc + item.price * item.quantity,
           0,
         ),
@@ -95,7 +95,7 @@ const Cart = () => {
     deliveryMethod
       ? setTotalPrice(subTotal + deliveryMethod.price)
       : setTotalPrice(subTotal);
-  }, [cartItems, deliveryMethod, subTotal]);
+  }, [cartItemsPriceAndQuantity, deliveryMethod, subTotal]);
 
   useEffect(() => {
     if (cartData && cartData.length > 0) {
@@ -109,7 +109,7 @@ const Cart = () => {
           }));
         }),
       ).then((resolvedCartItems) => {
-        setCartItems(resolvedCartItems);
+        setCartItemsPriceAndQuantity(resolvedCartItems);
       });
     }
   }, [cartData]);

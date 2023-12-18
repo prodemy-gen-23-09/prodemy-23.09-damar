@@ -345,15 +345,15 @@
     },
     {
       "userId": 4,
-      "productId": 9,
-      "quantity": 1,
-      "id": 10
-    },
-    {
-      "userId": 4,
       "productId": 5,
       "quantity": 1,
       "id": 11
+    },
+    {
+      "userId": 4,
+      "productId": 7,
+      "quantity": 7,
+      "id": 12
     }
   ]
 }
