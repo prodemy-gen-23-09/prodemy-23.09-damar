@@ -5,7 +5,6 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Button, IconButton } from "../Button";
 // import { removeProductFromCart } from "../../store/slices/cartSlice";
-import { useAppDispatch } from "../../store/hooks";
 import { CartItem } from "../../interfaces/cartInterface";
 import { getProductById } from "../../lib/swr/productSWR";
 import { deleteProductFromCart } from "../../lib/axios/cartAxios";

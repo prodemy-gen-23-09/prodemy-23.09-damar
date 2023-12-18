@@ -7,13 +7,18 @@ import { Link } from "react-router-dom";
 // import { addProductToCart } from "../../../store/slices/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { RootState } from "../../../store";
-import { addProductToCart } from "../../../lib/axios/cartAxios";
+import {
+  addProductToCart,
+  updateProductQuantityInCart,
+} from "../../../lib/axios/cartAxios";
+import { getCart } from "../../../lib/swr/cartSWR";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   const isLoggedIn = useAppSelector(
     (state: RootState) => state.auth.accessToken !== "",
   );
   const { user: userData } = useAppSelector((state: RootState) => state.auth);
+  const { data: cartData } = getCart(userData?.id);
   const { name, images, stock, price } = productDetail;
 
   const [quantityValue, setQuantityValue] = useState(1);
@@ -35,6 +40,23 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
       productId,
       quantity,
     };
+
+    const isProductAlreadyInCart = cartData?.find(
+      (item) => item.productId === productId,
+    );
+
+    if (isProductAlreadyInCart) {
+      if (isProductAlreadyInCart.quantity + quantity > stock) {
+        return;
+      }
+
+      updateProductQuantityInCart({
+        cartItemId: isProductAlreadyInCart.id,
+        quantity: isProductAlreadyInCart.quantity + quantity,
+      });
+
+      return;
+    }
 
     addProductToCart(payload);
     // dispatch(addProductToCart(payload));

@@ -12,7 +12,6 @@ export const fetchProducts = async (url: string): Promise<ProductResponse[]> => 
 
 export const fetchProduct = async (url: string): Promise<ProductResponse> => {
   const data = await axios.get(url).then((res) => res.data);
-
   return data;
 };
 

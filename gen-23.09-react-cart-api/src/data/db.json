@@ -322,32 +322,38 @@
     {
       "userId": 1,
       "productId": 3,
-      "quantity": 18,
+      "quantity": 4,
       "id": 1
     },
     {
       "userId": 4,
       "productId": 2,
-      "quantity": 15,
+      "quantity": 13,
       "id": 2
     },
     {
       "userId": 4,
       "productId": 4,
-      "quantity": 18,
+      "quantity": 5,
       "id": 3
-    },
-    {
-      "userId": 1,
-      "productId": 5,
-      "quantity": 18,
-      "id": 4
     },
     {
       "userId": 2,
       "productId": 5,
       "quantity": 18,
       "id": 5
+    },
+    {
+      "userId": 4,
+      "productId": 6,
+      "quantity": 5,
+      "id": 7
+    },
+    {
+      "userId": 4,
+      "productId": 8,
+      "quantity": 3,
+      "id": 8
     }
   ]
 }

@@ -2,11 +2,8 @@ import { FormEvent, Fragment, useEffect, useState } from "react";
 import { CartCard } from "../../../components/Card";
 import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { useAppSelector } from "../../../store/hooks";
 import { getCart } from "../../../lib/swr/cartSWR";
-import { getProductById } from "../../../lib/swr/productSWR";
-import { setCart } from "../../../store/slices/cartSlice";
-// import { CartItem } from "../../../interfaces/cartInterface";
 
 interface DeliveryMethod {
   name: string;
@@ -85,9 +82,8 @@ const Cart = () => {
 
   useEffect(() => {
     cartData &&
-      setSubTotal(
-        10,
-        // cartData.reduce(
+      setSubTotal(10
+        // cartItems.reduce(
         //   (acc, item) => acc + item.product!.price! * item.quantity,
         //   0,
         // ),
