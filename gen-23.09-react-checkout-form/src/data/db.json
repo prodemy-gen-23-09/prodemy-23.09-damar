@@ -1,0 +1,347 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Ardiles Black Sneakers Casual",
+      "price": 290000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950067/Ardiles_Mitiad_yivpmw.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Ardiles_Galina_y1hjqd.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950067/Ardiles_Quenby_ovx9w2.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950067/Ardiles_Mitiad_yivpmw.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Ardiles_Galina_y1hjqd.png"
+      ],
+      "description": "Ardiles Black Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 10,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Selatan"
+      },
+      "createdAt": "2021-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Adidas Court 80s - Sports Men",
+      "price": 990000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png"
+      ],
+      "description": "Adidas Dark Blue Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 13,
+      "category": "Sports",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Barat"
+      },
+      "createdAt": "2023-11-10T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Nike Air Zoom - Casual Men",
+      "price": 870000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Nike_Air_Zoom_Terra_Kiger_7_wizrgm.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950056/Nike_Air_fhw7o0.webp",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950061/Nike_Running_qzftko.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Nike_Air_Zoom_Terra_Kiger_7_wizrgm.png"
+      ],
+      "description": "Nike White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 24,
+      "category": "Running",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Utara"
+      },
+      "createdAt": "2023-11-11T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Aerostreet Black Sneakers Casual - Women",
+      "price": 190000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-5_i05dwk.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-5_i05dwk.png"
+      ],
+      "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 5,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Timur"
+      },
+      "createdAt": "2023-11-12T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Diadora Blue Running Shoes",
+      "price": 990000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948886/Sepatu-2_yoysdc.png"
+      ],
+      "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 22,
+      "category": "Running",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Selatan"
+      },
+      "createdAt": "2023-11-13T00:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "name": "Adidas White Sneakers Casual",
+      "price": 590000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png"
+      ],
+      "description": "Adidas Dark Blue Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 15,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Timur"
+      },
+      "createdAt": "2023-11-16T00:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "name": "Nike White - Running Casual",
+      "price": 1270000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950056/Nike_Air_fhw7o0.webp",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Nike_Air_Zoom_Terra_Kiger_7_wizrgm.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950061/Nike_Running_qzftko.png"
+      ],
+      "description": "Nike White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 25,
+      "category": "Running",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Pusat"
+      },
+      "createdAt": "2023-10-10T00:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "name": "Adidas Black Sneakers Casual",
+      "price": 1250000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Adidas_Biru_xvrr5q.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png"
+      ],
+      "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 11,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Barat"
+      },
+      "createdAt": "2023-12-18T01:50:42.726Z"
+    },
+    {
+      "id": 9,
+      "name": "Ardiles Galina - Running Casual",
+      "price": 275000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Ardiles_Galina_y1hjqd.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950067/Ardiles_Quenby_ovx9w2.png"
+      ],
+      "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 12,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Pusat"
+      },
+      "createdAt": "2023-10-13T00:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "name": "Adidas Blue Sneakers Casual",
+      "price": 1350000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Adidas_Biru_xvrr5q.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png"
+      ],
+      "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 7,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Barat"
+      },
+      "createdAt": "2023-02-28T00:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "name": "Fans New Escape WW - White",
+      "price": 900000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Fans_New_Escape_WW_cixdoq.png"
+      ],
+      "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 1,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Selatan"
+      },
+      "createdAt": "2023-05-14T00:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "name": "Ardiles Quenby Sneakers - Black",
+      "price": 345000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950067/Ardiles_Quenby_ovx9w2.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950067/Ardiles_Mitiad_yivpmw.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Ardiles_Galina_y1hjqd.png"
+      ],
+      "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 3,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Timur"
+      },
+      "createdAt": "2023-12-02T00:00:00.000Z"
+    },
+    {
+      "id": 13,
+      "name": "Nike Running Sneakers Casual - Black",
+      "price": 1100000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950061/Nike_Running_qzftko.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Nike_Air_Zoom_Terra_Kiger_7_wizrgm.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950056/Nike_Air_fhw7o0.webp"
+      ],
+      "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 5,
+      "category": "Running",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Barat"
+      },
+      "createdAt": "2023-12-01T00:00:00.000Z"
+    },
+    {
+      "id": 14,
+      "name": "Ardiles Black White Sneakers Casual",
+      "price": 270000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948889/Sepatu-1_ycotvf.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Ardiles_Galina_y1hjqd.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950067/Ardiles_Quenby_ovx9w2.png"
+      ],
+      "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 28,
+      "category": "Sneakers",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Utara"
+      },
+      "createdAt": "2022-08-13T00:00:00.000Z"
+    },
+    {
+      "id": 15,
+      "name": "Aerostreet Black Sneakers Casual",
+      "price": 250000,
+      "images": [
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-4_brgtgl.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948886/Sepatu-2_yoysdc.png",
+        "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-4_brgtgl.png"
+      ],
+      "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "stock": 18,
+      "category": "Sports",
+      "toko": {
+        "name": "Tokoungu Official",
+        "rating": 4.9,
+        "location": "Jakarta Barat"
+      },
+      "createdAt": "2023-07-12T00:00:00.000Z"
+    }
+  ],
+  "users": [
+    {
+      "email": "damar@email.com",
+      "password": "$2a$10$UGXl.QqXhTmnpF1bV9qml.CvrpUdpNPxYAzn5pc2e4PDU/r31pmSu",
+      "name": "damar",
+      "role": "admin",
+      "id": 1
+    },
+    {
+      "email": "damar@user.com",
+      "password": "$2a$10$lMyBu/loFJvUYMBRiXfJhe2dipwAPYFzXL0eZ/doJBsaQU1BrEsAS",
+      "name": "damar",
+      "role": "user",
+      "id": 2
+    },
+    {
+      "email": "user1@email.com",
+      "password": "$2a$10$GSYgKY2Zdtki4lb9JYwAm./5NcSnokI01Lqm3jgg0Pg31DwjVSsZS",
+      "name": "user 1",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "user@email.com",
+      "password": "$2a$10$/v5mMyUo3KtUn3u5XZIqfuvfuUMUYdVggnT81X7wUZ2QUukCri3E6",
+      "name": "user 2",
+      "role": "user",
+      "id": 4
+    }
+  ],
+  "cart_items": [
+    {
+      "userId": 1,
+      "productId": 3,
+      "quantity": 4,
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "productId": 5,
+      "quantity": 18,
+      "id": 5
+    },
+    {
+      "userId": 4,
+      "productId": 8,
+      "quantity": 5,
+      "id": 8
+    },
+    {
+      "userId": 4,
+      "productId": 7,
+      "quantity": 7,
+      "id": 12
+    }
+  ]
+}
