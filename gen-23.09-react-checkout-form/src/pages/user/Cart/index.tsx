@@ -156,7 +156,7 @@ const Cart = () => {
                     value={option}
                   >
                     <div
-                      className={`mt-2 flex flex-row items-center justify-between rounded-xl border border-gray-200 px-5 py-2 hover:cursor-pointer ${
+                      className={`mt-2 flex flex-row items-center justify-between text-primary rounded-xl border border-accent px-5 py-2 hover:cursor-pointer ${
                         promo?.name === option.name
                           ? "bg-primary text-white"
                           : ""

@@ -7,11 +7,17 @@ import CheckoutCard from "../../../components/Card/CheckoutCard";
 
 const Checkout = () => {
   const { checkoutData } = useAppSelector((state) => state.checkout);
-
-  const { checkout_items, promo, total_price } = checkoutData;
+  const { checkout_items, promo, total_price, user } = checkoutData;
 
   const [subTotal, setSubTotal] = useState(total_price);
   const [totalPrice, setTotalPrice] = useState(subTotal);
+
+  const [userInfo, setUserInfo] = useState({
+    name: user.name,
+    email: user.email,
+    phone: null,
+    address: null,
+  });
 
   const [totalDiscount, setTotalDiscount] = useState<number | string>(0);
 
@@ -43,19 +49,36 @@ const Checkout = () => {
 
   const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
 
+  const handleOnChange = (
+    e: FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setUserInfo((prev) => ({
+      ...prev,
+      [e.currentTarget.name]: e.currentTarget.value,
+    }));
+  };
+
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(checkoutData);
+    const payload = {
+      order_items: checkout_items,
+      total_price: totalPrice,
+      user: userInfo,
+      delivery_method: deliveryMethod,
+      payment_method: paymentMethod,
+    }
+
+    console.log(payload);
   };
 
   useEffect(() => {
-    if (deliveryMethod && paymentMethod && checkoutData) {
+    if (deliveryMethod && paymentMethod && checkoutData && userInfo.phone && userInfo.address) {
       setButtonIsDisabled(false);
     } else {
       setButtonIsDisabled(true);
     }
-  }, [deliveryMethod, paymentMethod]);
+  }, [deliveryMethod, paymentMethod, userInfo]);
 
   useEffect(() => {
     checkoutData?.checkout_items &&
@@ -66,41 +89,86 @@ const Checkout = () => {
         ),
       );
 
-    deliveryMethod
-      ? setTotalPrice(subTotal + deliveryMethod.price)
-      : setTotalPrice(subTotal);
+    if (!deliveryMethod) {
+      setTotalPrice(subTotal);
+      return;
+    }
+
+    if (promo && promo.category === "free-ongkir") {
+      setTotalPrice(subTotal);
+      return;
+    }
+
+    setTotalPrice(subTotal + deliveryMethod.price);
   }, [checkoutData, deliveryMethod, subTotal]);
 
   useEffect(() => {
-    let discount: number | string = 0;
+    let discount = 0;
 
-    if (checkoutData.promo) {
-      if (checkoutData.promo.category === "discount") {
-        discount = subTotal * (checkoutData.promo.percentage! / 100);
+    if (promo) {
+      if (promo.category === "discount") {
+        discount = subTotal * (promo.percentage! / 100);
 
-        if (discount > checkoutData.promo.maxDiscount!) {
-          discount = checkoutData.promo.maxDiscount!;
+        if (discount > promo.maxDiscount!) {
+          discount = promo.maxDiscount!;
         }
-      } else if (checkoutData.promo.category === "cashback") {
-        discount = subTotal * (checkoutData.promo.percentage! / 100);
+      } else if (promo.category === "cashback") {
+        discount = subTotal * (promo.percentage! / 100);
 
-        if (discount > checkoutData.promo.maxDiscount!) {
-          discount = checkoutData.promo.maxDiscount!;
+        if (discount > promo.maxDiscount!) {
+          discount = promo.maxDiscount!;
         }
-      } else if (checkoutData.promo.category === "free-ongkir") {
-        discount = deliveryMethod?.price || "Gratis ongkir";
       }
     }
 
     setTotalDiscount(discount);
-  }, [checkoutData]);
+    setTotalPrice((prev) => prev - discount);
+  }, [checkoutData, deliveryMethod]);
 
   return (
     <main className="m-5 flex min-h-screen flex-col gap-y-2 overflow-x-auto xl:container sm:mx-10 lg:mx-auto lg:mb-10">
       <div className="flex flex-col gap-y-5 rounded-xl py-3 sm:gap-x-10 md:flex-row lg:px-10">
         <div className="flex flex-1 flex-col gap-y-3 ">
-          <h1 className="px-1 text-2xl font-extrabold">Keranjang</h1>
-          <ul className="flex flex-col gap-y-5">
+          <h1 className="px-1 text-2xl font-extrabold">Checkout</h1>
+          <div className="flex flex-col gap-y-2 rounded-2xl border border-gray-200 px-5 py-5">
+            <h2 className="border border-transparent border-b-gray-100 text-lg font-semibold">
+              Informasi penerima
+            </h2>
+            <div className="flex flex-col">
+              <div className="mt-2 flex flex-row items-start justify-between">
+                <div className="w-1/3">
+                  <h3 className="mb-1 text-sm">Nama dan email</h3>
+                  <p className="font-semibold">{user?.name}</p>
+                  <p className="text-xs">{user?.email}</p>
+                </div>
+                <div className="ms-2 flex w-1/2 flex-col">
+                  <label htmlFor="phone" className="mb-1 text-sm">
+                    No Hp.
+                  </label>
+                  <input
+                    type="number"
+                    name="phone"
+                    className="mt-1 rounded-xl border border-gray-300 py-1.5 text-sm"
+                    onChange={(e) => handleOnChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="mt-2 flex flex-col">
+                <label htmlFor="address" className="text-sm">
+                  Alamat rumah
+                </label>
+                <textarea
+                  name="address"
+                  className="mt-2 rounded-xl border border-gray-300 py-2 text-sm"
+                  onChange={(e) => handleOnChange(e)}
+                />
+              </div>
+            </div>
+          </div>
+          <ul className="flex flex-col gap-y-5 rounded-xl border border-gray-200 p-5">
+            <h2 className="border border-transparent border-b-gray-100 text-lg font-semibold">
+              Daftar Belanjaan
+            </h2>
             {checkout_items && checkout_items.length > 0 ? (
               checkout_items.map((item, index) => (
                 <li key={index}>
@@ -111,7 +179,9 @@ const Checkout = () => {
                 </li>
               ))
             ) : (
-              <p className="h-full self-center">Keranjang kosong</p>
+              <p className="h-full self-center">
+                Kamu belum melakukan checkout
+              </p>
             )}
           </ul>
         </div>
@@ -133,10 +203,13 @@ const Checkout = () => {
                   {"Rp. " + subTotal.toLocaleString("id-ID")}
                 </p>
               </div>
-              {checkoutData.promo && (
+              {promo && (
                 <div className="flex flex-row items-center justify-between text-sm">
                   <p className="font-medium">
-                    Promo {promo?.category !== "free-ongkir" && <span className="text-xs">({promo?.name})</span>}{" "}
+                    Promo{" "}
+                    {promo?.category !== "free-ongkir" && (
+                      <span className="text-xs">({promo?.name})</span>
+                    )}{" "}
                   </p>
 
                   {promo && promo.category === "free-ongkir" ? (
@@ -152,7 +225,7 @@ const Checkout = () => {
                 <div className="flex flex-row items-center justify-between text-sm">
                   <p className="font-medium">Biaya Pengiriman</p>
                   {promo && promo.category === "free-ongkir" ? (
-                    <s className="text font-medium">Rp. 0</s>
+                    <s className="text font-medium">{"Rp. " + deliveryMethod.price.toLocaleString("id-ID")}</s>
                   ) : (
                     <p className="font-medium">
                       {"Rp. " + deliveryMethod.price.toLocaleString("id-ID")}
@@ -193,9 +266,15 @@ const Checkout = () => {
                         {"Estimasi tiba " + option.estimation}
                       </span>
                     </div>
-                    <p className="text-sm">
-                      {"Rp. " + option.price.toLocaleString("id-ID")}
-                    </p>
+                    {promo?.category === "free-ongkir" ? (
+                      <s className="text-sm">
+                        {"Rp. " + option.price.toLocaleString("id-ID")}
+                      </s>
+                    ) : (
+                      <p className="text-sm">
+                        {"Rp. " + option.price.toLocaleString("id-ID")}
+                      </p>
+                    )}
                   </div>
                 </RadioGroup.Option>
               ))}

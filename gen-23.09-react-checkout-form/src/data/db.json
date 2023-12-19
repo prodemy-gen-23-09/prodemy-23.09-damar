@@ -316,6 +316,13 @@
       "name": "user 2",
       "role": "user",
       "id": 4
+    },
+    {
+      "email": "damar@gmail.com",
+      "password": "$2a$10$vBe63JUKhd.rYBV1Dd7pUOgmhSR1qDwvx3gbDrZpN/zFLj/H7HNM.",
+      "name": "Damar Anshary",
+      "role": "user",
+      "id": 5
     }
   ],
   "cart_items": [
@@ -342,6 +349,18 @@
       "productId": 6,
       "quantity": 6,
       "id": 9
+    },
+    {
+      "userId": 5,
+      "productId": 8,
+      "quantity": 3,
+      "id": 10
+    },
+    {
+      "userId": 5,
+      "productId": 4,
+      "quantity": 1,
+      "id": 11
     }
   ]
 }
