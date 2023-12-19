@@ -1,20 +1,23 @@
-import { FormEvent, Fragment, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, Fragment, useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
 import { useAppSelector } from "../../../store/hooks";
 import { DeliveryMethod } from "../../../interfaces/cartInterface";
 import CheckoutCard from "../../../components/Card/CheckoutCard";
+import { deleteProductFromCart } from "../../../lib/axios/cartAxios";
 
 const Checkout = () => {
   const { checkoutData } = useAppSelector((state) => state.checkout);
-  const { checkout_items, promo, total_price, user } = checkoutData;
+  const { checkout_items, promo, total_price: sub_total } = checkoutData;
 
-  const [subTotal, setSubTotal] = useState(total_price);
+  const { user } = useAppSelector((state) => state.auth);
+
+  const [subTotal, setSubTotal] = useState(sub_total);
   const [totalPrice, setTotalPrice] = useState(subTotal);
 
   const [userInfo, setUserInfo] = useState({
-    name: user.name,
-    email: user.email,
+    name: user?.name,
+    email: user?.email,
     phone: null,
     address: null,
   });
@@ -50,30 +53,45 @@ const Checkout = () => {
   const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
 
   const handleOnChange = (
-    e: FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setUserInfo((prev) => ({
       ...prev,
-      [e.currentTarget.name]: e.currentTarget.value,
+      [e.target.name]: e.target.value,
     }));
   };
 
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    checkout_items?.forEach(async (item) => {
+      await deleteProductFromCart(item.cartId);
+    });
+
     const payload = {
       order_items: checkout_items,
       total_price: totalPrice,
       user: userInfo,
-      delivery_method: deliveryMethod,
+      delivery_method: {
+        name: deliveryMethod?.name,
+        price: deliveryMethod?.price,
+      },
+      promo_used: promo,
       payment_method: paymentMethod,
-    }
+      order_date: new Date().toISOString(),
+    };
 
     console.log(payload);
   };
 
   useEffect(() => {
-    if (deliveryMethod && paymentMethod && checkoutData && userInfo.phone && userInfo.address) {
+    if (
+      deliveryMethod &&
+      paymentMethod &&
+      checkoutData &&
+      userInfo.phone &&
+      userInfo.address
+    ) {
       setButtonIsDisabled(false);
     } else {
       setButtonIsDisabled(true);
@@ -173,6 +191,7 @@ const Checkout = () => {
               checkout_items.map((item, index) => (
                 <li key={index}>
                   <CheckoutCard
+                    cartId={item.cartId}
                     product={item.product}
                     quantity={item.quantity}
                   />
@@ -225,7 +244,9 @@ const Checkout = () => {
                 <div className="flex flex-row items-center justify-between text-sm">
                   <p className="font-medium">Biaya Pengiriman</p>
                   {promo && promo.category === "free-ongkir" ? (
-                    <s className="text font-medium">{"Rp. " + deliveryMethod.price.toLocaleString("id-ID")}</s>
+                    <s className="text font-medium">
+                      {"Rp. " + deliveryMethod.price.toLocaleString("id-ID")}
+                    </s>
                   ) : (
                     <p className="font-medium">
                       {"Rp. " + deliveryMethod.price.toLocaleString("id-ID")}

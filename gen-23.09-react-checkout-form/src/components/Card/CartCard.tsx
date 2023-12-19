@@ -5,14 +5,13 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Button, IconButton } from "../Button";
 import { CartDetails } from "../../interfaces/cartInterface";
-import { deleteProductFromCart } from "../../lib/axios/cartAxios";
 
-const CartCard = ({ product, quantity, cartId }: CartDetails) => {
+interface CartCardProps extends CartDetails {
+  handleRemoveFromCart: (carttId: number) => void;
+}
+
+const CartCard = ({ product, quantity, cartId, handleRemoveFromCart }: CartCardProps) => {
   const navigate = useNavigate();
-
-  const handleRemoveFromCart = () => {
-    deleteProductFromCart(cartId);
-  };
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -97,7 +96,7 @@ const CartCard = ({ product, quantity, cartId }: CartDetails) => {
                           variant="primary"
                           className="me-2 w-1/2"
                           onClick={() => {
-                            handleRemoveFromCart();
+                            handleRemoveFromCart(cartId);
                             closeModal();
                           }}
                         >

@@ -12,10 +12,16 @@ import {
 } from "../../../interfaces/cartInterface";
 import { setCheckoutFormCart } from "../../../store/slices/checkoutSlice";
 import { useNavigate } from "react-router-dom";
+import { deleteProductFromCart } from "../../../lib/axios/cartAxios";
 
 const Cart = () => {
   const { user: userData } = useAppSelector((state) => state.auth);
-  const { data: cartData, isError, isLoading } = getCart(userData?.id);
+  const { data: cartData, isError, isLoading, mutate } = getCart(userData?.id);
+
+  const handleRemoveFromCart = (cartId: number) => {
+    deleteProductFromCart(cartId);
+    mutate();
+  };
 
   const [cartDetails, setCartDetails] = useState<CartDetails[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -44,16 +50,13 @@ const Cart = () => {
     e.preventDefault();
 
     const checkoutDetails = cartDetails.map((item) => ({
+      cartId: item.cartId,
       product: item.product,
       quantity: item.quantity,
     }));
 
     const payload: CartPayload = {
       userId: userData?.id,
-      user: {
-        name: userData?.name,
-        email: userData?.email,
-      },
       promo: promo,
       checkout_items: checkoutDetails,
       total_price: totalPrice,
@@ -88,6 +91,8 @@ const Cart = () => {
       ).then((resolvedCartItems) => {
         setCartDetails(resolvedCartItems);
       });
+    } else {
+      setCartDetails([]);
     }
   }, [cartData]);
 
@@ -107,6 +112,7 @@ const Cart = () => {
                     product={item.product}
                     quantity={item.quantity}
                     cartId={item.cartId}
+                    handleRemoveFromCart={handleRemoveFromCart}
                   />
                 </li>
               ))
@@ -115,7 +121,7 @@ const Cart = () => {
             )}
           </ul>
         </div>
-        {cartData && cartData.length > 0 && (
+        {cartDetails && cartDetails.length > 0 && (
           <form
             className="sticky top-1 flex h-fit flex-col gap-y-2 rounded-xl border border-gray-200 p-5 md:w-4/12"
             onSubmit={(e) => handleOnSubmit(e)}
@@ -126,7 +132,7 @@ const Cart = () => {
                 <p className="text-sm font-medium">
                   Total Harga{" "}
                   <span className="ms-1 text-xs font-medium">
-                    ({cartData.length + " produk"})
+                    ({cartDetails.length + " produk"})
                   </span>
                 </p>
                 <p className="font-medium">
@@ -180,7 +186,7 @@ const Cart = () => {
               className={`mt-2 w-full disabled:bg-gray-100 disabled:hover:cursor-not-allowed`}
               type="submit"
             >
-              Bayar
+              Checkout
             </Button>
           </form>
         )}

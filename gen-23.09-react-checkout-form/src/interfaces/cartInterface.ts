@@ -22,27 +22,19 @@ export interface Promos {
 }
 
 export interface CheckoutItem {
+  cartId: number;
   product: Product;
   quantity: number;
 }
 
 export interface CartPayload {
-  userId: number;
-  user: {
-    name: string;
-    email: string;
-  };
+  userId: number | null;
   promo: Promos | null;
   checkout_items: CheckoutItem[] | null;
   total_price: number;
 }
 
 export interface CheckoutState extends CartPayload {
-  user: {
-    name: string;
-    email: string;
-    address?: string;
-  };
 }
 
 export interface DeliveryMethod {

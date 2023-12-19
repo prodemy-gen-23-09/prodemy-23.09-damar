@@ -5,12 +5,7 @@ import {
 } from "../../interfaces/cartInterface";
 
 const initialState: CheckoutState = {
-  userId: 0,
-  user: {
-    name: "",
-    email: "",
-    address: "",
-  },
+  userId: null,
   checkout_items: [],
   promo: null,
   total_price: 0,
@@ -26,6 +21,9 @@ export const checkoutSlice = createSlice({
       const cartPayload = action.payload;
       state.checkoutData = { ...initialState, ...cartPayload };
     },
+    resetCheckoutData: (state) => {
+      state.checkoutData = initialState;
+    }
   },
 });
 

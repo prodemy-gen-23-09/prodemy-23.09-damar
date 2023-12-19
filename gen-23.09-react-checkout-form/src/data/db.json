@@ -340,27 +340,15 @@
     },
     {
       "userId": 4,
-      "productId": 8,
-      "quantity": 5,
-      "id": 8
-    },
-    {
-      "userId": 4,
       "productId": 6,
       "quantity": 6,
       "id": 9
     },
     {
       "userId": 5,
-      "productId": 8,
-      "quantity": 3,
-      "id": 10
-    },
-    {
-      "userId": 5,
       "productId": 4,
       "quantity": 1,
-      "id": 11
+      "id": 10
     }
   ]
 }
