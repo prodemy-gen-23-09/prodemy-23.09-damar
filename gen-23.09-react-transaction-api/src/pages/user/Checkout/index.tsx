@@ -1,28 +1,29 @@
-import { ChangeEvent, FormEvent, Fragment, useEffect, useState } from "react";
+import { FormEvent, Fragment, useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
-import { useAppSelector } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { DeliveryMethod } from "../../../interfaces/cartInterface";
 import CheckoutCard from "../../../components/Card/CheckoutCard";
 import { deleteProductFromCart } from "../../../lib/axios/cartAxios";
+import { resetCheckoutData } from "../../../store/slices/checkoutSlice";
+import {
+  Transactions,
+  createTransaction,
+} from "../../../lib/axios/transactionAxios";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const { checkoutData } = useAppSelector((state) => state.checkout);
   const { checkout_items, promo, total_price: sub_total } = checkoutData;
 
   const { user } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [subTotal, setSubTotal] = useState(sub_total);
   const [totalPrice, setTotalPrice] = useState(subTotal);
 
-  const [userInfo, setUserInfo] = useState({
-    name: user?.name,
-    email: user?.email,
-    phone: null,
-    address: null,
-  });
-
-  const [totalDiscount, setTotalDiscount] = useState<number | string>(0);
+  const [totalDiscount, setTotalDiscount] = useState<number>(0);
 
   const [deliveryMethod, setDeliveryMethod] = useState<DeliveryMethod | null>(
     null,
@@ -52,51 +53,74 @@ const Checkout = () => {
 
   const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
 
-  const handleOnChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setUserInfo((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    checkout_items?.forEach(async (item) => {
-      await deleteProductFromCart(item.cartId);
-    });
+    const orderItems = checkout_items?.map((item) => ({
+      product: item.product,
+      quantity: item.quantity,
+      sub_total: item.product.price * item.quantity,
+    }));
 
-    const payload = {
-      order_items: checkout_items,
-      total_price: totalPrice,
-      user: userInfo,
-      delivery_method: {
-        name: deliveryMethod?.name,
-        price: deliveryMethod?.price,
+    let payload: Transactions = {
+      userId: user?.id,
+      user_details: {
+        name: user?.name,
+        email: user?.email,
+        phone: user?.phone,
+        address: user?.address,
       },
-      promo_used: promo,
-      payment_method: paymentMethod,
+      order_items: orderItems!,
+      total_price: totalPrice!,
+      delivery_method: {
+        name: deliveryMethod?.name!,
+        price: deliveryMethod?.price!,
+      },
+      payment_method: paymentMethod!,
       order_date: new Date().toISOString(),
     };
 
-    console.log(payload);
+    if (promo) {
+      let total_discount = 0;
+
+      if (promo.category === "free-ongkir") {
+        total_discount = deliveryMethod?.price!;
+      } else {
+        total_discount = totalDiscount;
+      }
+
+      payload = {
+        ...payload,
+        promo_used: {
+          name: promo.name,
+          category: promo.category,
+          value: total_discount,
+        },
+      };
+    }
+
+    checkout_items?.forEach(async (item) => {
+      deleteProductFromCart(item.cartId);
+    });
+
+    await createTransaction(payload)
+      .then(() => {
+        alert("Transaksi berhasil!");
+        dispatch(resetCheckoutData());
+      })
+      .catch((err) => alert(err.message))
+      .finally(() => {
+        navigate("/");
+      });
   };
 
   useEffect(() => {
-    if (
-      deliveryMethod &&
-      paymentMethod &&
-      checkoutData &&
-      userInfo.phone &&
-      userInfo.address
-    ) {
+    if (deliveryMethod && paymentMethod && checkoutData) {
       setButtonIsDisabled(false);
     } else {
       setButtonIsDisabled(true);
     }
-  }, [deliveryMethod, paymentMethod, userInfo]);
+  }, [deliveryMethod, paymentMethod]);
 
   useEffect(() => {
     checkoutData?.checkout_items &&
@@ -148,38 +172,25 @@ const Checkout = () => {
       <div className="flex flex-col gap-y-5 rounded-xl py-3 sm:gap-x-10 md:flex-row lg:px-10">
         <div className="flex flex-1 flex-col gap-y-3 ">
           <h1 className="px-1 text-2xl font-extrabold">Checkout</h1>
-          <div className="flex flex-col gap-y-2 rounded-2xl border border-gray-200 px-5 py-5">
+          <div className="flex flex-col gap-y-2 rounded-2xl border border-gray-200 px-5 py-5 mb-3">
             <h2 className="border border-transparent border-b-gray-100 text-lg font-semibold">
               Informasi penerima
-            </h2>
-            <div className="flex flex-col">
+            </h2> 
+            <div className="flex flex-col gap-y-2">
               <div className="mt-2 flex flex-row items-start justify-between">
                 <div className="w-1/3">
                   <h3 className="mb-1 text-sm">Nama dan email</h3>
                   <p className="font-semibold">{user?.name}</p>
-                  <p className="text-xs">{user?.email}</p>
+                  <p className="text-sm">{user?.email}</p>
                 </div>
                 <div className="ms-2 flex w-1/2 flex-col">
-                  <label htmlFor="phone" className="mb-1 text-sm">
-                    No Hp.
-                  </label>
-                  <input
-                    type="number"
-                    name="phone"
-                    className="mt-1 rounded-xl border border-gray-300 py-1.5 text-sm"
-                    onChange={(e) => handleOnChange(e)}
-                  />
+                  <h3 className="mb-1 text-sm">No Hp.</h3>
+                  <p className="text-sm">{user?.phone}</p>
                 </div>
               </div>
-              <div className="mt-2 flex flex-col">
-                <label htmlFor="address" className="text-sm">
-                  Alamat rumah
-                </label>
-                <textarea
-                  name="address"
-                  className="mt-2 rounded-xl border border-gray-300 py-2 text-sm"
-                  onChange={(e) => handleOnChange(e)}
-                />
+              <div className="mt-2 flex flex-col w-1/2">
+                <h3 className="mb-1 text-sm">Alamat rumah</h3>
+                <p className="text-sm">{user?.address}</p>
               </div>
             </div>
           </div>

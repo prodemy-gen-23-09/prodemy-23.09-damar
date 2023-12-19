@@ -1,8 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import {
-  CartPayload,
-  CheckoutState,
-} from "../../interfaces/cartInterface";
+import { CartPayload, CheckoutState } from "../../interfaces/cartInterface";
 
 const initialState: CheckoutState = {
   userId: null,
@@ -14,7 +11,7 @@ const initialState: CheckoutState = {
 export const checkoutSlice = createSlice({
   name: "checkout",
   initialState: {
-    checkoutData: initialState,
+    checkoutData: { ...initialState },
   },
   reducers: {
     setCheckoutFormCart: (state, action: PayloadAction<CartPayload>) => {
@@ -22,11 +19,11 @@ export const checkoutSlice = createSlice({
       state.checkoutData = { ...initialState, ...cartPayload };
     },
     resetCheckoutData: (state) => {
-      state.checkoutData = initialState;
-    }
+      state.checkoutData = { ...initialState };
+    },
   },
 });
 
-export const { setCheckoutFormCart } = checkoutSlice.actions;
+export const { setCheckoutFormCart, resetCheckoutData } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

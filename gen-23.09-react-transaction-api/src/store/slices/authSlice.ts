@@ -11,6 +11,8 @@ const initialState: AuthResponse = {
     id: 0,
     email: "",
     name: "",
+    phone: "",
+    address: "",
     role: "",
   },
 };

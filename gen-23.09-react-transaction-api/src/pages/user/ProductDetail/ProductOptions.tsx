@@ -17,7 +17,7 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
     (state: RootState) => state.auth.accessToken !== "",
   );
   const { user: userData } = useAppSelector((state: RootState) => state.auth);
-  const { data: cartData, mutate } = getCart(userData?.id);
+  const { data: cartData } = getCart(userData?.id);
   const { name, images, stock, price } = productDetail;
 
   const [quantityValue, setQuantityValue] = useState(1);
@@ -51,11 +51,9 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
         cartItemId: itemExisting.id,
         quantity: itemExisting.quantity + quantity,
       });
-      mutate();
       return;
     }
 
-    mutate();
     addProductToCart(payload);
     // dispatch(addProductToCart(payload));
   };
