@@ -184,13 +184,13 @@ const Checkout = () => {
                   <p className="text-sm">{user?.email}</p>
                 </div>
                 <div className="ms-2 flex w-1/2 flex-col">
-                  <h3 className="mb-1 text-sm">No Hp.</h3>
-                  <p className="text-sm">{user?.phone}</p>
+                  <h3 className="mb-1 text-sm">Nomor telepon</h3>
+                  <p className="text-sm font-semibold">{user?.phone}</p>
                 </div>
               </div>
               <div className="mt-2 flex flex-col w-1/2">
                 <h3 className="mb-1 text-sm">Alamat rumah</h3>
-                <p className="text-sm">{user?.address}</p>
+                <p className="text-sm font-semibold">{user?.address}</p>
               </div>
             </div>
           </div>

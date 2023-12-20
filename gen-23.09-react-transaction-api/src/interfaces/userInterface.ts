@@ -12,6 +12,8 @@ export interface RegisterUserSchema {
   email: string;
   password: string;
   confirmPassword: string;
+  phone: string;
+  address: string;
 }
 
 export interface LoginUserRequest {
@@ -38,5 +40,7 @@ export interface RegisterUserRequest {
   password: string;
   name: string;
   role: "user" | "admin";
+  phone: string;
+  address: string;
   createdAt?: string;
 }

@@ -306,6 +306,15 @@
       "phone": "081234567891",
       "address": "Jl. Bandung Barat No. 9, Bandung 40125",
       "id": 2
+    },
+    {
+      "email": "anshary@gmail.com",
+      "password": "$2a$10$Y.UMzSn6wo4S3truLrF/zOHnBfPJjM5V3DnIUQU0RbnMxpwzNVWk6",
+      "name": "Damar Galih Anshary",
+      "role": "user",
+      "phone": "081234567899",
+      "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069",
+      "id": 3
     }
   ],
   "cart_items": [
@@ -314,6 +323,12 @@
       "productId": 3,
       "quantity": 4,
       "id": 1
+    },
+    {
+      "userId": 3,
+      "productId": 6,
+      "quantity": 1,
+      "id": 2
     }
   ],
   "transactions": [
