@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: '"Rethink Sans", sans-serif',
+      sans: '"Plus Jakarta Sans", sans-serif',
     },
     extend: {
       colors: {

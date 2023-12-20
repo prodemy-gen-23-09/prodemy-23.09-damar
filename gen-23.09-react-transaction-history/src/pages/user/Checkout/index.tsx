@@ -1,16 +1,18 @@
 import { FormEvent, Fragment, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+
 import { RadioGroup } from "@headlessui/react";
 import { Button } from "../../../components/Button";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { CheckoutCard } from "../../../components/Card";
+
+import { Transactions } from "../../../interfaces/checkoutInterface";
 import { DeliveryMethod } from "../../../interfaces/cartInterface";
-import CheckoutCard from "../../../components/Card/CheckoutCard";
+
 import { deleteProductFromCart } from "../../../lib/axios/cartAxios";
+import { createTransaction } from "../../../lib/axios/transactionAxios";
+
 import { resetCheckoutData } from "../../../store/slices/checkoutSlice";
-import {
-  Transactions,
-  createTransaction,
-} from "../../../lib/axios/transactionAxios";
-import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const { checkoutData } = useAppSelector((state) => state.checkout);
@@ -172,10 +174,10 @@ const Checkout = () => {
       <div className="flex flex-col gap-y-5 rounded-xl py-3 sm:gap-x-10 md:flex-row lg:px-10">
         <div className="flex flex-1 flex-col gap-y-3 ">
           <h1 className="px-1 text-2xl font-extrabold">Checkout</h1>
-          <div className="flex flex-col gap-y-2 rounded-2xl border border-gray-200 px-5 py-5 mb-3">
+          <div className="mb-3 flex flex-col gap-y-2 rounded-2xl border border-gray-200 px-5 py-5">
             <h2 className="border border-transparent border-b-gray-100 text-lg font-semibold">
               Informasi penerima
-            </h2> 
+            </h2>
             <div className="flex flex-col gap-y-2">
               <div className="mt-2 flex flex-row items-start justify-between">
                 <div className="w-1/3">
@@ -188,7 +190,7 @@ const Checkout = () => {
                   <p className="text-sm font-semibold">{user?.phone}</p>
                 </div>
               </div>
-              <div className="mt-2 flex flex-col w-1/2">
+              <div className="mt-2 flex w-1/2 flex-col">
                 <h3 className="mb-1 text-sm">Alamat rumah</h3>
                 <p className="text-sm font-semibold">{user?.address}</p>
               </div>
