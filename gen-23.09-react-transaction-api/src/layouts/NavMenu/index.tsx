@@ -51,7 +51,6 @@ const NavMenu = ({ isLoggedIn }: NavMenuProps) => {
           />
           <IconButton
             icon={<AiOutlineMenu />}
-
             title="menu"
             className="h-8 md:hidden"
           />

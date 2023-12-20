@@ -1,5 +1,5 @@
 import { ProductCard } from "../../../components/Card";
-import ProductFilter from "./SearchFilter";
+// import ProductFilter from "./SearchFilter";
 import { useState, useEffect, ChangeEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Product } from "../../../interfaces/productInterface";
@@ -55,30 +55,30 @@ const ProductSearch = () => {
     setProductsSortedBy(e.target.value);
   };
 
-  const filtersData = [
-    {
-      category: "Lokasi",
-      name: ["Jakarta Barat", "Jakarta Pusat", "Jakarta Selatan"],
-    },
-    {
-      category: "Pengiriman",
-      name: ["JNE", "Si Cepat", "Ninja Express"],
-    },
-  ];
+  // const filtersData = [
+  //   {
+  //     category: "Lokasi",
+  //     name: ["Jakarta Barat", "Jakarta Pusat", "Jakarta Selatan"],
+  //   },
+  //   {
+  //     category: "Pengiriman",
+  //     name: ["JNE", "Si Cepat", "Ninja Express"],
+  //   },
+  // ];
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Something went wrong...</div>;
 
   return (
-    <main className="m-5 flex min-h-screen flex-col gap-x-8 gap-y-4 xl:container md:mx-auto md:mt-8 md:flex-row md:px-5">
-      <ProductFilter filters={filtersData} />
+    <main className="m-5 flex min-h-screen gap-x-8 gap-y-4 xl:container md:mx-auto md:mt-8 md:px-5">
+      {/* <ProductFilter filters={filtersData} /> */}
       <div className="flex h-fit w-full flex-col gap-y-5">
         <div className="flex flex-col items-start gap-y-2 md:flex-row md:items-center justify-between">
           <p>
             Menampilkan {productsDataSorted?.length} barang untuk pencarian{" "}
             {`"${queryParams.get("q")}"`}
           </p>
-          <form className="flex flex-row items-center gap-x-2 text-base md:text-sm">
+          <form className="flex flex-row items-center gap-x-2 self-end text-base md:text-sm">
             <label htmlFor={`urutkan`}>Urutkan : </label>
             <select
               className="w-48 rounded-lg border border-gray-200 px-4"
@@ -91,7 +91,7 @@ const ProductSearch = () => {
             </select>
           </form>
         </div>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:flex-1 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {productsDataSorted && productsDataSorted.length > 0 ? (
             productsDataSorted.map((product) => (
               <ProductCard key={product.id} product={product} />

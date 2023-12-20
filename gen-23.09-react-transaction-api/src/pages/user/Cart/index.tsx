@@ -96,6 +96,10 @@ const Cart = () => {
     }
   }, [cartData]);
 
+  useEffect(() => {
+    mutate();
+  }, []);
+
   if (isError) return <div>Error</div>;
   if (isLoading) return <div>Loading...</div>;
 
@@ -162,7 +166,7 @@ const Cart = () => {
                     value={option}
                   >
                     <div
-                      className={`mt-2 flex flex-row items-center justify-between text-primary rounded-xl border border-accent px-5 py-2 hover:cursor-pointer ${
+                      className={`mt-2 flex flex-row items-center justify-between rounded-xl border border-accent px-5 py-2 text-primary hover:cursor-pointer ${
                         promo?.name === option.name
                           ? "bg-primary text-white"
                           : ""

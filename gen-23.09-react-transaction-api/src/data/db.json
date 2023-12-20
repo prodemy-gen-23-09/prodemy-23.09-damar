@@ -329,6 +329,12 @@
       "productId": 6,
       "quantity": 1,
       "id": 2
+    },
+    {
+      "userId": 3,
+      "productId": 2,
+      "quantity": 4,
+      "id": 3
     }
   ],
   "transactions": [
@@ -513,6 +519,268 @@
         "value": 100000
       },
       "id": 3
+    },
+    {
+      "userId": 3,
+      "user_details": {
+        "name": "Damar Galih Anshary",
+        "email": "anshary@gmail.com",
+        "phone": "081234567899",
+        "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069"
+      },
+      "order_items": [
+        {
+          "product": {
+            "id": 6,
+            "name": "Adidas White Sneakers Casual",
+            "price": 590000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png"
+            ],
+            "description": "Adidas Dark Blue Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 15,
+            "category": "Sneakers",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Timur"
+            },
+            "createdAt": "2023-11-16T00:00:00.000Z"
+          },
+          "quantity": 1,
+          "sub_total": 590000
+        }
+      ],
+      "total_price": 590000,
+      "delivery_method": {
+        "name": "Gosend",
+        "price": 45000
+      },
+      "payment_method": "dana",
+      "order_date": "2023-12-20T00:30:28.372Z",
+      "promo_used": {
+        "name": "Free Ongkir",
+        "category": "free-ongkir",
+        "value": 45000
+      },
+      "id": 4
+    },
+    {
+      "userId": 3,
+      "user_details": {
+        "name": "Damar Galih Anshary",
+        "email": "anshary@gmail.com",
+        "phone": "081234567899",
+        "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069"
+      },
+      "order_items": [
+        {
+          "product": {
+            "id": 4,
+            "name": "Aerostreet Black Sneakers Casual - Women",
+            "price": 190000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-5_i05dwk.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-5_i05dwk.png"
+            ],
+            "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 5,
+            "category": "Sneakers",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Timur"
+            },
+            "createdAt": "2023-11-12T00:00:00.000Z"
+          },
+          "quantity": 1,
+          "sub_total": 190000
+        }
+      ],
+      "total_price": 206500,
+      "delivery_method": {
+        "name": "Gosend",
+        "price": 45000
+      },
+      "payment_method": "link-aja",
+      "order_date": "2023-12-20T03:11:17.229Z",
+      "promo_used": {
+        "name": "Diskon 15% (maks. 80rb)",
+        "category": "discount",
+        "value": 28500
+      },
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "user_details": {
+        "name": "Damar Galih Anshary",
+        "email": "anshary@gmail.com",
+        "phone": "081234567899",
+        "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069"
+      },
+      "order_items": [
+        {
+          "product": {
+            "id": 8,
+            "name": "Adidas Black Sneakers Casual",
+            "price": 1250000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Adidas_Biru_xvrr5q.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png"
+            ],
+            "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 11,
+            "category": "Sneakers",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Barat"
+            },
+            "createdAt": "2023-12-18T01:50:42.726Z"
+          },
+          "quantity": 1,
+          "sub_total": 1250000
+        }
+      ],
+      "total_price": 1161000,
+      "delivery_method": {
+        "name": "JNT",
+        "price": 11000
+      },
+      "payment_method": "link-aja",
+      "order_date": "2023-12-20T03:12:06.472Z",
+      "promo_used": {
+        "name": "Cashback 20% (maks. 100rb)",
+        "category": "cashback",
+        "value": 100000
+      },
+      "id": 6
+    },
+    {
+      "userId": 3,
+      "user_details": {
+        "name": "Damar Galih Anshary",
+        "email": "anshary@gmail.com",
+        "phone": "081234567899",
+        "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069"
+      },
+      "order_items": [
+        {
+          "product": {
+            "id": 6,
+            "name": "Adidas White Sneakers Casual",
+            "price": 590000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png"
+            ],
+            "description": "Adidas Dark Blue Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 15,
+            "category": "Sneakers",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Timur"
+            },
+            "createdAt": "2023-11-16T00:00:00.000Z"
+          },
+          "quantity": 1,
+          "sub_total": 590000
+        }
+      ],
+      "total_price": 590000,
+      "delivery_method": {
+        "name": "JNT",
+        "price": 11000
+      },
+      "payment_method": "link-aja",
+      "order_date": "2023-12-20T03:12:27.628Z",
+      "promo_used": {
+        "name": "Free Ongkir",
+        "category": "free-ongkir",
+        "value": 11000
+      },
+      "id": 7
+    },
+    {
+      "userId": 3,
+      "user_details": {
+        "name": "Damar Galih Anshary",
+        "email": "anshary@gmail.com",
+        "phone": "081234567899",
+        "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069"
+      },
+      "order_items": [
+        {
+          "product": {
+            "id": 8,
+            "name": "Adidas Black Sneakers Casual",
+            "price": 1250000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Adidas_Biru_xvrr5q.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png"
+            ],
+            "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 11,
+            "category": "Sneakers",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Barat"
+            },
+            "createdAt": "2023-12-18T01:50:42.726Z"
+          },
+          "quantity": 3,
+          "sub_total": 3750000
+        },
+        {
+          "product": {
+            "id": 7,
+            "name": "Nike White - Running Casual",
+            "price": 1270000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950056/Nike_Air_fhw7o0.webp",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Nike_Air_Zoom_Terra_Kiger_7_wizrgm.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950061/Nike_Running_qzftko.png"
+            ],
+            "description": "Nike White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 25,
+            "category": "Running",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Pusat"
+            },
+            "createdAt": "2023-10-10T00:00:00.000Z"
+          },
+          "quantity": 1,
+          "sub_total": 1270000
+        }
+      ],
+      "total_price": 4931000,
+      "delivery_method": {
+        "name": "JNT",
+        "price": 11000
+      },
+      "payment_method": "link-aja",
+      "order_date": "2023-12-20T03:33:54.117Z",
+      "promo_used": {
+        "name": "Cashback 20% (maks. 100rb)",
+        "category": "cashback",
+        "value": 100000
+      },
+      "id": 8
     }
   ]
 }
