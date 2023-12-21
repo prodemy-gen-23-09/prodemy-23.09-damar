@@ -1,7 +1,8 @@
 import axios from "axios";
 import {
-  ProductRequest,
+  AddProductRequest,
   Product as ProductResponse,
+  UpdateProductRequest,
 } from "../../interfaces/productInterface";
 
 export const fetchProducts = async (url: string): Promise<ProductResponse[]> => {
@@ -16,7 +17,7 @@ export const fetchProduct = async (url: string): Promise<ProductResponse> => {
 };
 
 export const addProduct = async (
-  body: ProductRequest,
+  body: AddProductRequest,
 ): Promise<ProductResponse> => {
   const data = await axios
     .post(`http://localhost:8080/products`, body)
@@ -27,7 +28,7 @@ export const addProduct = async (
 
 export const updateProduct = async (
   id: number,
-  body: ProductRequest,
+  body: UpdateProductRequest,
 ): Promise<ProductResponse> => {
   const data = await axios
     .patch(`http://localhost:8080/products/${id}`, body)

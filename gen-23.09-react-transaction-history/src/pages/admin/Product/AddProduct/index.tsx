@@ -1,10 +1,10 @@
 import { ChangeEvent, useRef, useState } from "react";
-import { ProductForm } from "../../../components/Form";
+import { ProductForm } from "../../../../components/Form";
 import {
-  ProductRequest,
+  AddProductRequest,
   ProductSchema,
-} from "../../../interfaces/productInterface";
-import { addProduct } from "../../../lib/axios/productAxios";
+} from "../../../../interfaces/productInterface";
+import { addProduct } from "../../../../lib/axios/productAxios";
 
 const AddProduct = () => {
   const [productImages, setProductImages] = useState<String[]>([]);
@@ -32,7 +32,7 @@ const AddProduct = () => {
       return;
     }
 
-    const payload: ProductRequest = {
+    const payload: AddProductRequest = {
       ...data,
       toko: toko,
       images: productImages,

@@ -1,11 +1,11 @@
 import { ChangeEvent, useRef, useState } from "react";
-import { ProductForm } from "../../../components/Form";
+import { ProductForm } from "../../../../components/Form";
 import {
-  ProductRequest,
+  UpdateProductRequest,
   ProductSchema,
-} from "../../../interfaces/productInterface";
-import { updateProduct } from "../../../lib/axios/productAxios";
-import { getProductById } from "../../../lib/swr/productSWR";
+} from "../../../../interfaces/productInterface";
+import { updateProduct } from "../../../../lib/axios/productAxios";
+import { getProductById } from "../../../../lib/swr/productSWR";
 import { useParams } from "react-router-dom";
 
 const EditProduct = () => {
@@ -32,7 +32,7 @@ const EditProduct = () => {
       location: "Jakarta Barat",
     };
 
-    let payload: ProductRequest;
+    let payload: UpdateProductRequest;
 
     if (productImages.length > 0) {
       payload = {

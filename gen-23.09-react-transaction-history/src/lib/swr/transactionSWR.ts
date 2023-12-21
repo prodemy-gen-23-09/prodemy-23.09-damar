@@ -3,7 +3,7 @@ import { fetchTransactions } from "../axios/transactionAxios";
 
 export const getTransactionsByUser = (userId: number) => {
   const { data, error, isLoading, mutate } = useSWR(
-    `http://localhost:8080/users/${userId}/transactions`,
+    `http://localhost:8080/600/users/${userId}/transactions`,
     fetchTransactions,
   );
 

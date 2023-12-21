@@ -3,7 +3,7 @@ import { getProductInCart } from "../axios/cartAxios";
 
 export const getCart = (userId: number) => {
   const { data, error, mutate } = useSWR(
-    `http://localhost:8080/users/${userId}/cart_items`,
+    `http://localhost:8080/600/users/${userId}/cart_items`,
     getProductInCart,
   );
 

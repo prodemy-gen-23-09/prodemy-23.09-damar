@@ -7,25 +7,40 @@ import { TransactionResponse } from "../../interfaces/checkoutInterface";
 interface TransactionDetailsModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  orderDateFormatted: string;
   transaction: TransactionResponse;
 }
 
 const TransactionDetailsModal = ({
   isOpen,
   closeModal,
-  orderDateFormatted,
   transaction,
 }: TransactionDetailsModalProps) => {
   const {
     id,
     payment_method,
+    order_date,
     delivery_method,
     user_details,
     total_price,
     order_items,
     promo_used,
   } = transaction;
+
+  const getFormatDate = (date: string) => {
+    const newDate = new Date(date);
+    return newDate
+      .toLocaleDateString("id-ID", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      })
+      .replace("pukul", `, `)
+      .replace(".", ":")
+      .concat(" WIB");
+  };
+  const orderDateFormatted = getFormatDate(order_date);
 
   const subTotal = order_items.reduce((acc, curr) => acc + curr.sub_total, 0);
 

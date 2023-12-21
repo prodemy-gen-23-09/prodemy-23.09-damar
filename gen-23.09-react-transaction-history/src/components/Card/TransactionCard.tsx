@@ -7,23 +7,9 @@ const TransactionCard = (transaction: TransactionResponse) => {
   const { id, order_date, total_price, order_items } = transaction;
   const { product } = order_items[0];
 
-  const getFormatDate = (date: string) => {
-    const newDate = new Date(date);
-    return newDate
-      .toLocaleDateString("id-ID", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      })
-      .replace("pukul", `, `)
-      .replace(".", ":")
-      .concat(" WIB");
-  };
-  const orderDateFormatted = getFormatDate(order_date);
-
   const [isOpen, setIsOpen] = useState(false);
+
+  const orderDate = new Date(order_date).toLocaleDateString("id-ID");
 
   const closeModal = () => {
     setIsOpen(false);
@@ -39,7 +25,7 @@ const TransactionCard = (transaction: TransactionResponse) => {
         <div className="flex flex-row items-start gap-x-2">
           <p>{`ORDER-INV0${id}`}</p>
           <span>|</span>
-          <p>{orderDateFormatted}</p>
+          <p>{orderDate}</p>
         </div>
         <div className="w-100% self-end">
           <Button variant="outline" className="w-40 py-1" onClick={openModal}>
@@ -74,7 +60,6 @@ const TransactionCard = (transaction: TransactionResponse) => {
         isOpen={isOpen}
         closeModal={closeModal}
         transaction={transaction}
-        orderDateFormatted={orderDateFormatted}
       />
     </div>
   );

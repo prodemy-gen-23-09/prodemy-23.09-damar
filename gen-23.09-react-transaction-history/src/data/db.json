@@ -51,15 +51,15 @@
         "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950061/Nike_Running_qzftko.png",
         "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Nike_Air_Zoom_Terra_Kiger_7_wizrgm.png"
       ],
-      "description": "Nike White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+      "description": "Nike White Sneakers Casual \n\nTIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. \n\nBahan : Kanvas - Mesh - Kulit sintetis \nSize : 39 - 43",
       "stock": 24,
       "category": "Running",
       "toko": {
         "name": "Tokoungu Official",
         "rating": 4.9,
-        "location": "Jakarta Utara"
+        "location": "Jakarta Barat"
       },
-      "createdAt": "2023-11-11T00:00:00.000Z"
+      "createdAt": "2023-12-21T00:56:59.941Z"
     },
     {
       "id": 4,
@@ -147,7 +147,7 @@
         "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png"
       ],
       "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
-      "stock": 11,
+      "stock": 9,
       "category": "Sneakers",
       "toko": {
         "name": "Tokoungu Official",
@@ -323,18 +323,6 @@
       "productId": 3,
       "quantity": 4,
       "id": 1
-    },
-    {
-      "userId": 3,
-      "productId": 6,
-      "quantity": 1,
-      "id": 2
-    },
-    {
-      "userId": 3,
-      "productId": 2,
-      "quantity": 4,
-      "id": 3
     }
   ],
   "transactions": [
@@ -781,6 +769,100 @@
         "value": 100000
       },
       "id": 8
+    },
+    {
+      "userId": 3,
+      "user_details": {
+        "name": "Damar Galih Anshary",
+        "email": "anshary@gmail.com",
+        "phone": "081234567899",
+        "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069"
+      },
+      "order_items": [
+        {
+          "product": {
+            "id": 5,
+            "name": "Diadora Blue Running Shoes",
+            "price": 990000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948886/Sepatu-2_yoysdc.png"
+            ],
+            "description": "Aerostreet Black Sneakers <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 22,
+            "category": "Running",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Selatan"
+            },
+            "createdAt": "2023-11-13T00:00:00.000Z"
+          },
+          "quantity": 4,
+          "sub_total": 3960000
+        }
+      ],
+      "total_price": 3905000,
+      "delivery_method": {
+        "name": "Gosend",
+        "price": 45000
+      },
+      "payment_method": "dana",
+      "order_date": "2023-12-21T00:51:29.188Z",
+      "promo_used": {
+        "name": "Cashback 20% (maks. 100rb)",
+        "category": "cashback",
+        "value": 100000
+      },
+      "id": 9
+    },
+    {
+      "userId": 3,
+      "user_details": {
+        "name": "Damar Galih Anshary",
+        "email": "anshary@gmail.com",
+        "phone": "081234567899",
+        "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069"
+      },
+      "order_items": [
+        {
+          "product": {
+            "id": 8,
+            "name": "Adidas Black Sneakers Casual",
+            "price": 1250000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950060/Adidas_Biru_xvrr5q.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950063/Adidas_Court_80s_ordlip.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-3_lvrp5o.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png"
+            ],
+            "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 11,
+            "category": "Sneakers",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Barat"
+            },
+            "createdAt": "2023-12-18T01:50:42.726Z"
+          },
+          "quantity": 2,
+          "sub_total": 2500000
+        }
+      ],
+      "total_price": 2445000,
+      "delivery_method": {
+        "name": "Gosend",
+        "price": 45000
+      },
+      "payment_method": "link-aja",
+      "order_date": "2023-12-21T02:47:30.823Z",
+      "promo_used": {
+        "name": "Cashback 20% (maks. 100rb)",
+        "category": "cashback",
+        "value": 100000
+      },
+      "id": 10
     }
   ]
 }

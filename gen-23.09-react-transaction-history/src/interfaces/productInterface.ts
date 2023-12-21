@@ -1,4 +1,3 @@
-
 export interface ProductCardProps {
   product: Product;
 }
@@ -39,7 +38,7 @@ export interface ProductSchema {
   category: string;
 }
 
-export interface ProductRequest {
+export interface AddProductRequest {
   name: string;
   price: number;
   description: string;
@@ -50,10 +49,19 @@ export interface ProductRequest {
   createdAt: string;
 }
 
+export interface UpdateProductRequest {
+  name?: string;
+  price?: number;
+  description?: string;
+  images?: String[];
+  toko?: Toko;
+  stock?: number;
+  category?: string;
+  createdAt?: string;
+}
+
 interface Toko {
   name: string;
   rating: number;
   location: string;
 }
-
-

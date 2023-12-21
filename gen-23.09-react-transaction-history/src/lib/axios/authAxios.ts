@@ -3,6 +3,7 @@ import {
   LoginUserRequest,
   RegisterUserRequest,
   AuthResponse,
+  UserResponse,
 } from "../../interfaces/userInterface";
 
 export const registerUser = async (
@@ -22,6 +23,12 @@ export const loginUser = async ({
   const data = await axios
     .post(`http://localhost:8080/login`, { email, password })
     .then((res) => res.data);
+
+  return data;
+};
+
+export const fetchUsers = async (url: string): Promise<UserResponse[]> => {
+  const data = await axios.get(url).then((res) => res.data);
 
   return data;
 };
