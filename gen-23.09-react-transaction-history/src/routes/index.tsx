@@ -12,6 +12,7 @@ import {
   ProductSearch,
   Register,
   TransactionHistory,
+  Wishlist,
 } from "../pages/user";
 import {
   AddProduct,
@@ -34,7 +35,7 @@ const AppRouter = () => {
 
           <Route element={<UserRoutes />}>
             <Route path="/profile" element={<div>profile</div>} />
-            <Route path="/wishlist" element={<div>wishlist</div>} />
+            <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order" element={<TransactionHistory />} />
             <Route path="/cart" element={<Cart />} />

@@ -1,8 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import ProductInTransactionCard from "../Card/OrderCard";
 import { Button } from "../Button";
 import { TransactionResponse } from "../../interfaces/checkoutInterface";
+import { OrderCard } from "../Card";
 
 interface TransactionDetailsModalProps {
   isOpen: boolean;
@@ -92,7 +92,7 @@ const TransactionDetailsModal = ({
                     Detail produk
                   </h3>
                   {order_items.map((item) => (
-                    <ProductInTransactionCard {...item} key={item.product.id} />
+                    <OrderCard {...item} key={item.product.id} />
                   ))}
                 </div>
 

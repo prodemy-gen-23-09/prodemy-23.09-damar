@@ -41,7 +41,7 @@ const Login = () => {
 
   return (
     <main className="flex min-h-screen flex-row bg-contain bg-right bg-no-repeat md:bg-[url('assets/login-bg.jpg')]">
-      <div className="flex w-full flex-col gap-y-2 sm:gap-y-5 self-center sm:mx-auto sm:w-[600px] md:ms-10 lg:ms-20 lg:w-5/12 xl:ms-40 xl:w-4/12">
+      <div className="flex w-full flex-col gap-y-2 self-center sm:mx-auto sm:w-[600px] sm:gap-y-5 md:ms-10 lg:ms-20 lg:w-5/12 xl:ms-40 xl:w-4/12">
         <Link to="/">
           <h1 className="mt-3 text-center text-3xl font-bold text-primary md:text-start">
             tokoungu
@@ -49,7 +49,7 @@ const Login = () => {
         </Link>
         <form
           onSubmit={handleSubmit(handleOnSubmit)}
-          className="flex h-96 w-full flex-col rounded-2xl border-gray-200 bg-white px-4 pb-10 pt-5 shadow-md sm:border sm:px-10 sm:pt-10"
+          className="flex h-fit w-full flex-col rounded-2xl border-gray-200 bg-white px-4 pb-8 pt-5 shadow-md sm:border sm:px-10 sm:pt-8"
         >
           <h1 className="text-center text-2xl font-semibold">Masuk</h1>
           <div className="mt-5 flex flex-col gap-y-2">

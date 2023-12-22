@@ -1,9 +1,7 @@
 import { ProductDetailProps } from "../../../interfaces/productInterface";
 import { Button, IconButton } from "../../../components/Button";
-import { ChangeEvent, Fragment, useEffect, useState } from "react";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { Dialog, Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { ChangeEvent, useEffect, useState } from "react";
+import { AiOutlineHeart, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useAppSelector } from "../../../store/hooks";
 import { RootState } from "../../../store";
 import {
@@ -11,6 +9,12 @@ import {
   updateProductQuantityInCart,
 } from "../../../lib/axios/cartAxios";
 import { getCart } from "../../../lib/swr/cartSWR";
+import {
+  createWishlist,
+  deleteWishlist,
+} from "../../../lib/axios/wishlistAxios";
+import { AddWishlistOrCartModal } from "../../../components/Modal";
+import { getWishlist } from "../../../lib/swr/wishlistSWR";
 
 const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   const isLoggedIn = useAppSelector(
@@ -18,22 +22,55 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
   );
   const { user: userData } = useAppSelector((state: RootState) => state.auth);
   const { data: cartData } = getCart(userData?.id);
+  const { wishlist: wishlistData } = getWishlist(userData?.id);
   const { name, images, stock, price } = productDetail;
 
   const [quantityValue, setQuantityValue] = useState(1);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const [isWishlistModalOpen, setIsWishlistModalOpen] = useState(false);
 
-  const closeModal = () => {
-    setIsOpen(false);
+  const [itemAlreadyInWishlist, setItemAlreadyInWishlist] = useState(
+    wishlistData?.find((item) => item.productId === productDetail.id),
+  );
+
+  const closeCartModal = () => {
+    setIsCartModalOpen(false);
   };
 
-  const openModal = () => {
-    setIsOpen(true);
+  const openCartModal = () => {
+    setIsCartModalOpen(true);
+  };
+
+  const closeWishlistModal = () => {
+    setIsWishlistModalOpen(false);
+  };
+
+  const openWishlistModal = () => {
+    setIsWishlistModalOpen(true);
   };
 
   // const dispatch = useAppDispatch();
 
-  const handleOnSubmit = ({ productId, quantity }: any) => {
+  const handleWishlist = async () => {
+    if (itemAlreadyInWishlist !== undefined) {
+      await deleteWishlist(itemAlreadyInWishlist.id!).then(() => {
+        setItemAlreadyInWishlist(undefined);
+      });
+      return;
+    }
+
+    const payload = {
+      userId: userData?.id,
+      productId: productDetail.id,
+    };
+
+    await createWishlist(payload).then((res) => {
+      openWishlistModal();
+      setItemAlreadyInWishlist(res);
+    });
+  };
+
+  const handleAddProductToCart = async ({ productId, quantity }: any) => {
     const payload = {
       userId: userData.id,
       productId,
@@ -47,14 +84,18 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
         return;
       }
 
-      updateProductQuantityInCart({
+      await updateProductQuantityInCart({
         cartItemId: itemExisting.id,
         quantity: itemExisting.quantity + quantity,
+      }).then(() => {
+        openCartModal();
       });
       return;
     }
 
-    addProductToCart(payload);
+    await addProductToCart(payload).then(() => {
+      openCartModal();
+    });
     // dispatch(addProductToCart(payload));
   };
 
@@ -139,84 +180,35 @@ const ProductDetailOptions = ({ productDetail }: ProductDetailProps) => {
             variant="primary"
             className="w-full disabled:bg-primary disabled:opacity-25 hover:disabled:cursor-not-allowed"
             onClick={() => {
-              handleOnSubmit({
+              handleAddProductToCart({
                 productId: productDetail.id,
                 quantity: quantityValue,
               });
-              openModal();
             }}
           >
             <span>&#43;</span> Keranjang
           </Button>
-          <Transition appear show={isOpen} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={closeModal}>
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <div className="fixed inset-0 bg-black/25" />
-              </Transition.Child>
-
-              <div className="fixed inset-0 overflow-y-auto">
-                <div className="flex min-h-full items-center justify-center p-4 text-center">
-                  <Transition.Child
-                    as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0 scale-95"
-                    enterTo="opacity-100 scale-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100 scale-100"
-                    leaveTo="opacity-0 scale-95"
-                  >
-                    <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-lg font-medium leading-6"
-                      >
-                        Berhasil
-                      </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">
-                          Produk berhasil ditambahkan ke keranjang
-                        </p>
-                      </div>
-
-                      <div className="mt-4 flex flex-row gap-x-3">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          className="w-5/12 px-10 font-medium"
-                          onClick={closeModal}
-                        >
-                          OK
-                        </Button>
-                        <Link to="/cart" className="w-7/12">
-                          <Button
-                            variant="primary"
-                            className="w-full font-medium"
-                          >
-                            Lihat Keranjang
-                          </Button>
-                        </Link>
-                      </div>
-                    </Dialog.Panel>
-                  </Transition.Child>
-                </div>
-              </div>
-            </Dialog>
-          </Transition>
+          <AddWishlistOrCartModal
+            isOpen={isCartModalOpen}
+            closeModal={closeCartModal}
+            type="cart"
+          />
           <Button
             variant="outline"
-            className="w-full disabled:hidden"
+            className="flex w-full flex-row items-center justify-center disabled:hidden"
             disabled={!isLoggedIn}
+            onClick={handleWishlist}
           >
-            Beli Langsung
+            <AiOutlineHeart />
+            {itemAlreadyInWishlist
+              ? "Hapus dari wishlist"
+              : "Tambah ke wishlist"}
           </Button>
+          <AddWishlistOrCartModal
+            isOpen={isWishlistModalOpen}
+            closeModal={closeWishlistModal}
+            type="wishlist"
+          />
         </div>
       </div>
       <div className="sticky bottom-0 left-0 z-10 flex w-full flex-row justify-between gap-x-4 border border-t-green-500 bg-white p-3 md:hidden">
