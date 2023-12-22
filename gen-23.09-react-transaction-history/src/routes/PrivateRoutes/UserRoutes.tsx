@@ -11,7 +11,7 @@ const UserRoutes = () => {
     return <Outlet />;
   }
 
-  return <Navigate to="/login" />;
+  return <Navigate to="/" />;
 };
 
 export default UserRoutes;

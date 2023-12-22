@@ -13,7 +13,7 @@ const IconButton = ({
       type={type ? type : `button`}
       {...otherProps}
     >
-      {icon ? icon : children}
+      {icon}{children && children}
     </button>
   );
 };

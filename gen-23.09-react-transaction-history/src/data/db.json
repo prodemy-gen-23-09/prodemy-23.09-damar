@@ -71,7 +71,7 @@
         "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-5_i05dwk.png"
       ],
       "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
-      "stock": 0,
+      "stock": -1,
       "category": "Sneakers",
       "toko": {
         "name": "Tokoungu Official",
@@ -315,6 +315,15 @@
       "phone": "081234567899",
       "address": "Kp. Bandung Barat No. 29, Cibiru, Jawa Barat 42069",
       "id": 3
+    },
+    {
+      "email": "damar@damar.com",
+      "password": "$2a$10$8V5pFKCfTbJkXbVlFei8re9FrWzuNutt1yMZaaP3kUNaJEZchDb4u",
+      "name": "damar",
+      "role": "user",
+      "phone": "081231241251",
+      "address": "asdasdasd",
+      "id": 4
     }
   ],
   "wishlist": [],
@@ -373,6 +382,53 @@
         "value": 12000
       },
       "id": 1
+    },
+    {
+      "userId": 4,
+      "user_details": {
+        "name": "damar",
+        "email": "damar@damar.com",
+        "phone": "081231241251",
+        "address": "asdasdasd"
+      },
+      "order_items": [
+        {
+          "product": {
+            "id": 4,
+            "name": "Aerostreet Black Sneakers Casual - Women",
+            "price": 190000,
+            "images": [
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-5_i05dwk.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701950058/Adidas_Sneakers_gcwykr.png",
+              "https://res.cloudinary.com/dyfdsuryj/image/upload/v1701948884/Sepatu-5_i05dwk.png"
+            ],
+            "description": "Aerostreet Black & White Sneakers Casual <br><br> TIDAK AKAN JEBOL setelah dicuci atau kehujanan karena menggunakan technologi baru Shoes Injection Mould bahan sole dicairkan dengan tekanan tinggi menyatu sempurna dengan bahan kain dari sepatu tanpa menggunakan proses lem. <br><br> Bahan : Kanvas - Mesh - Kulit sintetis <br><br> Size : 39 - 43",
+            "stock": 0,
+            "category": "Sneakers",
+            "toko": {
+              "name": "Tokoungu Official",
+              "rating": 4.9,
+              "location": "Jakarta Timur"
+            },
+            "createdAt": "2023-11-12T00:00:00.000Z"
+          },
+          "quantity": 1,
+          "sub_total": 190000
+        }
+      ],
+      "total_price": 164000,
+      "delivery_method": {
+        "name": "Si Cepat",
+        "price": 12000
+      },
+      "payment_method": "link-aja",
+      "order_date": "2023-12-22T03:10:40.146Z",
+      "promo_used": {
+        "name": "Cashback 20% (maks. 100rb)",
+        "category": "cashback",
+        "value": 38000
+      },
+      "id": 2
     }
   ]
 }

@@ -48,7 +48,9 @@ const NavMenu = ({ isLoggedIn }: NavMenuProps) => {
             onClick={handleLogout}
             title="profile"
             className="hidden md:block md:h-10 p-1 hover:bg-gray-200 rounded-full"
-          />
+          >
+            <span className="hidden md:block">Keluar</span>
+          </IconButton>
           <IconButton
             icon={<AiOutlineMenu />}
             title="menu"
